@@ -28,7 +28,7 @@ Use this checklist before sharing or submitting the artifact package.
 ## Manual Checks
 
 - Confirm the latest `Build paper PDF` GitHub Actions run succeeds if `paper/` or TeX result tables changed.
-- Confirm the checked PDF artifact can be downloaded with `gh run download 28165120878 -n agent-harness-paper-pdf -D logs\artifact-download`.
+- Confirm the checked PDF artifact can be downloaded with `gh run download 28165652967 -n agent-harness-paper-pdf -D logs\artifact-download`.
 - Confirm the latest `Validate artifact package` GitHub Actions run succeeds after artifact or script changes.
 - Confirm `experiments/run_manifest.md` matches raw result files.
 - Confirm manuscript claims remain within `docs/claim_boundaries.md`.
