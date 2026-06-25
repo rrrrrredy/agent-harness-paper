@@ -47,6 +47,7 @@ Regenerate derived tables:
 .\.venv\Scripts\python scripts\analyze_results.py
 .\.venv\Scripts\python scripts\inspect_failures.py
 .\.venv\Scripts\python scripts\generate_figures.py
+.\.venv\Scripts\python scripts\audit_source_evidence.py --offline
 ```
 
 Live provider reruns require valid provider credentials in environment variables. Missing or invalid credentials should remain recorded as provider failures rather than replaced with invented measurements.

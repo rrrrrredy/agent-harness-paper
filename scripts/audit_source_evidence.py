@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 import subprocess
 from collections import defaultdict
@@ -45,6 +46,14 @@ SIGNALS = {
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--offline", action="store_true", help="Validate and rebuild markdown from existing JSON without GitHub API calls.")
+    parser.add_argument("--max-fetch", type=int, default=MAX_FETCHED_FILES_PER_REPO)
+    args = parser.parse_args()
+    if args.offline:
+        _offline()
+        return
+
     snapshot = json.loads(IN_JSON.read_text(encoding="utf-8"))
     audits = []
     for repo in snapshot.get("first_party_repositories", []):
@@ -54,8 +63,8 @@ def main() -> None:
             tree = _tree(name, branch)
             files = [item["path"] for item in tree.get("tree", []) if item.get("type") == "blob"]
             candidate_paths = sorted((path for path in files if _is_candidate(path)), key=_priority)
-            candidates = [_audit_file(name, branch, path) for path in candidate_paths[:MAX_FETCHED_FILES_PER_REPO]]
-            for path in candidate_paths[MAX_FETCHED_FILES_PER_REPO:]:
+            candidates = [_audit_file(name, branch, path) for path in candidate_paths[: args.max_fetch]]
+            for path in candidate_paths[args.max_fetch :]:
                 path_only = _audit_path_only(path)
                 if path_only["signals"]:
                     candidates.append(path_only)
@@ -94,6 +103,18 @@ def main() -> None:
     OUT_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(_markdown(payload), encoding="utf-8")
     print(f"wrote {OUT_JSON} and {OUT_MD}")
+
+
+def _offline() -> None:
+    payload = json.loads(OUT_JSON.read_text(encoding="utf-8"))
+    repos = payload.get("repositories")
+    if not isinstance(repos, list) or not repos:
+        raise SystemExit("source audit JSON has no repositories")
+    missing = [repo for repo in repos if "repository" not in repo or "signal_counts" not in repo]
+    if missing:
+        raise SystemExit(f"source audit JSON has malformed repository entries: {len(missing)}")
+    OUT_MD.write_text(_markdown(payload), encoding="utf-8")
+    print(f"offline source audit validated {len(repos)} repositories")
 
 
 def _gh(args: list[str]) -> Any:
