@@ -29,6 +29,7 @@ def test_required_artifacts_exist():
         "scripts/check_release_references.py",
         "scripts/check_status_notes.py",
         "scripts/check_run_manifest_alignment.py",
+        "scripts/build_artifact_archive.py",
         "scripts/audit_source_evidence.py",
         "scripts/run_checks.py",
     ]:
