@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 
@@ -28,6 +29,12 @@ def main() -> None:
             findings.append(f"{path}: remove moving validation run ID")
         if "latest_checked_validation_run" in text:
             findings.append(f"{path}: remove moving validation run key")
+        for run_id in re.findall(r"gh run download (\d+)", text):
+            if run_id != pdf_run:
+                findings.append(f"{path}: PDF download run {run_id} does not match manifest {pdf_run}")
+        for run_id in re.findall(r"Latest checked PDF run: `(\d+)`", text):
+            if run_id != pdf_run:
+                findings.append(f"{path}: checked PDF run {run_id} does not match manifest {pdf_run}")
 
     release_index = Path("docs/artifact_release_index.md").read_text(encoding="utf-8")
     if pdf_run not in release_index:
