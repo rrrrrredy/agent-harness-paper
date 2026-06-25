@@ -29,7 +29,7 @@ python scripts/run_codex_reference.py
 python scripts/analyze_results.py
 python scripts/generate_figures.py
 python scripts/collect_github_evidence.py
-python scripts/audit_source_evidence.py
+python scripts/audit_source_evidence.py --offline
 python scripts/backfill_run_metadata.py
 python scripts/check_tex_sources.py
 python scripts/check_public_traces.py

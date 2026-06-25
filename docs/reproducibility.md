@@ -39,6 +39,12 @@ The GitHub evidence snapshot is reproducible but not deterministic: it uses `gh`
 .\.venv\Scripts\python scripts\audit_source_evidence.py
 ```
 
+For routine validation without network calls, rebuild the source-audit markdown from the committed JSON snapshot:
+
+```powershell
+.\.venv\Scripts\python scripts\audit_source_evidence.py --offline
+```
+
 ## Paper
 
 The LaTeX source is in `paper/main.tex`. If `pdflatex` and `bibtex` are installed:
