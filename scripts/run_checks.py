@@ -28,6 +28,7 @@ VALIDATE = [
     [sys.executable, "scripts/check_public_traces.py"],
     [sys.executable, "scripts/check_artifact_consistency.py"],
     [sys.executable, "scripts/check_entrypoint_commands.py"],
+    [sys.executable, "scripts/check_release_references.py"],
     [sys.executable, "scripts/audit_source_evidence.py", "--offline"],
     [sys.executable, "scripts/secret_scan.py"],
 ]
