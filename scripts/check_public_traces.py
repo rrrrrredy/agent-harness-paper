@@ -28,6 +28,7 @@ BANNED_TERMS = [
     "created by codex",
     "chatgpt wrote",
     "ai-written",
+    "script was added after",
     "c:/users/",
     ".codex/attachments",
     "https://github.com/rrrrrredy/ai-radar-web",
