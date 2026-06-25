@@ -1,0 +1,44 @@
+{
+  "title": "Thin Harness, Strong Contracts: Production-Oriented Agent Harnesses for Stateful AI Agents",
+  "manuscript": {
+    "tex": "paper/main.tex",
+    "bibliography": "paper/references.bib",
+    "pdf_build": ".github/workflows/latex.yml"
+  },
+  "benchmark": {
+    "cases": "benchmark/cases.jsonl",
+    "harness": "harness/",
+    "prompt_variants": "harness/prompts.py",
+    "metrics": "harness/core.py"
+  },
+  "raw_results": {
+    "codex_reference": "experiments/raw/codex_reference.jsonl",
+    "deepseek_live": "experiments/raw/deepseek_live.jsonl",
+    "kimi_live_attempt": "experiments/raw/kimi_live.jsonl",
+    "run_manifest": "experiments/run_manifest.md"
+  },
+  "derived_results": {
+    "summary": "results/tables/experiment_summary.md",
+    "category_summary": "results/tables/category_summary.md",
+    "failure_taxonomy": "results/tables/failure_taxonomy.md",
+    "failure_inspection": "results/tables/failure_inspection.md",
+    "figure": "figures/success_by_variant.svg"
+  },
+  "evidence": {
+    "inventory": "evidence/inventory.md",
+    "github_snapshot": "evidence/github_snapshots.md",
+    "source_audit": "evidence/source_audit.md"
+  },
+  "reproducibility": {
+    "guide": "docs/reproducibility.md",
+    "protocol": "docs/experiment_protocol.md",
+    "claim_boundaries": "docs/claim_boundaries.md",
+    "reviewer_guide": "docs/reviewer_guide.md"
+  },
+  "validation_commands": [
+    ".\\.venv\\Scripts\\python -m pytest -q",
+    ".\\.venv\\Scripts\\python scripts\\check_tex_sources.py",
+    ".\\.venv\\Scripts\\python scripts\\check_public_traces.py",
+    ".\\.venv\\Scripts\\python scripts\\secret_scan.py"
+  ]
+}
