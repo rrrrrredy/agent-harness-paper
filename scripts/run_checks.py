@@ -8,6 +8,8 @@ import sys
 
 
 def maybe_reexec_project_venv() -> None:
+    if os.environ.get("AGENT_HARNESS_VENV_REEXEC") == "1":
+        return
     root = Path(__file__).resolve().parents[1]
     candidates = [
         root / ".venv" / "Scripts" / "python.exe",
@@ -16,7 +18,10 @@ def maybe_reexec_project_venv() -> None:
     current = Path(sys.executable).resolve()
     for candidate in candidates:
         if candidate.exists() and candidate.resolve() != current:
-            os.execv(str(candidate), [str(candidate), *sys.argv])
+            env = os.environ.copy()
+            env["AGENT_HARNESS_VENV_REEXEC"] = "1"
+            result = subprocess.run([str(candidate), *sys.argv], env=env)
+            raise SystemExit(result.returncode)
 
 
 maybe_reexec_project_venv()

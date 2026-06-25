@@ -52,4 +52,4 @@ Only rows present in `experiments/raw/*.jsonl` should be cited.
 
 ## Parse-Error Reruns
 
-Early live rows that failed before preserving raw model text can be rerun with `scripts/rerun_parse_errors.py`. The script replaces only rows marked with parser failures, preserves the case id and variant, records `rerun_reason=parse_error` in usage metadata, and then requires aggregate tables to be regenerated. It is intended to repair evaluator instrumentation, not to cherry-pick model successes. Legacy parser failures that have not been rerun are still classified as parse errors during aggregation rather than provider availability failures.
+Early live rows that failed before preserving raw model text can be rerun with `scripts/rerun_parse_errors.py`. The script replaces only rows marked with parser failures, preserves the case id and variant, records `usage.rerun_reason=parse_error`, and then requires aggregate tables to be regenerated. It is intended to repair evaluator instrumentation, not to cherry-pick model successes. Legacy parser failures that have not been rerun are still classified as parse errors during aggregation rather than provider availability failures.

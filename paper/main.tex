@@ -118,7 +118,7 @@ Three prompt variants are supported. The \texttt{no\_harness} variant gives the 
 \label{tab:pilot}
 \end{table}
 
-The deterministic reference policy is not a model benchmark. It verifies that the case definitions, simulator, metrics, and aggregation logic are internally consistent. The live DeepSeek run produced 72 model-backed rows. A targeted parser-repair script was added after the wrapper was fixed to preserve raw model text on parse failures; rerun rows are marked in the raw metadata, and parser failures are classified separately from provider availability failures.
+The deterministic reference policy is not a model benchmark. It verifies that the case definitions, simulator, metrics, and aggregation logic are internally consistent. The live DeepSeek run contains 72 model-backed rows. Three rows carry \texttt{usage.rerun\_reason=parse\_error} after parser-instrumentation repair; two rows remain classified as parse errors. Parser failures are classified separately from provider availability failures.
 
 In this pilot, the unstructured no-harness prompt failed all cases under the action-plan scoring because it usually did not emit executable tool actions. The thick checklist variant achieved a higher success rate than the text-only thin-contract prompt. Appendix Tables~\ref{tab:category-summary} and~\ref{tab:failure-taxonomy} show that the remaining failures are dominated by routing and state-diff errors, not permission violations. This does not refute the strong-contract argument; rather, it sharpens it. A contract written only as natural language is still a prompt. A production harness needs enforceable schemas, tool APIs, parsers, retries, and state checks around that contract.
 
