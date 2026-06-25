@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T09:28:45.113870+00:00",
+  "generated_at": "2026-06-25T09:43:50.881851+00:00",
   "first_party_repositories": [
     {
       "createdAt": "2026-04-27T08:10:00Z",
@@ -124,7 +124,7 @@
         "name": "TypeScript"
       },
       "updatedAt": "2026-06-23T02:31:02Z",
-      "url": "https://github.com/rrrrrredy/ai-radar-web",
+      "url": null,
       "topic_names": []
     },
     {
@@ -140,7 +140,7 @@
         "name": "Python"
       },
       "updatedAt": "2026-06-23T02:30:56Z",
-      "url": "https://github.com/rrrrrredy/ai-radar-skill",
+      "url": null,
       "topic_names": []
     },
     {
@@ -471,7 +471,7 @@
       "url": "https://github.com/openclaw/openclaw/pull/93149",
       "repository": "openclaw/openclaw",
       "number": 93149,
-      "body_excerpt": "## Summary\n\nClean replacement for #59490 / #59452.\n\n- Adds `cron add --dry-run`.\n- Builds the exact params that normal `cron add` would send to `cron.add`.\n- Prints those params as JSON and returns before any gateway RPC.\n- `--dry-run --json` keeps stdout pure JSON.\n- Does not call `cron.add` and does not call `cron.status`, so the scheduler warning path is not triggered.\n- Documents the new preview flag in `docs/cli/cron.md`.\n\n## Behavior\n\nDefault `cron add` behavior is unchanged. The dry-run path is explicit and does not add a gateway API; it reuses existing CLI parameter construction.\n\nFor non-JSON dry-runs, a short dry-run note is written to stderr while stdout remains the JSON params preview.\n\n## Real Behavior Proof\n\n- Behavior or issue addressed: `cron add --dry-run` previews the params normal `cron add` would send to `cron.add`, keeps `--dry-run --json` stdout as pure JSON, and returns before gateway RPC or scheduler-warning calls.\n- Real environment tested: Windows PowerShell in the OpenClaw repo, Node.js v24.13.0, branch head `5cf84b0f6644560f52436a2180dd2d79088139a5`.\n- Exact steps or command run after this patch: `node scripts/test-projects.mjs src/cli/cron-cli.test.ts`; `node node_modules/oxfmt/bin/oxfmt --check --threads=1 --config .oxfmtrc.jsonc docs/cli/cron.md`; `node scripts/check-docs-mdx.mjs docs/cli/cron.md`; `node openclaw.mjs cron add --name codex-dry-run-proof --at 2026-07-01T09:00:00Z --message \"Dry run proof\" --no-deliver --agent main --dry-run --json"
+      "evidence_relevance": "Preview before side effect; mutation boundary evidence."
     },
     {
       "additions": 5,
@@ -506,7 +506,7 @@
       "url": "https://github.com/openclaw/openclaw/pull/69975",
       "repository": "openclaw/openclaw",
       "number": 69975,
-      "body_excerpt": "## Summary\r\n\r\n- clarify the `--tz` help text in `cron add` and `cron edit` to say it applies to both `--cron` expressions and offset-less `--at` values\r\n- align `cron edit --at` help text with `cron add` so the `--tz` behavior is discoverable from both commands\r\n\r\n## Why\r\n\r\nThe previous `--tz` wording implied it only affected cron expressions. In practice, it also affects offset-less `--at` values such as `09:00`, so the old help text was incomplete and easy to misread.\r\n\r\nThis PR is a clean replacement for #59487 with only the intended CLI help-text scope.\r\n\r\n## User Impact\r\n\r\nUsers reading `openclaw cron add --help` or `openclaw cron edit --help` get a more accurate explanation of when `--tz` applies, including the Gateway-host local timezone default.\r\n\r\n## Root Cause\r\n\r\nThe CLI help text drifted from the actual behavior: runtime scheduling already uses `--tz` for offset-less `--at` values, but the exposed help text still described it as cron-only.\r\n\r\n## Validation\n\n- `git diff --check`\n- `node scripts/run-vitest.mjs src/cli/cron-cli.test.ts` (92 tests)\n- local Codex autoreview after maintainer repair: clean, no actionable findings\n\n## Real behavior proof\n\n- **Behavior or issue addressed:** The repaired help text documents that offset-less `cron add --at` and `cron edit --at` values use `--tz`, while cron expressions still default to the Gateway host local timezone.\n- **Real environment tested:** Repaired OpenClaw source checkout at `a9bfdc2884e67c7032189767a5a5d8372ef2a792"
+      "evidence_relevance": "Scheduler contract and temporal semantics evidence."
     },
     {
       "additions": 96,
@@ -577,7 +577,7 @@
       "url": "https://github.com/openclaw/openclaw/pull/70046",
       "repository": "openclaw/openclaw",
       "number": 70046,
-      "body_excerpt": "## Summary\r\n\r\nClean respin of #59444 with the diff scoped to the cron `--at` parser and the public help/docs surfaces that describe that parser.\r\n\r\n- Support bare `HH:MM` / `HH:MM:SS` values in `cron add --at` via `parseAt(input, tz?)`.\r\n- Resolve time-only inputs against today's date in UTC by default, or today's date in `--tz` when provided.\r\n- Return `null` for invalid IANA timezone strings and out-of-range time-only values (`24:00`, `12:60`, `12:30:60`).\r\n- Preserve all existing absolute ISO, offset-less ISO, `20m`, and `+20m` semantics.\r\n- Document the new `HH:MM[:SS]` accepted format in `cron add` / `cron edit` help and cron docs.\r\n\r\n## Scope\r\n\r\nThis PR intentionally stays within the current cron CLI schedule parsing and public documentation surface:\r\n\r\n- `src/cli/cron-cli/shared.ts`\r\n- `src/cli/cron-cli/shared.test.ts`\r\n- `src/cli/cron-cli/register.cron-add.ts`\r\n- `src/cli/cron-cli/register.cron-edit.ts`\r\n- `src/cli/cron-cli/schedule-options.ts`\r\n- `src/cli/cron-cli.test.ts`\r\n- `docs/cli/cron.md`\r\n- `docs/automation/cron-jobs.md`\r\n\r\nCurrent `main` already supports both `20m` and `+20m` duration input. This PR does not change that duration branch.\r\n\r\n## Real Behavior Proof\r\n\r\n- Behavior or issue addressed: `cron add --at` now accepts bare time-only `HH:MM` / `HH:MM:SS` values, applies `--tz` to those values, rejects invalid time-only values, preserves duration behavior, and exposes the new accepted format in CLI help/docs.\r\n- Real environment tested: Windows PowerShell "
+      "evidence_relevance": "Scheduler contract and temporal semantics evidence."
     },
     {
       "additions": 27,
@@ -627,7 +627,7 @@
       "url": "https://github.com/openclaw/openclaw/pull/59488",
       "repository": "openclaw/openclaw",
       "number": 59488,
-      "body_excerpt": "## Summary\n\n- Problem:\n- Why it matters:\n- What changed:\n- What did NOT change (scope boundary):\n\n## Change Type (select all)\n- [x] Bug fix\n- [ ] Feature\n- [ ] Refactor required for the fix\n- [ ] Docs\n- [ ] Security hardening\n- [ ] Chore/infra\n\n## Scope (select all touched areas)\n- [ ] Gateway / orchestration\n- [ ] Skills / tool execution\n- [ ] Auth / tokens\n- [x] Memory / storage\n- [ ] Integrations\n- [ ] API / contracts\n- [x] UI / DX\n- [ ] CI/CD / infra\n\n## Linked Issue/PR\n- Closes #59457\n- [x] This PR fixes a bug or regression\n\n## Root Cause / Regression History (if applicable)\n- Root cause:\n- Missing detection / guardrail:\n- Prior context:\n- Why this regressed now:\n- If unknown, what was ruled out:\n\n## Regression Test Plan (if applicable)\n- Coverage level:\n  - [ ] Unit test\n  - [ ] Seam / integration test\n  - [ ] End-to-end test\n  - [ ] Existing coverage already sufficient\n- Target test or file:\n- Scenario the test should lock in:\n- Why this is the smallest reliable guardrail:\n- Existing test that already covers this:\n- If no new test is added, why not:\n\n## User-visible / Behavior Changes\n[describe or None]\n\n## Security Impact (required)\n- New permissions/capabilities? No\n- Secrets/tokens handling changed? No\n- New/changed network calls? No\n- Command/tool execution surface changed? No\n- Data access scope changed? No\n\n## Human Verification (required)\n- Verified scenarios:\n- Edge cases checked:\n- What you did not verify:\n\n## Review Conversations\n- [x] I replied to or resolve"
+      "evidence_relevance": "Recoverable memory/runtime boundary evidence."
     },
     {
       "additions": 75,
@@ -777,7 +777,7 @@
       "url": "https://github.com/openclaw/openclaw/pull/59637",
       "repository": "openclaw/openclaw",
       "number": 59637,
-      "body_excerpt": "## Summary\n\n- Problem: When `node:sqlite` was unavailable (e.g., on older Node.js versions), `memory_search` and related tools produced a generic \"module not found\" error with no actionable guidance.\n- Why it matters: SQLite unavailability is a common environment issue; a clear, targeted error message with the correct remediation command significantly reduces user confusion and support burden.\n- What changed: Added an `isSqliteMissing` detection branch in `buildMemorySearchTool` that catches the specific `node:sqlite` import failure and returns a structured error with the correct remediation step (`openclaw doctor`, not `openclaw doctor --memory` which doesn't exist).\n- What did NOT change (scope boundary): All other error paths in `buildMemorySearchTool` are unaffected. No changes to memory search logic or SQLite usage.\n\n## Change Type (select all)\n- [x] Bug fix\n- [ ] Feature\n- [ ] Refactor required for the fix\n- [ ] Docs\n- [ ] Security hardening\n- [ ] Chore/infra\n\n## Scope (select all touched areas)\n- [ ] Gateway / orchestration\n- [ ] Skills / tool execution\n- [ ] Auth / tokens\n- [x] Memory / storage\n- [ ] Integrations\n- [ ] API / contracts\n- [x] UI / DX\n- [ ] CI/CD / infra\n\n## Linked Issue/PR\n- Closes #59457\n- [x] This PR fixes a bug or regression\n\n## Root Cause / Regression History (if applicable)\n- Root cause: `node:sqlite` was added in Node.js 22.5 (experimental) and requires `--experimental-sqlite` before 23.4; environments without it produce a module-not-found error t"
+      "evidence_relevance": "Recoverable memory/runtime boundary evidence."
     },
     {
       "additions": 68,
@@ -817,7 +817,7 @@
       "url": "https://github.com/openclaw/openclaw/pull/69199",
       "repository": "openclaw/openclaw",
       "number": 69199,
-      "body_excerpt": "## Summary\n\n- Keeps the existing PR branch scoped to `extensions/memory-core`.\n- Classifies `node:sqlite` / missing built-in sqlite runtime errors in `buildMemorySearchUnavailableResult(error, overrides?)`.\n- Keeps the existing quota and generic branches, and keeps explicit `warning` / `action` overrides authoritative.\n- Fixes the latest CI lint finding by using `String#includes()` for the sqlite-missing checks.\n\n## Behavior\n\nWhen the runtime cannot load `node:sqlite`, `memory_search` now returns the same unavailable result shape with a targeted warning/action instead of the generic embedding-provider message.\n\nThe action matches current OpenClaw support policy: Node.js `>=22.19.0`, with Node.js 24 recommended. The doc link uses the valid Memory CLI page: https://docs.openclaw.ai/cli/memory.\n\n## Real Behavior Proof\n\n- Behavior or issue addressed: `memory_search` unavailable payloads now classify missing `node:sqlite` runtime errors with targeted warning/action text while preserving quota, generic, and explicit override behavior.\n- Real environment tested: Windows PowerShell in the OpenClaw repo; old-runtime missing-builtin reproduction plus Node.js v24.13.0 for helper output, tests, and lint.\n- Exact steps or command run after this patch: `node -e \"try { require('node:sqlite'); console.log('node:sqlite available'); } catch (error) { console.log(String(error.message)); }\"`; `node --import tsx -e \"import { buildMemorySearchUnavailableResult } from './extensions/memory-core/src/"
+      "evidence_relevance": "State continuity or scoped memory recall evidence."
     },
     {
       "additions": 398,
@@ -918,7 +918,7 @@
       "url": "https://github.com/NousResearch/hermes-agent/pull/47094",
       "repository": "NousResearch/hermes-agent",
       "number": 47094,
-      "body_excerpt": "## Summary\n\n- add an optional `session` field to cron jobs so recurring jobs can reuse a stable SessionDB conversation instead of creating a fresh timestamped cron session each run\n- load prior messages from the reusable session and pass them as `conversation_history` to the cron agent turn\n- preserve legacy behavior when `session` is unset, including the original `run_conversation(prompt)` call shape for non-reusable cron jobs\n- avoid renaming, ending, or reopening existing non-cron sessions when users target one explicitly\n- expose the field through the `cronjob` tool, `hermes cron create/edit --session`, CLI output, tests, and docs\n\nFixes #14821.\nRelated to #33167.\n\n## Validation\n\n- `python -m py_compile cron/scheduler.py`\n- `python -m py_compile cron/jobs.py cron/scheduler.py tools/cronjob_tools.py hermes_cli/cron.py hermes_cli/subcommands/cron.py`\n- `python -m compileall -q cron tools hermes_cli tests/cron/test_jobs.py tests/tools/test_cronjob_tools.py tests/cron/test_cronjob_schema.py tests/hermes_cli/test_cron_parser_builder.py tests/cron/test_scheduler.py`\n- `python -m pytest tests/cron/test_jobs.py tests/cron/test_scheduler.py tests/tools/test_cronjob_tools.py tests/cron/test_cronjob_schema.py tests/hermes_cli/test_cron_parser_builder.py -q` (`308 passed`)\n- `python -m pytest tests/cron tests/tools/test_cronjob_tools.py tests/hermes_cli/test_cron_parser_builder.py -q` (`511 passed`, `2 skipped`, `7 failed` on Windows-only platform assumptions around `~` expansion and"
+      "evidence_relevance": "State continuity or scoped memory recall evidence."
     },
     {
       "additions": 469,
@@ -1007,7 +1007,7 @@
       "url": "https://github.com/NousResearch/hermes-agent/pull/47589",
       "repository": "NousResearch/hermes-agent",
       "number": 47589,
-      "body_excerpt": "## Summary\n- Persist gateway chat/thread scope metadata on session rows, including resets, branches, and compression continuations.\n- Apply the current gateway platform/chat/thread scope to session recall for browse, discovery, read, and scroll paths.\n- Add regression coverage for cross-topic isolation, parent-chat isolation, CJK fallback search, direct read rejection, and gateway session-store metadata.\n\nFixes #35465.\n\n## Testing\n- `.\\.venv\\Scripts\\python -m compileall -q hermes_state.py tools/session_search_tool.py agent/tool_executor.py agent/agent_runtime_helpers.py agent/conversation_compression.py run_agent.py gateway/session.py gateway/slash_commands.py`\n- `.\\.venv\\Scripts\\python -m pytest tests/tools/test_session_search.py tests/test_hermes_state.py tests/gateway/test_session.py -q` (401 passed)\n- `.\\.venv\\Scripts\\python -m pytest tests/agent/test_compression_logging_session_context.py tests/run_agent/test_session_id_env.py -q` (4 passed)\n- `.\\.venv\\Scripts\\python -m pytest --collect-only -q` (collection succeeded)\n- `.\\.venv\\Scripts\\python -m pytest -q` was attempted after preparing the Windows test environment; it exceeded the 15 minute local tool timeout after collection had already been verified."
+      "evidence_relevance": "State continuity or scoped memory recall evidence."
     }
   ]
 }

@@ -13,6 +13,7 @@ def test_required_artifacts_exist():
         "docs/claim_boundaries.md",
         "benchmark/cases.jsonl",
         "scripts/rerun_parse_errors.py",
+        "scripts/check_public_traces.py",
     ]:
         assert Path(path).exists(), path
 

@@ -30,7 +30,7 @@ Credentials are read only from environment variables. They must not be written t
 .\.venv\Scripts\python scripts\collect_github_evidence.py
 .\.venv\Scripts\python scripts\run_codex_reference.py
 .\.venv\Scripts\python scripts\run_model_experiment.py --provider deepseek --limit 24
-.\.venv\Scripts\python scripts\run_model_experiment.py --provider kimi --limit 24
+.\.venv\Scripts\python scripts\run_model_experiment.py --provider kimi --variants thin_contract --limit 1
 .\.venv\Scripts\python scripts\backfill_run_metadata.py
 .\.venv\Scripts\python scripts\analyze_results.py
 .\.venv\Scripts\python scripts\generate_figures.py
@@ -40,12 +40,12 @@ Only rows present in `experiments/raw/*.jsonl` should be cited.
 
 ## Evidence Snapshots
 
-`scripts/collect_github_evidence.py` records repository and pull-request metadata into `evidence/github_evidence.json` and `evidence/github_snapshots.md`. These snapshots are not a substitute for vendored source audits, but they make the GitHub evidence layer reproducible and distinguish first-party repositories from upstream PR evidence.
+`scripts/collect_github_evidence.py` records repository and pull-request metadata into `evidence/github_evidence.json` and `evidence/github_snapshots.md`. These snapshots are not deterministic because repository metadata, PR status, and the generation timestamp can change. They are also not a substitute for vendored source audits, but they make the GitHub evidence layer reproducible and distinguish first-party repositories from upstream PR evidence. Private repository URLs are omitted from the generated snapshot.
 
 ## Live Row Metadata
 
-`scripts/backfill_run_metadata.py` adds stable metadata to live raw rows without changing model outputs or scores: provider, model id, endpoint, schema version, and prompt SHA-256. This makes old raw rows comparable to future reruns when result tables are regenerated.
+`scripts/backfill_run_metadata.py` adds stable metadata to live raw rows without changing model outputs or scores: provider, model id, endpoint, schema version, and prompt SHA-256. It also normalizes legacy parser-error note labels so aggregation does not confuse JSON parsing failures with provider availability failures. This makes old raw rows comparable to future reruns when result tables are regenerated.
 
 ## Parse-Error Reruns
 
-Early live rows that failed before preserving raw model text can be rerun with `scripts/rerun_parse_errors.py`. The script replaces only rows marked with parser failures, preserves the case id and variant, records `rerun_reason=parse_error` in usage metadata, and then requires aggregate tables to be regenerated. It is intended to repair evaluator instrumentation, not to cherry-pick model successes.
+Early live rows that failed before preserving raw model text can be rerun with `scripts/rerun_parse_errors.py`. The script replaces only rows marked with parser failures, preserves the case id and variant, records `rerun_reason=parse_error` in usage metadata, and then requires aggregate tables to be regenerated. It is intended to repair evaluator instrumentation, not to cherry-pick model successes. Legacy parser failures that have not been rerun are still classified as parse errors during aggregation rather than provider availability failures.

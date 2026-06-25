@@ -3,7 +3,7 @@
 | codex_reference | no_harness | 24 | 24 | 0 | 0 | 1.0 | 1.0 | 0 | 0 | 0 | 0 | 1.0 |
 | codex_reference | thick_checklist | 24 | 24 | 0 | 0 | 1.0 | 1.0 | 0 | 0 | 0 | 0 | 1.0 |
 | codex_reference | thin_contract | 24 | 24 | 0 | 0 | 1.0 | 1.0 | 0 | 0 | 0 | 0 | 1.0 |
-| deepseek | no_harness | 24 | 24 | 0 | 1 | 0.0 | 0.583 | 0 | 0 | 0 | 24 | 0.917 |
+| deepseek | no_harness | 24 | 24 | 0 | 0 | 0.0 | 0.583 | 0 | 0 | 0 | 24 | 0.917 |
 | deepseek | thick_checklist | 24 | 24 | 0 | 0 | 0.708 | 0.75 | 0 | 0 | 0 | 7 | 0.958 |
 | deepseek | thin_contract | 24 | 24 | 0 | 0 | 0.583 | 0.792 | 0 | 0 | 0 | 9 | 0.958 |
 | kimi | thin_contract | 1 | 0 | 1 | 0 | 0.0 | 0.0 | 0 | 0 | 0 | 0 | 0.0 |

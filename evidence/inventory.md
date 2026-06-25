@@ -6,13 +6,13 @@ Generated GitHub metadata snapshots are stored in `evidence/github_evidence.json
 
 ## Local Source Material
 
-- `C:/Users/luosong03/Desktop/Filed/路由契约，才是 Skill 的灵魂.md`: argues that skill quality depends on routing contracts, not prose.
-- `C:/Users/luosong03/Desktop/Filed/一个 Skill 是怎么“看起来很强”却“用起来不稳”的.md`: identifies pseudo-engineering patterns and production failures in skills.
-- `C:/Users/luosong03/Desktop/Filed/如何写好 Skill：不是一段漂亮的 Prompt.md`: defines workflow decomposition, routing, deterministic scripts, fallback paths, and eval sets.
-- `C:/Users/luosong03/Desktop/Filed/把 Skill 当 API 写，而不是当作文写.md`: frames skills as input/output/error-boundary interfaces.
-- `C:/Users/luosong03/Desktop/Filed/如何写好 Skills.docx`: expanded version with spreadsheet/data-cleaning eval methodology.
-- `C:/Users/luosong03/.codex/attachments/b9a040c4-356f-4965-b6c4-38e07099c400/pasted-text.txt`: agent harness as runtime, evaluation, observability, replay, and safety control.
-- `C:/Users/luosong03/.codex/attachments/bd555798-6f62-4d5d-adaf-c8b12284a2a9/pasted-text.txt`: thin vs thick harness argument.
+- Local essay: `路由契约，才是 Skill 的灵魂`: argues that skill quality depends on routing contracts, not prose.
+- Local essay: `一个 Skill 是怎么“看起来很强”却“用起来不稳”的`: identifies pseudo-engineering patterns and production failures in skills.
+- Local essay: `如何写好 Skill：不是一段漂亮的 Prompt`: defines workflow decomposition, routing, deterministic scripts, fallback paths, and eval sets.
+- Local essay: `把 Skill 当 API 写，而不是当作文写`: frames skills as input/output/error-boundary interfaces.
+- Local document: `如何写好 Skills`: expanded version with spreadsheet/data-cleaning eval methodology.
+- Local conversation note: agent harness as runtime, evaluation, observability, replay, and safety control.
+- Local conversation note: thin vs thick harness argument.
 
 ## First-Party GitHub Artifacts
 

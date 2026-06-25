@@ -20,7 +20,7 @@
 - Raw output: `experiments/raw/deepseek_live.jsonl`
 - Status: completed with 72 raw rows, 24 cases x 3 variants. Aggregate tables were regenerated after completion.
 - Metadata: rows include provider, model id, endpoint, schema version, and prompt SHA-256 after `scripts/backfill_run_metadata.py`.
-- Parse-error rerun: 3 DeepSeek rows were rerun after the provider wrapper was fixed to preserve raw model text on parse failures. Rerun rows carry `rerun_reason=parse_error`.
+- Parse-error rerun: 3 DeepSeek rows were rerun after the provider wrapper was fixed to preserve raw model text on parse failures. Rerun rows carry `rerun_reason=parse_error`. One additional legacy parser failure remains classified as a parse error but was not rerun in the current raw file.
 
 ## Kimi Live Attempt
 
