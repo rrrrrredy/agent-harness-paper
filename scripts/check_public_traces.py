@@ -5,9 +5,11 @@ from pathlib import Path
 
 PUBLIC_FILES = [
     Path("README.md"),
+    Path("CHANGELOG.md"),
     Path("artifact_manifest.json"),
     Path("paper/main.tex"),
     Path("docs/reviewer_guide.md"),
+    Path("docs/final_cleanup.md"),
     Path("evidence/inventory.md"),
     Path("evidence/github_evidence.json"),
     Path("evidence/github_snapshots.md"),
