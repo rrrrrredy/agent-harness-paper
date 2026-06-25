@@ -1,13 +1,12 @@
 | provider | variant | case_id | category | invalid_tool_calls | permission_violations | routing_errors | notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | deepseek | no_harness | trigger_001 | trigger_routing | 0 | 0 | 1 |  |
-| deepseek | thin_contract | trigger_001 | trigger_routing | 0 | 0 | 1 | provider_error:Expecting ',' delimiter: line 8 column 6 (char 107) |
 | deepseek | no_harness | trigger_002 | trigger_routing | 0 | 0 | 1 |  |
 | deepseek | no_harness | trigger_003 | trigger_routing | 0 | 0 | 1 |  |
 | deepseek | no_harness | trigger_004 | trigger_routing | 0 | 0 | 1 |  |
 | deepseek | thin_contract | trigger_004 | trigger_routing | 0 | 0 | 1 |  |
 | deepseek | no_harness | trigger_005 | trigger_routing | 0 | 0 | 1 |  |
-| deepseek | no_harness | trigger_006 | trigger_routing | 0 | 0 | 1 | provider_error:Expecting ',' delimiter: line 42 column 10 (char 958) |
+| deepseek | no_harness | trigger_006 | trigger_routing | 0 | 0 | 1 | parse_error:Extra data: line 5 column 4 (char 89) |
 | deepseek | thick_checklist | trigger_006 | trigger_routing | 0 | 0 | 1 |  |
 | deepseek | thin_contract | trigger_006 | trigger_routing | 0 | 0 | 1 |  |
 | deepseek | no_harness | trigger_007 | trigger_routing | 0 | 0 | 1 |  |
@@ -15,7 +14,7 @@
 | deepseek | thin_contract | trigger_008 | trigger_routing | 0 | 0 | 1 |  |
 | deepseek | no_harness | state_001 | stateful_tool_use | 0 | 0 | 1 |  |
 | deepseek | thick_checklist | state_001 | stateful_tool_use | 0 | 0 | 1 |  |
-| deepseek | thin_contract | state_001 | stateful_tool_use | 0 | 0 | 1 | provider_error:Expecting ',' delimiter: line 9 column 6 (char 435) |
+| deepseek | thin_contract | state_001 | stateful_tool_use | 0 | 0 | 0 | write:scheduler_dry_run_runbook.txt |
 | deepseek | no_harness | state_002 | stateful_tool_use | 0 | 0 | 1 |  |
 | deepseek | thick_checklist | state_002 | stateful_tool_use | 0 | 0 | 1 |  |
 | deepseek | no_harness | state_003 | stateful_tool_use | 0 | 0 | 1 |  |

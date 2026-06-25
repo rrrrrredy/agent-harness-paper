@@ -52,6 +52,8 @@ def main() -> None:
                         usage=model_result["usage"],
                         raw_response=model_result["raw_response"],
                     )
+                    if "_parse_error" in model_result["payload"]:
+                        result.notes.append(f"parse_error:{model_result['payload']['_parse_error']}")
                 except Exception as exc:
                     result = evaluate_case(
                         case,

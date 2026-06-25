@@ -14,6 +14,7 @@ python -m venv .venv
 .\.venv\Scripts\python scripts\run_codex_reference.py
 .\.venv\Scripts\python scripts\collect_github_evidence.py
 .\.venv\Scripts\python scripts\backfill_run_metadata.py
+.\.venv\Scripts\python scripts\rerun_parse_errors.py --provider deepseek
 .\.venv\Scripts\python scripts\analyze_results.py
 .\.venv\Scripts\python scripts\generate_figures.py
 .\.venv\Scripts\python scripts\secret_scan.py

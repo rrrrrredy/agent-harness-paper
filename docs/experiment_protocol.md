@@ -45,3 +45,7 @@ Only rows present in `experiments/raw/*.jsonl` should be cited.
 ## Live Row Metadata
 
 `scripts/backfill_run_metadata.py` adds stable metadata to live raw rows without changing model outputs or scores: provider, model id, endpoint, schema version, and prompt SHA-256. This makes old raw rows comparable to future reruns when result tables are regenerated.
+
+## Parse-Error Reruns
+
+Early live rows that failed before preserving raw model text can be rerun with `scripts/rerun_parse_errors.py`. The script replaces only rows marked with parser failures, preserves the case id and variant, records `rerun_reason=parse_error` in usage metadata, and then requires aggregate tables to be regenerated. It is intended to repair evaluator instrumentation, not to cherry-pick model successes.
