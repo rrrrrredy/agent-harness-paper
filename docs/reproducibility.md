@@ -36,6 +36,7 @@ The GitHub evidence snapshot is reproducible but not deterministic: it uses `gh`
 
 ```powershell
 .\.venv\Scripts\python scripts\collect_github_evidence.py
+.\.venv\Scripts\python scripts\audit_source_evidence.py
 ```
 
 ## Paper

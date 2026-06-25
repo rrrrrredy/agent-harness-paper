@@ -44,7 +44,7 @@ These systems motivate the present focus but do not fully replace it. This paper
 
 \subsection{Evidence Sources}
 
-The empirical basis for this paper has three layers. First, local essays and notes provide the conceptual vocabulary around routing contracts, skill interfaces, memory boundaries, and thin-versus-thick harnesses. Second, a generated GitHub snapshot records metadata for first-party skill, memory, security, self-audit, and AI-radar repositories, plus upstream OpenClaw and Hermes pull requests used as boundary examples. Third, the pilot benchmark contributes raw JSONL runs, regenerated tables, failure inspection, and prompt-hash metadata for live model calls. This evidence structure is intentionally conservative: repository metadata supports artifact existence and scope, while only raw run files support reported pilot metrics.
+The empirical basis for this paper has four layers. First, local essays and notes provide the conceptual vocabulary around routing contracts, skill interfaces, memory boundaries, and thin-versus-thick harnesses. Second, a generated GitHub snapshot records metadata for first-party skill, memory, security, self-audit, and AI-radar repositories, plus upstream OpenClaw and Hermes pull requests used as boundary examples. Third, a source evidence audit records path-level and keyword-signal evidence for first-party repositories without storing source bodies. Fourth, the pilot benchmark contributes raw JSONL runs, regenerated tables, failure inspection, and prompt-hash metadata for live model calls. This evidence structure is intentionally conservative: repository metadata supports artifact existence and scope; source-signal snapshots support bounded artifact interpretation; only raw run files support reported pilot metrics.
 
 \section{A Taxonomy of Harnesses}
 
@@ -91,11 +91,11 @@ This principle also reframes the skill-memory distinction. Skills are reusable p
 
 \subsection{SkillOps}
 
-SkillOps is used here as an artifact-based example of treating skills as operational artifacts rather than prompt snippets. The inventory and repository metadata associate it with benchmark inputs, experiment runners, results, and tests for modular skills. The design lesson is therefore bounded: skill quality should be assessed by routing, input contracts, output structure, failure paths, and tests under noisy inputs and boundary cases, rather than by one impressive demo.
+SkillOps is used here as an artifact-based example of treating skills as operational artifacts rather than prompt snippets. The inventory, repository metadata, and source-signal audit associate it with benchmark inputs, experiment runners, results, and tests for modular skills. The design lesson is therefore bounded: skill quality should be assessed by routing, input contracts, output structure, failure paths, and tests under noisy inputs and boundary cases, rather than by one impressive demo.
 
 \subsection{AI Radar}
 
-The AI Radar web and skill artifacts, as recorded in the artifact inventory, illustrate workflow-level harnessing as a design pattern. The repository metadata and local notes describe source ingestion, understanding, retrieval, report candidate generation, review, audit, and publication boundaries. This is not a benchmark harness, but it motivates the same production pattern: each step should expose state, evidence, permissions, and review semantics.
+The AI Radar web and skill artifacts, as recorded in the artifact inventory and source-signal audit, illustrate workflow-level harnessing as a design pattern. The repository metadata, path-level signals, and local notes describe source ingestion, understanding, retrieval, report candidate generation, review, audit, and publication boundaries. This is not a benchmark harness, but it motivates the same production pattern: each step should expose state, evidence, permissions, and review semantics.
 
 \subsection{OpenClaw and Hermes PRs}
 
@@ -103,7 +103,7 @@ Several upstream PRs recorded in the inventory provide concrete boundary example
 
 \subsection{Security, Memory, and Self-Audit Skills}
 
-The security, memory, and self-audit repositories are used as artifact examples for three recurring harness concerns: preflight scanning, bounded memory, and periodic health checks. The inventory associates skill-security-guard with deterministic risk dimensions, persistent-memory with local layered memory, and agent-self-audit with checks over skills, memory, cron setup, configuration, and workspace state. These examples support the taxonomy but should not be read as an independent source-code audit.
+The security, memory, and self-audit repositories are used as artifact examples for three recurring harness concerns: preflight scanning, bounded memory, and periodic health checks. The inventory and source-signal audit associate skill-security-guard with tests and risk dimensions, persistent-memory with memory-scoping files, and agent-self-audit with audit criteria. These examples support the taxonomy but should not be read as runtime proof.
 
 \section{Pilot Benchmark}
 
@@ -171,10 +171,11 @@ The repository contains the artifacts needed to audit the pilot:
   \item live and deterministic raw rows in \texttt{experiments/raw/};
   \item regenerated tables in \texttt{results/tables/};
   \item generated GitHub metadata snapshots in \texttt{evidence/};
+  \item path-level source-signal audit in \texttt{evidence/source\_audit.md};
   \item reproduction and claim-boundary notes in \texttt{docs/}.
 \end{itemize}
 
-The raw rows are the source of reported pilot metrics. GitHub metadata snapshots support artifact and PR identification, not implementation-behavior claims beyond the bounded case-study interpretation.
+The raw rows are the source of reported pilot metrics. GitHub metadata snapshots support artifact and PR identification. The source audit supports bounded path-level interpretation, not implementation-behavior claims beyond the case-study framing.
 
 \bibliographystyle{plain}
 \bibliography{references}

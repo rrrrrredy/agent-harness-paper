@@ -8,12 +8,14 @@ def test_required_artifacts_exist():
         "evidence/inventory.md",
         "evidence/github_evidence.json",
         "evidence/github_snapshots.md",
+        "evidence/source_audit.md",
         "experiments/run_manifest.md",
         "docs/experiment_protocol.md",
         "docs/claim_boundaries.md",
         "benchmark/cases.jsonl",
         "scripts/rerun_parse_errors.py",
         "scripts/check_public_traces.py",
+        "scripts/audit_source_evidence.py",
     ]:
         assert Path(path).exists(), path
 

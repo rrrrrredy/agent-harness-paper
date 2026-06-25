@@ -2,7 +2,7 @@
 
 This inventory separates first-party artifacts, upstream PR evidence, local essays, and external related work. C: paths are source material only; project work is on D:.
 
-Generated GitHub metadata snapshots are stored in `evidence/github_evidence.json` and `evidence/github_snapshots.md`. Those files are the reproducible evidence layer for repository and PR metadata used by the manuscript.
+Generated GitHub metadata snapshots are stored in `evidence/github_evidence.json` and `evidence/github_snapshots.md`. Source-level signal snapshots are stored in `evidence/source_audit.json` and `evidence/source_audit.md`. These files are the reproducible evidence layer for repository metadata, PR metadata, and path-level source signals used by the manuscript.
 
 ## Local Source Material
 
