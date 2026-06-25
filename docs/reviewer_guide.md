@@ -8,10 +8,11 @@ This repository is an artifact package for the paper:
 
 1. `paper/main.tex` for the manuscript.
 2. `paper/metadata.json` for venue-neutral title, keywords, and short abstract.
-3. `artifact_manifest.json` for the artifact map.
-4. `experiments/run_manifest.md` for what was run and what was not.
-5. `docs/claim_boundaries.md` for permitted and excluded claims.
-6. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
+3. `docs/artifact_release_index.md` for release-state entrypoints.
+4. `artifact_manifest.json` for the artifact map.
+5. `experiments/run_manifest.md` for what was run and what was not.
+6. `docs/claim_boundaries.md` for permitted and excluded claims.
+7. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
 
 ## Result Sources
 

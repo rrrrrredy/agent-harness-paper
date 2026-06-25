@@ -34,9 +34,19 @@
     "guide": "docs/reproducibility.md",
     "protocol": "docs/experiment_protocol.md",
     "claim_boundaries": "docs/claim_boundaries.md",
-    "reviewer_guide": "docs/reviewer_guide.md"
+    "reviewer_guide": "docs/reviewer_guide.md",
+    "release_index": "docs/artifact_release_index.md"
+  },
+  "release_status": {
+    "pdf_workflow": ".github/workflows/latex.yml",
+    "latest_checked_pdf_run": "28164140135",
+    "pdf_artifact_name": "agent-harness-paper-pdf",
+    "validation_workflow": ".github/workflows/validate.yml",
+    "latest_checked_validation_run": "28164423075"
   },
   "validation_commands": [
+    "python scripts/run_checks.py --mode validate",
+    "python scripts/run_checks.py --mode regenerate",
     ".\\.venv\\Scripts\\python -m pytest -q",
     ".\\.venv\\Scripts\\python scripts\\check_tex_sources.py",
     ".\\.venv\\Scripts\\python scripts\\check_public_traces.py",
