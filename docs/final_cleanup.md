@@ -23,6 +23,7 @@ Use this checklist before sharing or submitting the artifact package.
 ## Manual Checks
 
 - Confirm the latest `Build paper PDF` GitHub Actions run succeeds if `paper/` or TeX result tables changed.
+- Confirm the latest `Validate artifact package` GitHub Actions run succeeds after artifact or script changes.
 - Confirm `experiments/run_manifest.md` matches raw result files.
 - Confirm manuscript claims remain within `docs/claim_boundaries.md`.
 - Confirm live-provider rows are not rerun unless credentials are present in environment variables.
