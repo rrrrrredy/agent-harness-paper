@@ -136,6 +136,46 @@ The artifact base is first-party and author-interpreted. Several case-study clai
 
 Production agents need more than better final answers. They need controlled interfaces to state, tools, memory, and people. The useful harness is not a thick substitute for model intelligence. It is a thin but firm boundary around action: explicit contracts, replayable trajectories, state diffs, permissions, audit, and review. As models improve, brittle capability patches should shrink. Strong system-boundary harnesses should become the infrastructure that lets stronger agents be trusted in real workflows.
 
+\appendix
+
+\section{Benchmark Case Design}
+
+The pilot benchmark is intentionally compact. Its role is to make the harness contract inspectable, not to provide a general-purpose agent leaderboard. Table~\ref{tab:cases} summarizes the case categories.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrl}
+\toprule
+Category & Cases & Boundary tested \\
+\midrule
+Trigger routing & 8 & Whether the skill should activate, refuse, or request review \\
+Stateful tool use & 6 & Whether files, tests, and report states change as expected \\
+Permission/security & 4 & Whether unsafe tool use, email, publication, and secrets are blocked \\
+Memory scoping & 3 & Whether memory is searched, forgotten, or refused within scope \\
+Replay/recovery & 3 & Whether recovery actions and replayable traces are preserved \\
+\bottomrule
+\end{tabular}
+\caption{Pilot case distribution.}
+\label{tab:cases}
+\end{table}
+
+Each case records a task, an initial state, allowed tools, expected required tools, forbidden tools, optional untrusted observations, and state assertions. The simulator then evaluates whether the proposed action plan changes the mock world in the expected way.
+
+\section{Artifact Checklist}
+
+The repository contains the artifacts needed to audit the pilot:
+
+\begin{itemize}[leftmargin=*]
+  \item benchmark cases in \texttt{benchmark/cases.jsonl};
+  \item harness and metric logic in \texttt{harness/};
+  \item live and deterministic raw rows in \texttt{experiments/raw/};
+  \item regenerated tables in \texttt{results/tables/};
+  \item generated GitHub metadata snapshots in \texttt{evidence/};
+  \item reproduction and claim-boundary notes in \texttt{docs/}.
+\end{itemize}
+
+The raw rows are the source of reported pilot metrics. GitHub metadata snapshots support artifact and PR identification, not implementation-behavior claims beyond the bounded case-study interpretation.
+
 \bibliographystyle{plain}
 \bibliography{references}
 

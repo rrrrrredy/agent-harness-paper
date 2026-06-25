@@ -52,3 +52,5 @@ Pop-Location
 ```
 
 If no TeX distribution is installed, source-level checks and bibliography review are the available validation layer.
+
+The repository also includes `.github/workflows/latex.yml`, which builds `paper/main.pdf` on GitHub Actions and uploads it as an artifact. This avoids requiring a local TeX installation on Windows.
