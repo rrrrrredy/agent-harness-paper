@@ -10,13 +10,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from harness.core import evaluate_case, load_cases
 from harness.prompts import build_prompt
-from harness.providers import PROVIDERS, call_provider
+from harness.providers import PROVIDERS, call_provider, require_provider_key
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--provider", choices=["deepseek", "kimi"], required=True)
     args = parser.parse_args()
+    try:
+        require_provider_key(args.provider)
+    except RuntimeError as exc:
+        raise SystemExit(str(exc)) from exc
 
     path = Path(f"experiments/raw/{args.provider}_live.jsonl")
     if not path.exists():

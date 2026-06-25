@@ -102,5 +102,6 @@ Sources: `results/tables/*.md`, `results/tables/*.csv`, and `results/tables/*.te
 - `scripts/check_run_manifest_alignment.py`: Checks raw-result counts, live metadata, parse-error counts, and provider-error status against `experiments/run_manifest.md`.
 - `scripts/check_release_references.py`: Checks checked PDF artifact references and prevents moving validation run IDs from being committed.
 - `scripts/build_artifact_archive.py --check`: Checks archive file selection without writing a zip.
+- `scripts/check_provider_credentials.py`: Checks provider credential environment-variable presence before live reruns without printing credential values.
 - `.github/workflows/validate.yml`: Remote validation workflow.
 - `.github/workflows/latex.yml`: Remote PDF build workflow.

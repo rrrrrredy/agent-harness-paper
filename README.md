@@ -53,9 +53,11 @@ Live model runs require environment variables and do not store credentials:
 
 ```powershell
 $env:DEEPSEEK_API_KEY="..."
+python scripts/check_provider_credentials.py --provider deepseek
 python scripts/run_model_experiment.py --provider deepseek --variants thin_contract
 
 $env:MOONSHOT_API_KEY="..."
+python scripts/check_provider_credentials.py --provider kimi
 python scripts/run_model_experiment.py --provider kimi --variants thin_contract
 ```
 

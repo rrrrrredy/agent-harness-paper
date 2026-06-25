@@ -24,9 +24,7 @@ PROVIDERS = {
 
 def call_provider(provider: str, prompt: str, *, timeout: int = 90) -> dict[str, Any]:
     config = PROVIDERS[provider]
-    key = os.environ.get(config["env"])
-    if not key:
-        raise RuntimeError(f"missing environment variable {config['env']}")
+    key = require_provider_key(provider)
 
     body = {
         "model": config["model"],
@@ -66,6 +64,22 @@ def call_provider(provider: str, prompt: str, *, timeout: int = 90) -> dict[str,
         "raw_response": content,
         "usage": payload.get("usage", {}) | {"elapsed_seconds": round(time.time() - started, 3)},
     }
+
+
+def provider_env_var(provider: str) -> str:
+    return str(PROVIDERS[provider]["env"])
+
+
+def has_provider_key(provider: str) -> bool:
+    return bool(os.environ.get(provider_env_var(provider)))
+
+
+def require_provider_key(provider: str) -> str:
+    env_var = provider_env_var(provider)
+    key = os.environ.get(env_var)
+    if not key:
+        raise RuntimeError(f"missing environment variable {env_var}; set it before live provider runs")
+    return key
 
 
 def extract_json(text: str) -> Any:

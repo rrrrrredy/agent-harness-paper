@@ -45,6 +45,10 @@
     "pdf_artifact_name": "agent-harness-paper-pdf",
     "validation_workflow": ".github/workflows/validate.yml"
   },
+  "live_preflight_commands": [
+    ".\\.venv\\Scripts\\python scripts\\check_provider_credentials.py --provider deepseek",
+    ".\\.venv\\Scripts\\python scripts\\check_provider_credentials.py --provider kimi"
+  ],
   "validation_commands": [
     "python scripts/run_checks.py --mode validate",
     "python scripts/run_checks.py --mode regenerate",

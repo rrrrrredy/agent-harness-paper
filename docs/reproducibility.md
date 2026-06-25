@@ -31,6 +31,13 @@ python scripts\run_checks.py --mode regenerate
 
 Live model execution requires valid provider credentials in the process environment. Missing or invalid credentials should be reported as provider failures and must not be substituted with invented numbers.
 
+Credential preflight checks only whether the required environment variable is present; they do not print credential values.
+
+```powershell
+.\.venv\Scripts\python scripts\check_provider_credentials.py --provider deepseek
+.\.venv\Scripts\python scripts\check_provider_credentials.py --provider kimi
+```
+
 Parser-instrumentation repair for already recorded live rows also requires the relevant provider credential:
 
 ```powershell
