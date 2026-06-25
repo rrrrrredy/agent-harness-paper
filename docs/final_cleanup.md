@@ -12,6 +12,7 @@ Use this checklist before sharing or submitting the artifact package.
 - `.\.venv\Scripts\python scripts\check_entrypoint_commands.py`
 - `.\.venv\Scripts\python scripts\check_release_references.py`
 - `.\.venv\Scripts\python scripts\check_status_notes.py`
+- `.\.venv\Scripts\python scripts\check_run_manifest_alignment.py`
 - `.\.venv\Scripts\python scripts\secret_scan.py`
 - `.\.venv\Scripts\python scripts\audit_source_evidence.py --offline`
 
