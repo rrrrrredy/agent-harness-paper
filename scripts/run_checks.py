@@ -1,8 +1,25 @@
 from __future__ import annotations
 
 import argparse
+import os
+from pathlib import Path
 import subprocess
 import sys
+
+
+def maybe_reexec_project_venv() -> None:
+    root = Path(__file__).resolve().parents[1]
+    candidates = [
+        root / ".venv" / "Scripts" / "python.exe",
+        root / ".venv" / "bin" / "python",
+    ]
+    current = Path(sys.executable).resolve()
+    for candidate in candidates:
+        if candidate.exists() and candidate.resolve() != current:
+            os.execv(str(candidate), [str(candidate), *sys.argv])
+
+
+maybe_reexec_project_venv()
 
 
 VALIDATE = [
