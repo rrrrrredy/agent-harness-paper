@@ -40,7 +40,7 @@
   },
   "release_status": {
     "pdf_workflow": ".github/workflows/latex.yml",
-    "latest_checked_pdf_run": "28164140135",
+    "latest_checked_pdf_run": "28165120878",
     "pdf_artifact_name": "agent-harness-paper-pdf",
     "validation_workflow": ".github/workflows/validate.yml"
   },

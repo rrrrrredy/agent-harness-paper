@@ -12,13 +12,13 @@ This is a working preprint artifact package, not a venue-specific submission bun
 - Bibliography: `paper/references.bib`
 - Metadata: `paper/metadata.json`
 - PDF build workflow: `.github/workflows/latex.yml`
-- Latest checked PDF run: `28164140135`
+- Latest checked PDF run: `28165120878`
 - PDF artifact name: `agent-harness-paper-pdf`
 
 To retrieve the checked PDF artifact with GitHub CLI:
 
 ```powershell
-gh run download 28164140135 -n agent-harness-paper-pdf -D logs\artifact-download
+gh run download 28165120878 -n agent-harness-paper-pdf -D logs\artifact-download
 ```
 
 `logs/` is ignored by git and can be removed after local inspection.
