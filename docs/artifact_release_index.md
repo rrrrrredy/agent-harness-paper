@@ -14,8 +14,10 @@ This index provides a compact entrypoint for reviewing, rebuilding, and validati
 To retrieve the checked PDF artifact with GitHub CLI:
 
 ```powershell
-gh run download 28164140135 -n agent-harness-paper-pdf
+gh run download 28164140135 -n agent-harness-paper-pdf -D logs\artifact-download
 ```
+
+`logs/` is ignored by git and can be removed after local inspection.
 
 ## Validation
 
