@@ -27,11 +27,21 @@ Credentials are read only from environment variables. They must not be written t
 ## Regeneration
 
 ```powershell
+.\.venv\Scripts\python scripts\collect_github_evidence.py
 .\.venv\Scripts\python scripts\run_codex_reference.py
 .\.venv\Scripts\python scripts\run_model_experiment.py --provider deepseek --limit 24
 .\.venv\Scripts\python scripts\run_model_experiment.py --provider kimi --limit 24
+.\.venv\Scripts\python scripts\backfill_run_metadata.py
 .\.venv\Scripts\python scripts\analyze_results.py
 .\.venv\Scripts\python scripts\generate_figures.py
 ```
 
 Only rows present in `experiments/raw/*.jsonl` should be cited.
+
+## Evidence Snapshots
+
+`scripts/collect_github_evidence.py` records repository and pull-request metadata into `evidence/github_evidence.json` and `evidence/github_snapshots.md`. These snapshots are not a substitute for vendored source audits, but they make the GitHub evidence layer reproducible and distinguish first-party repositories from upstream PR evidence.
+
+## Live Row Metadata
+
+`scripts/backfill_run_metadata.py` adds stable metadata to live raw rows without changing model outputs or scores: provider, model id, endpoint, schema version, and prompt SHA-256. This makes old raw rows comparable to future reruns when result tables are regenerated.

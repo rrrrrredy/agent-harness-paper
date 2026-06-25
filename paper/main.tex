@@ -42,6 +42,10 @@ Recent work has moved agent evaluation beyond static input-output tests. ToolSan
 
 These systems motivate the present focus but do not fully replace it. This paper asks how production teams should design the harness boundary itself: the contracts for state, tools, permissions, memory, replay, audit, and review that sit between a capable model and a real workflow.
 
+\subsection{Evidence Sources}
+
+The empirical basis for this paper has three layers. First, local essays and notes provide the conceptual vocabulary around routing contracts, skill interfaces, memory boundaries, and thin-versus-thick harnesses. Second, a generated GitHub snapshot records metadata for first-party skill, memory, security, self-audit, and AI-radar repositories, plus upstream OpenClaw and Hermes pull requests used as boundary examples. Third, the pilot benchmark contributes raw JSONL runs, regenerated tables, failure inspection, and prompt-hash metadata for live model calls. This evidence structure is intentionally conservative: repository metadata supports artifact existence and scope, while only raw run files support reported pilot metrics.
+
 \section{A Taxonomy of Harnesses}
 
 \subsection{Capability-Patch Harnesses}
@@ -126,7 +130,7 @@ This also explains why model laboratories often produce important agent-harness 
 
 \section{Limitations}
 
-The artifact base is first-party and author-interpreted. Several case-study claims are supported by an inventory of external or private repositories rather than by vendored source snapshots in this repository. The benchmark is small, synthetic, and designed for clarity rather than statistical generality. The deterministic reference runner checks harness mechanics, not model capability. Live API results are subject to model-version, endpoint, authentication, and parameter changes. The case studies are engineering evidence, not controlled deployments across independent organizations. These limitations make the claims bounded: the paper proposes a design framework and pilot evaluation shape, not a universal benchmark.
+The artifact base is first-party and author-interpreted. Several case-study claims are supported by generated repository and pull-request metadata rather than by vendored source snapshots in this repository. Repository metadata proves artifact existence, ownership status, broad scope, and PR shape; it does not by itself prove all implementation behavior. The benchmark is small, synthetic, and designed for clarity rather than statistical generality. The deterministic reference runner checks harness mechanics, not model capability. Live API results are subject to model-version, endpoint, authentication, and parameter changes. The case studies are engineering evidence, not controlled deployments across independent organizations. These limitations make the claims bounded: the paper proposes a design framework and pilot evaluation shape, not a universal benchmark.
 
 \section{Conclusion}
 

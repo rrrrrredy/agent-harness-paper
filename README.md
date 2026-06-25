@@ -14,7 +14,7 @@ benchmark/      24 benchmark cases for routing, state, security, memory, replay
 harness/        small replayable harness and provider-independent evaluation logic
 scripts/        experiment, analysis, checks, and utility entrypoints
 results/        regenerated tables and summaries
-evidence/       artifact and source inventory
+evidence/       artifact inventory and generated GitHub evidence snapshots
 notes/          argument map, outline, related work notes
 state/          Deli-style progress, todos, findings, next-goal prompts
 tests/          deterministic unit tests
@@ -26,6 +26,8 @@ tests/          deterministic unit tests
 python -m pytest
 python scripts/run_codex_reference.py
 python scripts/analyze_results.py
+python scripts/collect_github_evidence.py
+python scripts/backfill_run_metadata.py
 python scripts/secret_scan.py
 ```
 

@@ -2,6 +2,8 @@
 
 This inventory separates first-party artifacts, upstream PR evidence, local essays, and external related work. C: paths are source material only; project work is on D:.
 
+Generated GitHub metadata snapshots are stored in `evidence/github_evidence.json` and `evidence/github_snapshots.md`. Those files are the reproducible evidence layer for repository and PR metadata used by the manuscript.
+
 ## Local Source Material
 
 - `C:/Users/luosong03/Desktop/Filed/路由契约，才是 Skill 的灵魂.md`: argues that skill quality depends on routing contracts, not prose.
