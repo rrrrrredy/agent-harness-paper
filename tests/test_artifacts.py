@@ -5,6 +5,7 @@ def test_required_artifacts_exist():
     for path in [
         "paper/main.tex",
         "paper/references.bib",
+        "artifact_manifest.json",
         "evidence/inventory.md",
         "evidence/github_evidence.json",
         "evidence/github_snapshots.md",
@@ -14,6 +15,7 @@ def test_required_artifacts_exist():
         "results/tables/failure_taxonomy.tex",
         "docs/experiment_protocol.md",
         "docs/claim_boundaries.md",
+        "docs/reviewer_guide.md",
         "benchmark/cases.jsonl",
         "scripts/rerun_parse_errors.py",
         "scripts/check_public_traces.py",
