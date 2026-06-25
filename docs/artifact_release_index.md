@@ -24,7 +24,7 @@ gh run download 28164140135 -n agent-harness-paper-pdf -D logs\artifact-download
 - Local validation command: `python scripts/run_checks.py --mode validate`
 - Regeneration command: `python scripts/run_checks.py --mode regenerate`
 - Validation workflow: `.github/workflows/validate.yml`
-- Latest checked validation run: `28164423075`
+- Current validation status: `gh run list --workflow "Validate artifact package" --limit 1`
 
 Validation covers deterministic tests, citation/source checks, public-trace checks, artifact consistency, offline source-audit validation, and secret scanning.
 
