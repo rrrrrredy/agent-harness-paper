@@ -2,6 +2,10 @@
 
 This index provides a compact entrypoint for reviewing, rebuilding, and validating the artifact package.
 
+## Status And License
+
+This is a working preprint artifact package, not a venue-specific submission bundle. No repository-wide license has been selected yet; reuse terms should be decided before external artifact release.
+
 ## Manuscript
 
 - Source: `paper/main.tex`

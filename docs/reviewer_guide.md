@@ -49,6 +49,7 @@ Use the local virtual environment if present:
 .\.venv\Scripts\python scripts\check_artifact_consistency.py
 .\.venv\Scripts\python scripts\check_entrypoint_commands.py
 .\.venv\Scripts\python scripts\check_release_references.py
+.\.venv\Scripts\python scripts\check_status_notes.py
 .\.venv\Scripts\python scripts\secret_scan.py
 ```
 
