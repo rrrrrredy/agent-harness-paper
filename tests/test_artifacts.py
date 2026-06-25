@@ -24,6 +24,7 @@ def test_required_artifacts_exist():
         "scripts/check_public_traces.py",
         "scripts/check_artifact_consistency.py",
         "scripts/audit_source_evidence.py",
+        "scripts/run_checks.py",
     ]:
         assert Path(path).exists(), path
 

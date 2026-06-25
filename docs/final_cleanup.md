@@ -4,6 +4,7 @@ Use this checklist before sharing or submitting the artifact package.
 
 ## Required Checks
 
+- `.\.venv\Scripts\python scripts\run_checks.py --mode validate`
 - `.\.venv\Scripts\python -m pytest -q`
 - `.\.venv\Scripts\python scripts\check_tex_sources.py`
 - `.\.venv\Scripts\python scripts\check_public_traces.py`
@@ -13,6 +14,7 @@ Use this checklist before sharing or submitting the artifact package.
 
 ## Regeneration Checks
 
+- `.\.venv\Scripts\python scripts\run_checks.py --mode regenerate`
 - `.\.venv\Scripts\python scripts\backfill_run_metadata.py`
 - `.\.venv\Scripts\python scripts\analyze_results.py`
 - `.\.venv\Scripts\python scripts\inspect_failures.py`
