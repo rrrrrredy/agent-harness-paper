@@ -1,0 +1,28 @@
+{
+  "title": "Thin Harness, Strong Contracts: Production-Oriented Agent Harnesses for Stateful AI Agents",
+  "author": {
+    "name": "Song Luo",
+    "email": "luosongred@gmail.com"
+  },
+  "date": "2026-06",
+  "type": "systems preprint",
+  "keywords": [
+    "agent harness",
+    "stateful agents",
+    "tool-use evaluation",
+    "replay",
+    "permission policy",
+    "agent observability",
+    "skill operations"
+  ],
+  "abstract_short": "This paper argues that production-oriented agent harnesses should be thin around model cognition but strong at system boundaries: tool contracts, permissions, state diffs, replay, memory scoping, audit, and review.",
+  "primary_claim": "Capability-patch harnesses tend to become technical debt as models improve, while system-boundary harnesses become durable infrastructure.",
+  "artifact_paths": {
+    "manuscript": "paper/main.tex",
+    "benchmark": "benchmark/cases.jsonl",
+    "raw_results": "experiments/raw/",
+    "derived_tables": "results/tables/",
+    "evidence": "evidence/",
+    "reviewer_guide": "docs/reviewer_guide.md"
+  }
+}

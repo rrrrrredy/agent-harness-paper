@@ -5,6 +5,7 @@ def test_required_artifacts_exist():
     for path in [
         "paper/main.tex",
         "paper/references.bib",
+        "paper/metadata.json",
         "artifact_manifest.json",
         "CHANGELOG.md",
         "evidence/inventory.md",

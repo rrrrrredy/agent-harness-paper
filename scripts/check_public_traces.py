@@ -8,6 +8,7 @@ PUBLIC_FILES = [
     Path("CHANGELOG.md"),
     Path("artifact_manifest.json"),
     Path("paper/main.tex"),
+    Path("paper/metadata.json"),
     Path("docs/reviewer_guide.md"),
     Path("docs/final_cleanup.md"),
     Path("evidence/inventory.md"),
