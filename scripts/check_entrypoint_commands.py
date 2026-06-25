@@ -15,6 +15,7 @@ ENTRYPOINTS = [
     Path("docs/final_cleanup.md"),
     Path("docs/reproducibility.md"),
     Path("docs/reviewer_guide.md"),
+    Path("docs/submission_readiness.md"),
 ]
 
 

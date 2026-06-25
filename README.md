@@ -68,4 +68,4 @@ Artifact validation is handled by `.github/workflows/validate.yml`.
 
 For review, start with `docs/reviewer_guide.md` and `artifact_manifest.json`.
 
-For release state and final checks, see `docs/artifact_release_index.md`, `CHANGELOG.md`, and `docs/final_cleanup.md`.
+For release state and final checks, see `docs/artifact_release_index.md`, `docs/submission_readiness.md`, `CHANGELOG.md`, and `docs/final_cleanup.md`.
