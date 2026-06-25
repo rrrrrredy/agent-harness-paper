@@ -12,6 +12,7 @@ def test_required_artifacts_exist():
         "docs/experiment_protocol.md",
         "docs/claim_boundaries.md",
         "benchmark/cases.jsonl",
+        "scripts/rerun_parse_errors.py",
     ]:
         assert Path(path).exists(), path
 

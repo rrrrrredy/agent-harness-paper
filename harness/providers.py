@@ -57,7 +57,10 @@ def call_provider(provider: str, prompt: str, *, timeout: int = 90) -> dict[str,
     payload = json.loads(raw)
     message = payload["choices"][0]["message"]
     content = message.get("content") or ""
-    parsed = extract_json(content)
+    try:
+        parsed = extract_json(content)
+    except json.JSONDecodeError as exc:
+        parsed = {"actions": [], "_parse_error": str(exc)}
     return {
         "payload": parsed,
         "raw_response": content,
