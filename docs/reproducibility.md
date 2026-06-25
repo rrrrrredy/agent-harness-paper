@@ -8,6 +8,13 @@ python -m venv .venv
 .\.venv\Scripts\python -m pytest
 ```
 
+## Single-Command Routines
+
+```powershell
+python scripts\run_checks.py --mode validate
+python scripts\run_checks.py --mode regenerate
+```
+
 ## Deterministic Artifacts
 
 ```powershell
