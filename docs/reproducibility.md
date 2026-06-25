@@ -78,3 +78,14 @@ Get-Item logs\artifact-download\main.pdf
 ```
 
 `logs/` is ignored by git. Remove the temporary download directory after inspection.
+
+## Archive Bundle
+
+The archive helper packages tracked source artifacts and excludes local state, logs, virtual environments, secrets, generated PDFs, and download leftovers.
+
+```powershell
+python scripts\build_artifact_archive.py --check
+python scripts\build_artifact_archive.py
+```
+
+The default zip output is `dist/agent-harness-paper-artifact.zip`; `dist/` is ignored by git.

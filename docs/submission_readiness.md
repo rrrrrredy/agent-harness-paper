@@ -35,4 +35,5 @@ This checklist separates repository artifact readiness from venue-specific submi
 4. Build or download the PDF artifact.
 5. Confirm venue-specific metadata, author information, and acknowledgements.
 6. Confirm no credential, private path, or process-trace terms appear in public-facing files.
-7. Archive the artifact package in the format requested by the venue.
+7. Run `python scripts/build_artifact_archive.py --check`.
+8. Build `dist/agent-harness-paper-artifact.zip` with `python scripts/build_artifact_archive.py` if a zip bundle is requested.
