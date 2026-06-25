@@ -16,6 +16,7 @@ def test_required_artifacts_exist():
         "results/tables/category_summary.tex",
         "results/tables/failure_taxonomy.tex",
         "docs/experiment_protocol.md",
+        "docs/data_dictionary.md",
         "docs/claim_boundaries.md",
         "docs/artifact_release_index.md",
         "docs/reviewer_guide.md",

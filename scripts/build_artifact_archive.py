@@ -47,6 +47,7 @@ REQUIRED_ARCHIVE_FILES = [
     "harness/core.py",
     "experiments/run_manifest.md",
     "docs/artifact_release_index.md",
+    "docs/data_dictionary.md",
     "docs/reproducibility.md",
     "docs/submission_readiness.md",
     "evidence/github_snapshots.md",
