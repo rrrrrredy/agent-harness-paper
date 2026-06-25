@@ -1,4 +1,7 @@
+import pytest
+
 from harness.core import evaluate_case, load_cases
+from harness.providers import has_provider_key, provider_env_var, require_provider_key
 
 
 def test_cases_load_and_have_expected_count():
@@ -47,3 +50,11 @@ def test_forget_memory_updates_state():
     )
     assert result.task_success
     assert "stale_project" not in result.final_state["memory"]
+
+
+def test_provider_credential_preflight_missing_env(monkeypatch):
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    assert provider_env_var("deepseek") == "DEEPSEEK_API_KEY"
+    assert not has_provider_key("deepseek")
+    with pytest.raises(RuntimeError, match="DEEPSEEK_API_KEY"):
+        require_provider_key("deepseek")

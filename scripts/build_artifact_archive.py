@@ -45,6 +45,7 @@ REQUIRED_ARCHIVE_FILES = [
     "paper/metadata.json",
     "benchmark/cases.jsonl",
     "harness/core.py",
+    "harness/providers.py",
     "experiments/run_manifest.md",
     "docs/artifact_release_index.md",
     "docs/data_dictionary.md",
@@ -56,6 +57,7 @@ REQUIRED_ARCHIVE_FILES = [
     "figures/success_by_variant.svg",
     ".github/workflows/latex.yml",
     ".github/workflows/validate.yml",
+    "scripts/check_provider_credentials.py",
 ]
 
 

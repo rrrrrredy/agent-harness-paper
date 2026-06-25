@@ -10,7 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from harness.core import evaluate_case, load_cases
 from harness.prompts import VARIANTS, build_prompt
-from harness.providers import PROVIDERS, call_provider
+from harness.providers import PROVIDERS, call_provider, require_provider_key
 
 
 def main() -> None:
@@ -20,6 +20,10 @@ def main() -> None:
     parser.add_argument("--limit", type=int, default=24)
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
+    try:
+        require_provider_key(args.provider)
+    except RuntimeError as exc:
+        raise SystemExit(str(exc)) from exc
 
     cases = load_cases()[: args.limit]
     out = Path(f"experiments/raw/{args.provider}_live.jsonl")
