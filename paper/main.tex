@@ -1,0 +1,138 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{xurl}
+
+\title{Thin Harness, Strong Contracts:\\Production-Oriented Agent Harnesses for Stateful AI Agents}
+\author{Song Luo\\\texttt{luosongred@gmail.com}}
+\date{June 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Language-model agents are increasingly expected to operate software, browse information sources, update files, schedule jobs, manage memory, and prepare publishable artifacts. In such settings, final-answer evaluation is insufficient: an agent may produce a plausible answer while reading inappropriate context, mutating the wrong state, bypassing review, or making an irreversible tool call. This paper argues for a production-oriented view of agent harnesses: not merely benchmark runners, but controlled execution and evaluation environments that record trajectories, enforce permissions, compare state diffs, support replay, and preserve auditability. Drawing on a first-party artifact base of skill, memory, security, scheduler, and AI-radar systems, we distinguish \emph{capability-patch harnesses}, which compensate for temporary model weaknesses and often become technical debt, from \emph{system-boundary harnesses}, which encode durable trust boundaries. We propose the design principle \emph{thin harness, strong contracts}: keep orchestration thin enough to avoid fighting model progress, but make contracts for tools, memory, side effects, review, and replay explicit. A 24-case pilot benchmark across trigger routing, stateful tool use, permission security, memory scoping, and replay illustrates how such contracts can be evaluated. The contribution is a bounded engineering framework for making stateful agents more controllable, inspectable, and production-ready.
+\end{abstract}
+
+\section{Introduction}
+
+The practical unit of work for an agent is no longer always a text answer. A coding agent edits a repository and runs tests. A research agent reads sources, builds a report candidate, and preserves citations. A scheduling agent creates or edits future jobs. A memory agent decides what should be recalled, updated, or forgotten. In each case, the important question is not only whether the final response sounds correct, but whether the agent changed the world in the right way.
+
+This creates a gap between conventional language-model evaluation and production agent operation. Outcome metrics can hide unsafe trajectories. An agent may answer correctly after reading a secret file; it may generate a useful summary after merging stale memory from another project; it may complete a task by sending an email that should have required human approval. In production, these are failures even when the final answer is acceptable.
+
+This paper uses \emph{agent harness} to mean the controlled environment around an agent: the runtime, tools, state, policies, logs, replay mechanism, evaluation checks, and review loop that make agent behavior observable and governable. This is broader than a benchmark runner and narrower than a full product. The harness is the layer that answers questions such as: What did the agent do? Which state changed? Was each tool call allowed? Can the failure be replayed? Who approved the side effect? What changed between two model or prompt versions?
+
+The central claim is that harnesses should be judged by whether they patch a temporary model weakness or define a durable system boundary. Thick wrappers that hard-code planning, repair, routing, or role choreography around one generation of models can become technical debt. By contrast, permission boundaries, state diffs, audit logs, replayable traces, safety cases, and human review remain necessary as models improve. Stronger models can do more; therefore the need for trustworthy boundaries increases rather than disappears.
+
+\section{Background}
+
+\subsection{From Prompts to Operational Skills}
+
+Reusable skills provide a compact setting for studying harness design. In practice, a skill is not only an instruction prompt. It may include trigger metadata, input requirements, tool permissions, execution steps, output contracts, memory rules, tests, and failure handling. Treating a skill as prose encourages over-broad activation and unstable outputs. Treating it as an interface makes the relevant questions explicit: when should it run, what context may it consume, what may it change, what should it return, and when must it stop.
+
+The first-party SkillOps artifact base frames this as an operational lifecycle: specify, lint, test, operate, audit, and retire skills. The same pattern extends to broader agents. A production harness makes the agent's interface with the world explicit.
+
+\subsection{Related Systems}
+
+Recent work has moved agent evaluation beyond static input-output tests. ToolSandbox emphasizes stateful, conversational, interactive evaluation with intermediate milestones over arbitrary trajectories~\cite{toolsandbox}. AgentDojo evaluates prompt-injection attacks and defenses in dynamic tool-calling environments containing untrusted data~\cite{agentdojo}. SWE-agent argues that agent-computer interfaces affect agent behavior and performance in software engineering tasks~\cite{sweagent,aci}. Deli AutoResearch contributes a long-horizon operating protocol based on persistent state files, stall detection, fresh sessions, heartbeat monitoring, and independent verification~\cite{deli}.
+
+These systems motivate the present focus but do not fully replace it. This paper asks how production teams should design the harness boundary itself: the contracts for state, tools, permissions, memory, replay, audit, and review that sit between a capable model and a real workflow.
+
+\section{A Taxonomy of Harnesses}
+
+\subsection{Capability-Patch Harnesses}
+
+Capability-patch harnesses compensate for weaknesses of a current model. Examples include rigid planners, brittle JSON repair loops, role-heavy multi-agent scripts, hard-coded tool routers, and checklists that repeat steps the model should eventually learn to perform. These layers can be useful, but they are coupled to a particular model generation. When the model's native planning, tool use, long-context handling, or structured output improves, the patch can start to constrain the system.
+
+The risk is not that all orchestration is bad. The risk is that a thick harness silently becomes the product's real logic while remaining harder to test than ordinary code and less flexible than the model it wraps.
+
+\subsection{System-Boundary Harnesses}
+
+System-boundary harnesses define the interface between agent cognition and external responsibility. They do not primarily tell the model how to think; they define what it may access, mutate, publish, remember, forget, and escalate. Examples include:
+
+\begin{itemize}[leftmargin=*]
+  \item tool-call logging and argument capture;
+  \item state snapshots and final state diffs;
+  \item dry-run previews before side effects;
+  \item permission gates for file, database, email, browser, and scheduler actions;
+  \item memory scoping and forgetting policies;
+  \item prompt-injection and secret-leakage regression cases;
+  \item replayable traces for debugging;
+  \item human review queues and audit logs.
+\end{itemize}
+
+These needs do not disappear with better models. They are part of the trust and accountability structure around any system that acts.
+
+\section{Thin Harness, Strong Contracts}
+
+The proposed design principle is \emph{thin harness, strong contracts}. The harness should stay thin where it would otherwise duplicate model cognition, but strong where it defines external effects. In practical terms, this means:
+
+\begin{enumerate}[leftmargin=*]
+  \item Evaluate trajectories, not only final answers.
+  \item Treat state diffs as evidence of completion.
+  \item Make tool permissions explicit and testable.
+  \item Separate stateless capabilities from stateful memory.
+  \item Use dry-run and review states before irreversible actions.
+  \item Keep replay artifacts sufficient to localize failures.
+  \item Version prompts, tool schemas, and harness policies together.
+\end{enumerate}
+
+This principle also reframes the skill-memory distinction. Skills are reusable procedural capabilities; memory is bounded state. The former can be versioned and shared. The latter must remain scoped, erasable, and protected against cross-project contamination. In a richer agent system, repository rules, skills, memories, tools, subagents, and external connectors occupy different layers of the harness.
+
+\section{Case Studies}
+
+\subsection{SkillOps}
+
+SkillOps treats skills as operational artifacts rather than prompt snippets. Its benchmark and repository checks cover trigger cases, risk cases, memory drift, constraint following, and security scanning. The key lesson is that skill quality is not measured by one impressive demo. It is measured by whether routing, input contracts, output structure, failure paths, and tests hold under noisy inputs and boundary cases.
+
+\subsection{AI Radar}
+
+The AI Radar web and skill artifacts, as recorded in the artifact inventory, illustrate workflow-level harnessing. The system separates source ingestion, understanding, retrieval, report candidate generation, admin review, audit events, and public-safe publication. Writes are dry-run-first and gate-controlled. Report candidates can be reviewed and approved before publication. This is not a benchmark harness, but it embodies the same production pattern: each step has state, evidence, permissions, and review semantics.
+
+\subsection{OpenClaw and Hermes PRs}
+
+Several upstream PRs recorded in the inventory provide concrete boundary examples. OpenClaw cron dry-run work previews scheduler parameters before any gateway mutation, showing how a side effect can be made inspectable. Timezone and time-only scheduling fixes show that scheduler semantics are part of the harness contract. Hermes reusable-session work explores continuity for recurring jobs, while scoped session recall addresses context pollution by restricting recall to the relevant chat or thread.
+
+\subsection{Security, Memory, and Self-Audit Skills}
+
+The skill-security-guard repository implements deterministic scanning for prompt-injection patterns, sensitive file access, malicious scripts, dependency risks, and over-broad descriptions. persistent-memory implements local layered memory rather than global unbounded recall. agent-self-audit checks memory size, skill count, cron setup, configuration, and workspace state. Together these artifacts show that harnessing includes preflight scanning, bounded memory, and periodic health checks.
+
+\section{Pilot Benchmark}
+
+We constructed 24 pilot cases across five categories: trigger routing, stateful tool use, permission/security, memory scoping, and replay/recovery. Each case specifies an initial state, allowed tools, expected required tools, forbidden tools, and state assertions. The harness evaluates action plans by simulating tool effects, counting invalid tool calls and permission violations, and checking the final state.
+
+Three prompt variants are supported. The \texttt{no\_harness} variant gives the task with minimal structure. The \texttt{thick\_checklist} variant adds broad safety and quality reminders. The \texttt{thin\_contract} variant gives a compact tool contract, forbidden side effects, untrusted-data rule, and strict JSON schema. This setup is intentionally small; its purpose is to demonstrate an evaluation shape rather than claim general model performance.
+
+\begin{table}[h]
+\centering
+\input{../results/tables/experiment_summary.tex}
+\caption{Pilot results regenerated from raw JSONL. The reference policy checks benchmark mechanics. DeepSeek rows are live API outputs. The Kimi row records an authentication failure and is not a model-behavior measurement.}
+\label{tab:pilot}
+\end{table}
+
+The deterministic reference policy is not a model benchmark. It verifies that the case definitions, simulator, metrics, and aggregation logic are internally consistent. The live DeepSeek run produced 72 model-backed rows. In this pilot, the unstructured no-harness prompt failed all cases under the action-plan scoring because it usually did not emit executable tool actions. The thick checklist variant achieved a higher success rate than the text-only thin-contract prompt. This does not refute the strong-contract argument; rather, it sharpens it. A contract written only as natural language is still a prompt. A production harness needs enforceable schemas, tool APIs, parsers, retries, and state checks around that contract. The Kimi provider attempt returned authentication failure at the official OpenAI-compatible endpoint, so no Kimi model-behavior result is reported. All live provider runners read credentials only from process environment variables~\cite{deepseekapi,kimiapi}.
+
+\section{Discussion}
+
+The taxonomy clarifies the common disagreement about whether harnesses become technical debt. Both positions are partly correct. Harnesses that encode temporary cognitive scaffolding can become debt. Harnesses that encode trust boundaries become infrastructure. Model progress may absorb planning, tool selection, and format-following behaviors, but it does not remove the need to know what state changed, what permissions were exercised, which memory was used, or who approved an external side effect.
+
+The pilot results also warn against a superficial reading of ``thin.'' Thin does not mean weak, informal, or merely short. A thin contract that is only described in natural language can fail at routing or formatting. The durable part of the harness is the enforceable boundary: schemas, parsers, permission checks, state assertions, replay logs, and review gates. This is why the practical target is not fewer controls, but less brittle cognitive choreography and stronger external contracts.
+
+This also explains why model laboratories often produce important agent-harness work. Teams close to model training and failure analysis see the hooks earlier: where the model loses state, confuses instructions with data, overuses tools, ignores uncertainty, or fails to recover. Harnesses then become part of the feedback loop: trajectory traces, state diffs, safety failures, and review labels can inform evaluation, post-training, and product design.
+
+\section{Limitations}
+
+The artifact base is first-party and author-interpreted. Several case-study claims are supported by an inventory of external or private repositories rather than by vendored source snapshots in this repository. The benchmark is small, synthetic, and designed for clarity rather than statistical generality. The deterministic reference runner checks harness mechanics, not model capability. Live API results are subject to model-version, endpoint, authentication, and parameter changes. The case studies are engineering evidence, not controlled deployments across independent organizations. These limitations make the claims bounded: the paper proposes a design framework and pilot evaluation shape, not a universal benchmark.
+
+\section{Conclusion}
+
+Production agents need more than better final answers. They need controlled interfaces to state, tools, memory, and people. The useful harness is not a thick substitute for model intelligence. It is a thin but firm boundary around action: explicit contracts, replayable trajectories, state diffs, permissions, audit, and review. As models improve, brittle capability patches should shrink. Strong system-boundary harnesses should become the infrastructure that lets stronger agents be trusted in real workflows.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
