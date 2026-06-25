@@ -33,6 +33,7 @@ python scripts/audit_source_evidence.py --offline
 python scripts/backfill_run_metadata.py
 python scripts/check_tex_sources.py
 python scripts/check_public_traces.py
+python scripts/check_artifact_consistency.py
 python scripts/secret_scan.py
 ```
 
