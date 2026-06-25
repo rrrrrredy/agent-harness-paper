@@ -17,6 +17,7 @@ jobs:
 
       - name: Install LaTeX
         run: |
+          sudo find /etc/apt/sources.list.d -type f \( -name '*microsoft*' -o -name '*azure-cli*' \) -print -delete
           sudo apt-get update
           sudo apt-get install -y \
             texlive-latex-base \
