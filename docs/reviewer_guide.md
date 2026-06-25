@@ -46,6 +46,7 @@ Use the local virtual environment if present:
 .\.venv\Scripts\python scripts\check_tex_sources.py
 .\.venv\Scripts\python scripts\check_public_traces.py
 .\.venv\Scripts\python scripts\check_artifact_consistency.py
+.\.venv\Scripts\python scripts\check_entrypoint_commands.py
 .\.venv\Scripts\python scripts\secret_scan.py
 ```
 
