@@ -57,3 +57,5 @@ The paper should cite only regenerated results whose raw JSONL is present under 
 PDF builds are handled by `.github/workflows/latex.yml` when GitHub Actions is available. Local PDF builds require `pdflatex` and `bibtex`.
 
 For review, start with `docs/reviewer_guide.md` and `artifact_manifest.json`.
+
+For release state and final checks, see `CHANGELOG.md` and `docs/final_cleanup.md`.
