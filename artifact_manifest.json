@@ -35,7 +35,8 @@
     "protocol": "docs/experiment_protocol.md",
     "claim_boundaries": "docs/claim_boundaries.md",
     "reviewer_guide": "docs/reviewer_guide.md",
-    "release_index": "docs/artifact_release_index.md"
+    "release_index": "docs/artifact_release_index.md",
+    "submission_readiness": "docs/submission_readiness.md"
   },
   "release_status": {
     "pdf_workflow": ".github/workflows/latex.yml",

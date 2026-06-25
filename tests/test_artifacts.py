@@ -19,6 +19,7 @@ def test_required_artifacts_exist():
         "docs/claim_boundaries.md",
         "docs/artifact_release_index.md",
         "docs/reviewer_guide.md",
+        "docs/submission_readiness.md",
         "docs/final_cleanup.md",
         "benchmark/cases.jsonl",
         "scripts/rerun_parse_errors.py",

@@ -13,6 +13,7 @@ This repository is an artifact package for the paper:
 5. `experiments/run_manifest.md` for what was run and what was not.
 6. `docs/claim_boundaries.md` for permitted and excluded claims.
 7. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
+8. `docs/submission_readiness.md` for artifact-ready checks versus venue-specific decisions.
 
 ## Result Sources
 

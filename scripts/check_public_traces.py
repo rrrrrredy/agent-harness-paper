@@ -12,6 +12,7 @@ PUBLIC_FILES = [
     Path("docs/artifact_release_index.md"),
     Path("docs/reproducibility.md"),
     Path("docs/reviewer_guide.md"),
+    Path("docs/submission_readiness.md"),
     Path("docs/final_cleanup.md"),
     Path("evidence/inventory.md"),
     Path("evidence/github_evidence.json"),
