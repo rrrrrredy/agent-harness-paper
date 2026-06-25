@@ -118,7 +118,7 @@ Three prompt variants are supported. The \texttt{no\_harness} variant gives the 
 \label{tab:pilot}
 \end{table}
 
-The deterministic reference policy is not a model benchmark. It verifies that the case definitions, simulator, metrics, and aggregation logic are internally consistent. The live DeepSeek run produced 72 model-backed rows. A targeted parser-repair script was added after the wrapper was fixed to preserve raw model text on parse failures; rows repaired by rerun are marked in the raw metadata, while unrepaired legacy parser failures are classified separately from provider availability failures. In this pilot, the unstructured no-harness prompt failed all cases under the action-plan scoring because it usually did not emit executable tool actions. The thick checklist variant achieved a higher success rate than the text-only thin-contract prompt. This does not refute the strong-contract argument; rather, it sharpens it. A contract written only as natural language is still a prompt. A production harness needs enforceable schemas, tool APIs, parsers, retries, and state checks around that contract. The Kimi provider attempt returned authentication failure at the official OpenAI-compatible endpoint, so no Kimi model-behavior result is reported. All live provider runners read credentials only from process environment variables~\cite{deepseekapi,kimiapi}.
+The deterministic reference policy is not a model benchmark. It verifies that the case definitions, simulator, metrics, and aggregation logic are internally consistent. The live DeepSeek run produced 72 model-backed rows. A targeted parser-repair script was added after the wrapper was fixed to preserve raw model text on parse failures; rerun rows are marked in the raw metadata, and parser failures are classified separately from provider availability failures. In this pilot, the unstructured no-harness prompt failed all cases under the action-plan scoring because it usually did not emit executable tool actions. The thick checklist variant achieved a higher success rate than the text-only thin-contract prompt. Appendix Tables~\ref{tab:category-summary} and~\ref{tab:failure-taxonomy} show that the remaining failures are dominated by routing and state-diff errors, not permission violations. This does not refute the strong-contract argument; rather, it sharpens it. A contract written only as natural language is still a prompt. A production harness needs enforceable schemas, tool APIs, parsers, retries, and state checks around that contract. The Kimi provider attempt returned authentication failure at the official OpenAI-compatible endpoint, so no Kimi model-behavior result is reported. All live provider runners read credentials only from process environment variables~\cite{deepseekapi,kimiapi}.
 
 \section{Discussion}
 
@@ -176,6 +176,22 @@ The repository contains the artifacts needed to audit the pilot:
 \end{itemize}
 
 The raw rows are the source of reported pilot metrics. GitHub metadata snapshots support artifact and PR identification. The source audit supports bounded path-level interpretation, not implementation-behavior claims beyond the case-study framing.
+
+\section{Additional Pilot Tables}
+
+\begin{table}[h]
+\centering
+\input{../results/tables/category_summary.tex}
+\caption{DeepSeek pilot results by prompt variant and case category.}
+\label{tab:category-summary}
+\end{table}
+
+\begin{table}[h]
+\centering
+\input{../results/tables/failure_taxonomy.tex}
+\caption{Failure taxonomy regenerated from raw rows. A single row may contribute to more than one failure class.}
+\label{tab:failure-taxonomy}
+\end{table}
 
 \bibliographystyle{plain}
 \bibliography{references}

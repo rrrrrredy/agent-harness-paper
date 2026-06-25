@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T10:06:34.777927+00:00",
+  "generated_at": "2026-06-25T10:17:36.173987+00:00",
   "method": "Path and keyword-signal audit using GitHub API. Source file bodies are not stored.",
   "repositories": [
     {
@@ -37,38 +37,44 @@
           "path": "benchmark/risk_cases.csv",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "benchmark/skill_samples.csv",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "benchmark/trigger_cases.csv",
           "signals": [
             "routing_contract",
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "experiments/prompts/external_condition_evaluation.md",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "figures/evaluation_pipeline.svg",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "results/experiments/external_smoke_test_plan.csv",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "results/experiments/external_smoke_test_plan.md",
@@ -348,7 +354,8 @@
           "path": "tests/test_scan.py",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         }
       ]
     },
@@ -412,25 +419,29 @@
           "path": "data/ingestion/latest/.gitkeep",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "data/scheduled/latest/.gitkeep",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "data/understanding/latest/.gitkeep",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "lib/retrieval/citations.ts",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         },
         {
           "path": "lib/retrieval/load-radar-items.ts",
@@ -650,7 +661,8 @@
           "path": "docs/routing-contract.md",
           "signals": [
             "routing_contract"
-          ]
+          ],
+          "path_only": true
         }
       ]
     },
@@ -792,7 +804,8 @@
           "path": "scripts/push_citadel.py",
           "signals": [
             "testing"
-          ]
+          ],
+          "path_only": true
         }
       ]
     }

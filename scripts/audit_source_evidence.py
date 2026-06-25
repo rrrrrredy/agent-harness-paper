@@ -11,7 +11,7 @@ from typing import Any
 IN_JSON = Path("evidence/github_evidence.json")
 OUT_JSON = Path("evidence/source_audit.json")
 OUT_MD = Path("evidence/source_audit.md")
-MAX_FETCHED_FILES_PER_REPO = 12
+MAX_FETCHED_FILES_PER_REPO = 6
 
 CANDIDATE_PARTS = {
     "readme",
@@ -103,7 +103,7 @@ def _gh(args: list[str]) -> Any:
         capture_output=True,
         text=True,
         encoding="utf-8",
-        timeout=25,
+        timeout=20,
     )
     return json.loads(proc.stdout)
 
@@ -130,7 +130,7 @@ def _audit_file(repo: str, branch: str, path: str) -> dict[str, Any]:
                 capture_output=True,
                 text=True,
                 encoding="utf-8",
-                timeout=20,
+                timeout=8,
             )
             import base64
 

@@ -1,0 +1,11 @@
+| provider | variant | failure_class | count |
+| --- | --- | --- | --- |
+| deepseek | no_harness | parse_error | 2 |
+| deepseek | no_harness | routing_error | 24 |
+| deepseek | no_harness | state_diff_error | 10 |
+| deepseek | thick_checklist | routing_error | 7 |
+| deepseek | thick_checklist | state_diff_error | 6 |
+| deepseek | thin_contract | routing_error | 9 |
+| deepseek | thin_contract | state_diff_error | 5 |
+| kimi | thin_contract | provider_error | 1 |
+| kimi | thin_contract | routing_error | 1 |

@@ -10,6 +10,8 @@ def test_required_artifacts_exist():
         "evidence/github_snapshots.md",
         "evidence/source_audit.md",
         "experiments/run_manifest.md",
+        "results/tables/category_summary.tex",
+        "results/tables/failure_taxonomy.tex",
         "docs/experiment_protocol.md",
         "docs/claim_boundaries.md",
         "benchmark/cases.jsonl",
