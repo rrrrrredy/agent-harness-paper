@@ -8,6 +8,8 @@ PUBLIC_FILES = [
     Path("evidence/inventory.md"),
     Path("evidence/github_evidence.json"),
     Path("evidence/github_snapshots.md"),
+    Path("evidence/source_audit.md"),
+    Path("evidence/source_audit.json"),
 ]
 
 BANNED_TERMS = [

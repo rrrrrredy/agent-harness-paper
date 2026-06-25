@@ -1,0 +1,800 @@
+{
+  "generated_at": "2026-06-25T10:06:34.777927+00:00",
+  "method": "Path and keyword-signal audit using GitHub API. Source file bodies are not stored.",
+  "repositories": [
+    {
+      "repository": "rrrrrredy/skillops-paper",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 55,
+      "signal_counts": {
+        "memory_scope": 13,
+        "observability": 5,
+        "routing_contract": 5,
+        "testing": 38
+      },
+      "files": [
+        {
+          "path": "benchmark/README.md",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "benchmark/.gitkeep",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "benchmark/external_artifact_corpus_sources.csv",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "benchmark/risk_cases.csv",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "benchmark/skill_samples.csv",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "benchmark/trigger_cases.csv",
+          "signals": [
+            "routing_contract",
+            "testing"
+          ]
+        },
+        {
+          "path": "experiments/prompts/external_condition_evaluation.md",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "figures/evaluation_pipeline.svg",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "results/experiments/external_smoke_test_plan.csv",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "results/experiments/external_smoke_test_plan.md",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "results/test_report.md",
+          "signals": [
+            "memory_scope",
+            "observability",
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "scripts/prepare_external_smoke_test_plan.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "scripts/run_tests.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/__init__.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/helpers.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_benchmark_schema.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_evidence_matrix.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_annotation_packet.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_artifact_selection.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_case_scaffold.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_condition_dry_run.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_corpus.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_corpus_results.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_payload_runner.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_pilot_annotation_calibration.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_pilot_plan.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_pilot_runner.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_representations.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_result_summary.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_sampling_manifest.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_smoke_plan.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_external_statistical_analysis.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_live_model_results.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_paper_claims.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_provider_config.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_public_presentation.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_results_reproducibility.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "tests/test_svg_figures.py",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "experiments/ablation/variants/no_memory_interface.md",
+          "signals": [
+            "memory_scope"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "experiments/ablation_trigger_aligned/variants/no_memory_interface.md",
+          "signals": [
+            "memory_scope",
+            "routing_contract"
+          ],
+          "path_only": true
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/skill-design-guide",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 1,
+      "signal_counts": {
+        "testing": 1
+      },
+      "files": [
+        {
+          "path": "references/testing-guide.md",
+          "signals": [
+            "testing"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/skill-security-guard",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 5,
+      "signal_counts": {
+        "testing": 5
+      },
+      "files": [
+        {
+          "path": "tests/fixtures/high-risk-skill/SKILL.md",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "tests/fixtures/nonstandard-frontmatter/SKILL.md",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "tests/fixtures/safe-skill/SKILL.md",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "tests/fixtures/high-risk-skill/scripts/run.sh",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "tests/test_scan.py",
+          "signals": [
+            "testing"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/persistent-memory",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 2,
+      "signal_counts": {
+        "memory_scope": 2
+      },
+      "files": [
+        {
+          "path": "MEMORY.md.template",
+          "signals": [
+            "memory_scope"
+          ]
+        },
+        {
+          "path": "scripts/memory_manager.py",
+          "signals": [
+            "memory_scope"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/agent-self-audit",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 1,
+      "signal_counts": {
+        "observability": 1
+      },
+      "files": [
+        {
+          "path": "references/audit-criteria.md",
+          "signals": [
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/ai-radar-web",
+      "private": true,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 29,
+      "signal_counts": {
+        "memory_scope": 5,
+        "observability": 10,
+        "review_gate": 7,
+        "state_diff": 1,
+        "testing": 13
+      },
+      "files": [
+        {
+          "path": "data/ingestion/latest/.gitkeep",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "data/scheduled/latest/.gitkeep",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "data/understanding/latest/.gitkeep",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "lib/retrieval/citations.ts",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "lib/retrieval/load-radar-items.ts",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "lib/retrieval/load-supabase-radar-items.ts",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "lib/retrieval/normalize-query.ts",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "lib/retrieval/rank.ts",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "lib/retrieval/search.ts",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "lib/retrieval/time-window.ts",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "lib/retrieval/types.ts",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "supabase/migrations/202605140003_public_retrieval_view.sql",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/data-boundary-audit-milestone-l.md",
+          "signals": [
+            "observability"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/data-boundary-audit-release-candidate.md",
+          "signals": [
+            "observability",
+            "review_gate"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/data-completeness-release-candidate.md",
+          "signals": [
+            "review_gate"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/deployment-preview-milestone-d.md",
+          "signals": [
+            "review_gate"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/design-decisions.md",
+          "signals": [
+            "testing"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/event-clustering-release-candidate.md",
+          "signals": [
+            "review_gate"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/release-candidate-data-status.md",
+          "signals": [
+            "review_gate"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/release-candidate-final.md",
+          "signals": [
+            "review_gate"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/report-quality-gates-milestone-m.md",
+          "signals": [
+            "memory_scope",
+            "observability"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/report-workflow-milestone-b.md",
+          "signals": [
+            "memory_scope",
+            "observability"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "docs/report-workflow-milestone-c.md",
+          "signals": [
+            "memory_scope",
+            "observability"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "data/seed/sources/ai-learning-resources.audit.md",
+          "signals": [
+            "observability"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "lib/admin/audit.ts",
+          "signals": [
+            "observability"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "scripts/audit-data-completeness.ts",
+          "signals": [
+            "observability"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "scripts/export-public-snapshot.ts",
+          "signals": [
+            "state_diff"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "scripts/generate-report.ts",
+          "signals": [
+            "memory_scope",
+            "observability"
+          ],
+          "path_only": true
+        },
+        {
+          "path": "scripts/persist-report-candidate.ts",
+          "signals": [
+            "memory_scope",
+            "observability",
+            "review_gate"
+          ],
+          "path_only": true
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/ai-radar-skill",
+      "private": true,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 4,
+      "signal_counts": {
+        "routing_contract": 2,
+        "testing": 3
+      },
+      "files": [
+        {
+          "path": "docs/source-evaluation.md",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "examples/source-evaluation-example.md",
+          "signals": [
+            "testing"
+          ]
+        },
+        {
+          "path": "tests/routing-cases.md",
+          "signals": [
+            "routing_contract",
+            "testing"
+          ]
+        },
+        {
+          "path": "docs/routing-contract.md",
+          "signals": [
+            "routing_contract"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/lobster-guard",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/all-net-search-read",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/ai-talent-graph",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 1,
+      "signal_counts": {
+        "testing": 1
+      },
+      "files": [
+        {
+          "path": "scripts/orcid_api.py",
+          "signals": [
+            "testing"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/ai-info-radar",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/book-hunter",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 1,
+      "signal_counts": {
+        "observability": 1
+      },
+      "files": [
+        {
+          "path": "scripts/public_catalog_search.py",
+          "signals": [
+            "observability"
+          ]
+        }
+      ]
+    },
+    {
+      "repository": "rrrrrredy/x-twitter-scraper",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/xiaoyuzhou-podcast",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/weibo-scraper",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/wechat-reader",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/bilibili-video",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/ai-talent-radar",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 0,
+      "signal_counts": {},
+      "files": []
+    },
+    {
+      "repository": "rrrrrredy/agent-job-monitor",
+      "private": false,
+      "fork": false,
+      "default_branch": "main",
+      "candidate_file_count": 2,
+      "signal_counts": {
+        "state_diff": 1,
+        "testing": 1
+      },
+      "files": [
+        {
+          "path": "scripts/daily_diff.py",
+          "signals": [
+            "state_diff"
+          ]
+        },
+        {
+          "path": "scripts/push_citadel.py",
+          "signals": [
+            "testing"
+          ]
+        }
+      ]
+    }
+  ]
+}
