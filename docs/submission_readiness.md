@@ -23,7 +23,7 @@ This checklist separates repository artifact readiness from venue-specific submi
 - Page limit and appendix policy.
 - Anonymous versus non-anonymous author metadata.
 - PDF upload format and whether supplementary artifacts are accepted as a repository link, zip, or archival bundle.
-- License statement for code, benchmark cases, and manuscript source.
+- License statement for code, benchmark cases, and manuscript source. No repository-wide license has been selected yet.
 - Artifact review expectations, including whether network-dependent GitHub evidence refreshes are allowed.
 - Whether live-provider reruns are expected or the committed pilot logs are sufficient.
 

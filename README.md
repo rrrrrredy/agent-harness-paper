@@ -6,6 +6,10 @@ This private repository contains the manuscript and supporting artifacts for:
 
 The project studies agent harnesses as production infrastructure: runtime control, evaluation, observability, permission policy, replay, audit, and human review for stateful tool-using agents.
 
+## Status And License
+
+This is a working preprint artifact package, not a venue-specific submission bundle. No repository-wide license has been selected yet; reuse terms should be decided before external artifact release.
+
 ## Repository Layout
 
 ```text
