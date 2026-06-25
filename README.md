@@ -10,6 +10,7 @@ The project studies agent harnesses as production infrastructure: runtime contro
 
 ```text
 paper/          LaTeX manuscript and bibliography
+paper/metadata.json  venue-neutral paper metadata
 benchmark/      24 benchmark cases for routing, state, security, memory, replay
 harness/        small replayable harness and provider-independent evaluation logic
 scripts/        experiment, analysis, checks, and utility entrypoints

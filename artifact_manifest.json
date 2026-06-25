@@ -3,6 +3,7 @@
   "manuscript": {
     "tex": "paper/main.tex",
     "bibliography": "paper/references.bib",
+    "metadata": "paper/metadata.json",
     "pdf_build": ".github/workflows/latex.yml"
   },
   "benchmark": {
