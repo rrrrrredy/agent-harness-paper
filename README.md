@@ -24,6 +24,13 @@ tests/          deterministic unit tests
 
 ## Reproducibility
 
+Single-command validation:
+
+```powershell
+python scripts/run_checks.py --mode validate
+python scripts/run_checks.py --mode regenerate
+```
+
 ```powershell
 python -m pytest
 python scripts/run_codex_reference.py

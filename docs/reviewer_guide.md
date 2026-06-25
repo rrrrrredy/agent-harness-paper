@@ -32,6 +32,12 @@ The PDF workflow uses the TeX tables in the same directory.
 
 ## Validation
 
+Single-command validation:
+
+```powershell
+.\.venv\Scripts\python scripts\run_checks.py --mode validate
+```
+
 Use the local virtual environment if present:
 
 ```powershell
@@ -43,6 +49,12 @@ Use the local virtual environment if present:
 ```
 
 Regenerate derived tables:
+
+```powershell
+.\.venv\Scripts\python scripts\run_checks.py --mode regenerate
+```
+
+Equivalent individual commands:
 
 ```powershell
 .\.venv\Scripts\python scripts\backfill_run_metadata.py
