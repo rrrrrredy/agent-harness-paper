@@ -73,6 +73,8 @@ def _repo(name: str) -> dict[str, Any]:
     topics = data.get("repositoryTopics") or []
     data["topic_names"] = [item.get("name", "") for item in topics]
     data.pop("repositoryTopics", None)
+    if data.get("isPrivate"):
+        data["url"] = None
     return data
 
 
@@ -91,7 +93,7 @@ def _pr(repo: str, number: int) -> dict[str, Any]:
     body = data.get("body") or ""
     data["repository"] = repo
     data["number"] = number
-    data["body_excerpt"] = body[:1500]
+    data["evidence_relevance"] = _summarize_relevance(data.get("title", ""), body)
     data.pop("body", None)
     data["files"] = [
         {
@@ -126,11 +128,14 @@ def _markdown(snapshot: dict[str, Any]) -> str:
     ]
     for repo in snapshot["first_party_repositories"]:
         language = (repo.get("primaryLanguage") or {}).get("name") or ""
+        repo_name = repo["nameWithOwner"]
+        repo_url = repo.get("url")
+        repo_cell = f"[{repo_name}]({repo_url})" if repo_url else repo_name
         lines.append(
             "| "
             + " | ".join(
                 [
-                    f"[{repo['nameWithOwner']}]({repo['url']})",
+                    repo_cell,
                     str(repo.get("isPrivate", "")),
                     str(repo.get("isFork", "")),
                     language,
@@ -151,7 +156,7 @@ def _markdown(snapshot: dict[str, Any]) -> str:
     )
     for pr in snapshot["upstream_pull_requests"]:
         files = ", ".join(item["path"] for item in pr.get("files", [])[:5])
-        relevance = _summarize_relevance(pr)
+        relevance = pr.get("evidence_relevance", "Upstream agent-runtime boundary evidence.")
         lines.append(
             "| "
             + " | ".join(
@@ -170,9 +175,9 @@ def _markdown(snapshot: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def _summarize_relevance(pr: dict[str, Any]) -> str:
-    title = pr.get("title", "").lower()
-    body = pr.get("body_excerpt", "").lower()
+def _summarize_relevance(title_text: str, body_text: str) -> str:
+    title = title_text.lower()
+    body = body_text.lower()
     text = title + "\n" + body
     if "dry-run" in text or "dry run" in text:
         return "Preview before side effect; mutation boundary evidence."

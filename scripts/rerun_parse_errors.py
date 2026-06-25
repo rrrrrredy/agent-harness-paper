@@ -26,7 +26,7 @@ def main() -> None:
     changed = 0
     for index, row in enumerate(rows):
         notes = [str(note) for note in row.get("notes", [])]
-        if not any(note.startswith("provider_error:Expecting") or note.startswith("parse_error:") for note in notes):
+        if not any(_is_parser_failure(note) for note in notes):
             continue
         case = cases[row["case_id"]]
         variant = row["variant"]
@@ -55,6 +55,15 @@ def main() -> None:
         print(f"reran {args.provider} {variant} {case.id}: success={result.task_success}", flush=True)
     path.write_text("\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n", encoding="utf-8")
     print(f"updated {changed} rows in {path}")
+
+
+def _is_parser_failure(note: str) -> bool:
+    if note.startswith("parse_error:"):
+        return True
+    if not note.startswith("provider_error:"):
+        return False
+    provider_markers = ("http", "missing environment", "invalid authentication", "authentication", "rate limit")
+    return not any(marker in note.lower() for marker in provider_markers)
 
 
 if __name__ == "__main__":

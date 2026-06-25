@@ -43,6 +43,7 @@ def main() -> None:
 def _backfill_row(provider: str, row: dict[str, Any], cases: dict[str, Any]) -> tuple[dict[str, Any], bool]:
     usage = dict(row.get("usage") or {})
     before = json.dumps(usage, sort_keys=True)
+    notes_before = json.dumps(row.get("notes", []), sort_keys=True)
     config = PROVIDERS[provider]
     usage.setdefault("model", config["model"])
     usage.setdefault("endpoint", config["base_url"])
@@ -54,8 +55,21 @@ def _backfill_row(provider: str, row: dict[str, Any], cases: dict[str, Any]) -> 
         prompt = build_prompt(case, variant)
         usage.setdefault("prompt_sha256", hashlib.sha256(prompt.encode("utf-8")).hexdigest())
     row["usage"] = usage
+    row["notes"] = [_normalize_note(str(note)) for note in row.get("notes", [])]
     after = json.dumps(usage, sort_keys=True)
-    return row, before != after
+    notes_after = json.dumps(row.get("notes", []), sort_keys=True)
+    return row, before != after or notes_before != notes_after
+
+
+def _normalize_note(note: str) -> str:
+    if note.startswith("provider_error:") and not _is_provider_availability_error(note):
+        return "parse_error:" + note.split(":", 1)[1]
+    return note
+
+
+def _is_provider_availability_error(note: str) -> bool:
+    markers = ("http", "missing environment", "invalid authentication", "authentication", "rate limit")
+    return any(marker in note.lower() for marker in markers)
 
 
 if __name__ == "__main__":
