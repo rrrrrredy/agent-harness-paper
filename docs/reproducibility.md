@@ -83,7 +83,7 @@ To retrieve a checked PDF artifact from the current repository checkout:
 
 ```powershell
 New-Item -ItemType Directory -Force logs\artifact-download | Out-Null
-gh run download 28215112316 -n agent-harness-paper-pdf -D logs\artifact-download
+gh run download 28216768495 -n agent-harness-paper-pdf -D logs\artifact-download
 Get-Item logs\artifact-download\main.pdf
 ```
 
