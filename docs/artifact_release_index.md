@@ -17,6 +17,7 @@ Submission, license, anonymization, artifact-sharing, and live-provider rerun de
 - PDF build workflow: `.github/workflows/latex.yml`
 - Latest checked PDF run: `28217508824`
 - PDF artifact name: `agent-harness-paper-pdf`
+- GitHub release tag: `v0.1.0-preprint`
 
 To retrieve the checked PDF artifact with GitHub CLI:
 

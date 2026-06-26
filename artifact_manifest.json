@@ -67,7 +67,8 @@
     "pdf_workflow": ".github/workflows/latex.yml",
     "latest_checked_pdf_run": "28217508824",
     "pdf_artifact_name": "agent-harness-paper-pdf",
-    "validation_workflow": ".github/workflows/validate.yml"
+    "validation_workflow": ".github/workflows/validate.yml",
+    "github_release_tag": "v0.1.0-preprint"
   },
   "live_preflight_commands": [
     ".\\.venv\\Scripts\\python scripts\\check_provider_credentials.py --provider deepseek",
