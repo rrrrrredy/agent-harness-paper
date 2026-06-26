@@ -11,6 +11,7 @@
 - Added an external decision register for venue, license, anonymization, artifact-sharing, and live-rerun decisions.
 - Added live-rerun promotion guidance and overwrite protection for provider smoke outputs.
 - Added archive packaging, archive-manifest alignment checks, and clean-room archive smoke audits.
+- Added validation workflow path checks so reviewer-facing top-level docs remain covered by CI validation triggers.
 - Renamed the deterministic reference run to `local_reference` to keep reviewer-facing artifacts provider-neutral.
 - Fixed provider-error classification so the Kimi authentication failure is not counted as model behavior.
 - Added an independent verification pass and regression coverage for provider-error classification.
