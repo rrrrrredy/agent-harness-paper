@@ -15,13 +15,13 @@ Submission, license, anonymization, artifact-sharing, and live-provider rerun de
 - Bibliography: `paper/references.bib`
 - Metadata: `paper/metadata.json`
 - PDF build workflow: `.github/workflows/latex.yml`
-- Latest checked PDF run: `28216768495`
+- Latest checked PDF run: `28217508824`
 - PDF artifact name: `agent-harness-paper-pdf`
 
 To retrieve the checked PDF artifact with GitHub CLI:
 
 ```powershell
-gh run download 28216768495 -n agent-harness-paper-pdf -D logs\artifact-download
+gh run download 28217508824 -n agent-harness-paper-pdf -D logs\artifact-download
 ```
 
 `logs/` is ignored by git and can be removed after local inspection.
