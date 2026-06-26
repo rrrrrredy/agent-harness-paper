@@ -21,6 +21,7 @@ python scripts\run_checks.py --mode regenerate
 .\.venv\Scripts\python scripts\run_local_reference.py
 .\.venv\Scripts\python scripts\backfill_run_metadata.py
 .\.venv\Scripts\python scripts\analyze_results.py
+.\.venv\Scripts\python scripts\analyze_uncertainty.py
 .\.venv\Scripts\python scripts\generate_figures.py
 .\.venv\Scripts\python scripts\check_tex_sources.py
 .\.venv\Scripts\python scripts\check_public_traces.py
@@ -101,4 +102,4 @@ python scripts\build_artifact_archive.py
 
 The default zip output is `dist/agent-harness-paper-artifact.zip`; `dist/` is ignored by git.
 
-Before sharing the archive externally, review `docs/external_decision_register.md` for venue template, license, anonymization, artifact-sharing, and live-provider rerun decisions that are intentionally outside deterministic regeneration.
+Before sharing the archive externally, review `docs/external_decision_register.md`, `docs/arxiv_submission.md`, and `docs/zenodo_release_plan.md`. The current default is a non-anonymous arXiv-style preprint with a public Zenodo artifact archive.

@@ -35,6 +35,7 @@ Credentials are read only from environment variables. They must not be written t
 .\.venv\Scripts\python scripts\run_model_experiment.py --provider kimi --limit 24 --output logs\live-reruns\kimi_full_smoke.jsonl
 .\.venv\Scripts\python scripts\backfill_run_metadata.py
 .\.venv\Scripts\python scripts\analyze_results.py
+.\.venv\Scripts\python scripts\analyze_uncertainty.py
 .\.venv\Scripts\python scripts\generate_figures.py
 ```
 
@@ -52,6 +53,8 @@ The live runner refuses accidental overwrite of existing raw files unless `--res
 ## Reporting Tables
 
 `scripts/analyze_results.py` regenerates the aggregate provider/variant summary, a provider/variant/category summary, and a failure taxonomy. The category table makes boundary-specific behavior visible; the taxonomy separates provider availability, parser failures, routing errors, state-diff errors, permission violations, invalid tool calls, and unsafe secret access.
+
+`scripts/analyze_uncertainty.py` regenerates live-run Wilson 95% intervals for task success and state-diff correctness, plus paired bootstrap deltas for thin-contract versus thick-checklist prompting. These tables are descriptive checks over the committed pilot rows, not provider population estimates.
 
 ## Parse-Error Reruns
 

@@ -23,6 +23,8 @@
     "category_summary": "results/tables/category_summary.md",
     "failure_taxonomy": "results/tables/failure_taxonomy.md",
     "failure_inspection": "results/tables/failure_inspection.md",
+    "live_success_uncertainty": "results/tables/live_success_uncertainty.md",
+    "live_pairwise_delta": "results/tables/live_pairwise_delta.md",
     "figure": "figures/success_by_variant.svg"
   },
   "evidence": {
@@ -37,10 +39,28 @@
     "claim_traceability": "docs/claim_traceability.md",
     "live_rerun_promotion": "docs/live_rerun_promotion.md",
     "external_decision_register": "docs/external_decision_register.md",
+    "arxiv_submission": "docs/arxiv_submission.md",
+    "zenodo_release_plan": "docs/zenodo_release_plan.md",
+    "arxiv_endorsement_email": "docs/arxiv_endorsement_email.md",
     "claim_boundaries": "docs/claim_boundaries.md",
     "reviewer_guide": "docs/reviewer_guide.md",
     "release_index": "docs/artifact_release_index.md",
     "submission_readiness": "docs/submission_readiness.md"
+  },
+  "licensing": {
+    "notice": "LICENSE",
+    "code": "LICENSE-MIT",
+    "manuscript_docs_data": "LICENSE-CC-BY-4.0.md",
+    "citation": "CITATION.cff",
+    "zenodo_metadata": ".zenodo.json"
+  },
+  "submission_defaults": {
+    "target": "arXiv-style preprint",
+    "template": "standard LaTeX article class",
+    "author": "Song Luo",
+    "primary_category": "cs.SE",
+    "cross_list": "cs.AI",
+    "artifact_sharing": "public Zenodo archive DOI pending"
   },
   "release_status": {
     "pdf_workflow": ".github/workflows/latex.yml",
@@ -51,6 +71,13 @@
   "live_preflight_commands": [
     ".\\.venv\\Scripts\\python scripts\\check_provider_credentials.py --provider deepseek",
     ".\\.venv\\Scripts\\python scripts\\check_provider_credentials.py --provider kimi"
+  ],
+  "regeneration_commands": [
+    ".\\.venv\\Scripts\\python scripts\\backfill_run_metadata.py",
+    ".\\.venv\\Scripts\\python scripts\\analyze_results.py",
+    ".\\.venv\\Scripts\\python scripts\\analyze_uncertainty.py",
+    ".\\.venv\\Scripts\\python scripts\\inspect_failures.py",
+    ".\\.venv\\Scripts\\python scripts\\generate_figures.py"
   ],
   "live_smoke_commands": [
     ".\\.venv\\Scripts\\python scripts\\run_model_experiment.py --provider deepseek --limit 24 --output logs\\live-reruns\\deepseek_full_smoke.jsonl",

@@ -26,6 +26,7 @@ Use this checklist before sharing or submitting the artifact package.
 - `.\.venv\Scripts\python scripts\run_checks.py --mode regenerate`
 - `.\.venv\Scripts\python scripts\backfill_run_metadata.py`
 - `.\.venv\Scripts\python scripts\analyze_results.py`
+- `.\.venv\Scripts\python scripts\analyze_uncertainty.py`
 - `.\.venv\Scripts\python scripts\inspect_failures.py`
 - `.\.venv\Scripts\python scripts\generate_figures.py`
 
@@ -36,6 +37,7 @@ Use this checklist before sharing or submitting the artifact package.
 - Confirm the latest `Validate artifact package` GitHub Actions run succeeds after artifact or script changes.
 - Confirm `experiments/run_manifest.md` matches raw result files.
 - Confirm manuscript claims remain within `docs/claim_boundaries.md`.
-- Confirm venue, license, anonymization, artifact-sharing, and live-rerun decisions are tracked in `docs/external_decision_register.md`.
+- Confirm submission, license, anonymization, artifact-sharing, and live-rerun decisions are tracked in `docs/external_decision_register.md`.
+- Confirm arXiv submission notes and Zenodo release plan are current.
 - Confirm live-provider credential preflight passes before any live rerun.
 - Confirm live-provider rows are not rerun unless credentials are present in environment variables.

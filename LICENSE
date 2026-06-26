@@ -1,0 +1,13 @@
+Dual-license notice
+
+Copyright (c) 2026 Song Luo
+
+Code in this repository is licensed under the MIT License. See LICENSE-MIT.
+
+The manuscript source, documentation, benchmark cases, evidence snapshots,
+derived tables, figures, and release metadata are licensed under Creative
+Commons Attribution 4.0 International (CC BY 4.0). See
+LICENSE-CC-BY-4.0.md.
+
+Provider API credentials, ignored local logs, and private working state are
+not part of the licensed release artifact.
