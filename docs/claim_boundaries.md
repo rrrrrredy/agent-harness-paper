@@ -8,6 +8,7 @@ The manuscript may claim:
 - Source audit snapshots document path-level and keyword-signal evidence, not full source-code behavior.
 - The 24-case benchmark is a pilot harness shape and reproducibility artifact.
 - Live API results, when present, are bounded to the exact date, endpoint, model id, prompt variant, and raw result file.
+- Model-lab proximity may be discussed only as a hypothesis or design implication, not as a demonstrated causal result.
 
 The manuscript must not claim:
 
@@ -18,3 +19,4 @@ The manuscript must not claim:
 - That private or forked repositories are first-party skill artifacts unless they are explicitly marked as PR evidence or private workflow evidence.
 - That repository metadata alone proves implementation behavior beyond the summarized metadata and cited PR descriptions.
 - That keyword-signal source audit alone proves runtime behavior.
+- That formative background notes are reproducible artifact evidence.

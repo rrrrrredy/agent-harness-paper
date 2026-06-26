@@ -1,18 +1,18 @@
 # Evidence Inventory
 
-This inventory separates first-party artifacts, upstream PR evidence, local essays, and external related work. C: paths are source material only; project work is on D:.
+This inventory separates first-party artifacts, upstream PR evidence, formative background notes, and external related work. Background notes informed terminology and framing; they are not the reproducible evidence layer for artifact claims.
 
 Generated GitHub metadata snapshots are stored in `evidence/github_evidence.json` and `evidence/github_snapshots.md`. Source-level signal snapshots are stored in `evidence/source_audit.json` and `evidence/source_audit.md`. These files are the reproducible evidence layer for repository metadata, PR metadata, and path-level source signals used by the manuscript.
 
-## Local Source Material
+## Formative Background Notes
 
-- Local essay: `路由契约，才是 Skill 的灵魂`: argues that skill quality depends on routing contracts, not prose.
-- Local essay: `一个 Skill 是怎么“看起来很强”却“用起来不稳”的`: identifies pseudo-engineering patterns and production failures in skills.
-- Local essay: `如何写好 Skill：不是一段漂亮的 Prompt`: defines workflow decomposition, routing, deterministic scripts, fallback paths, and eval sets.
-- Local essay: `把 Skill 当 API 写，而不是当作文写`: frames skills as input/output/error-boundary interfaces.
-- Local document: `如何写好 Skills`: expanded version with spreadsheet/data-cleaning eval methodology.
-- Local conversation note: agent harness as runtime, evaluation, observability, replay, and safety control.
-- Local conversation note: thin vs thick harness argument.
+- Essay note: `路由契约，才是 Skill 的灵魂`: argues that skill quality depends on routing contracts, not prose.
+- Essay note: `一个 Skill 是怎么“看起来很强”却“用起来不稳”的`: identifies pseudo-engineering patterns and production failures in skills.
+- Essay note: `如何写好 Skill：不是一段漂亮的 Prompt`: defines workflow decomposition, routing, deterministic scripts, fallback paths, and eval sets.
+- Essay note: `把 Skill 当 API 写，而不是当作文写`: frames skills as input/output/error-boundary interfaces.
+- Document note: `如何写好 Skills`: expanded version with spreadsheet/data-cleaning eval methodology.
+- Conversation note: agent harness as runtime, evaluation, observability, replay, and safety control.
+- Conversation note: thin vs thick harness argument.
 
 ## First-Party GitHub Artifacts
 

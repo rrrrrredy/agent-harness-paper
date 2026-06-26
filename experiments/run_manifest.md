@@ -2,12 +2,12 @@
 
 ## Local Reference Run
 
-- Runner: `scripts/run_codex_reference.py`
-- Provider label: `codex_reference`
+- Runner: `scripts/run_local_reference.py`
+- Provider label: `local_reference`
 - Purpose: deterministic validation of benchmark mechanics, not model capability.
 - Cases: 24
 - Variants: `no_harness`, `thick_checklist`, `thin_contract`
-- Raw output: `experiments/raw/codex_reference.jsonl`
+- Raw output: `experiments/raw/local_reference.jsonl`
 
 ## DeepSeek Live Run
 

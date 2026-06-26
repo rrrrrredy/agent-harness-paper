@@ -44,7 +44,7 @@ These systems motivate the present focus but do not fully replace it. This paper
 
 \subsection{Evidence Sources}
 
-The empirical basis for this paper has four layers. First, local essays and notes provide the conceptual vocabulary around routing contracts, skill interfaces, memory boundaries, and thin-versus-thick harnesses. Second, a generated GitHub snapshot records metadata for first-party skill, memory, security, self-audit, and AI-radar repositories, plus upstream OpenClaw and Hermes pull requests used as boundary examples. Third, a source evidence audit records path-level and keyword-signal evidence for first-party repositories without storing source bodies. Fourth, the pilot benchmark contributes raw JSONL runs, regenerated tables, failure inspection, and prompt-hash metadata for live model calls. This evidence structure is intentionally conservative: repository metadata supports artifact existence and scope; source-signal snapshots support bounded artifact interpretation; only raw run files support reported pilot metrics.
+The reviewable empirical basis for this paper has three artifact layers. First, a generated GitHub snapshot records metadata for first-party skill, memory, security, self-audit, and AI-radar repositories, plus upstream OpenClaw and Hermes pull requests used as boundary examples. Second, a source evidence audit records path-level and keyword-signal evidence for first-party repositories without storing source bodies. Third, the pilot benchmark contributes raw JSONL runs, regenerated tables, failure inspection, and prompt-hash metadata for live model calls. Formative notes informed the vocabulary around routing contracts, skill interfaces, memory boundaries, and thin-versus-thick harnesses, but artifact claims rely on the committed evidence layers. This evidence structure is intentionally conservative: repository metadata supports artifact existence and scope; source-signal snapshots support bounded artifact interpretation; only raw run files support reported pilot metrics.
 
 \section{A Taxonomy of Harnesses}
 
@@ -95,7 +95,7 @@ SkillOps is used here as an artifact-based example of treating skills as operati
 
 \subsection{AI Radar}
 
-The AI Radar web and skill artifacts, as recorded in the artifact inventory and source-signal audit, illustrate workflow-level harnessing as a design pattern. The repository metadata, path-level signals, and local notes describe source ingestion, understanding, retrieval, report candidate generation, review, audit, and publication boundaries. This is not a benchmark harness, but it motivates the same production pattern: each step should expose state, evidence, permissions, and review semantics.
+The AI Radar web and skill artifacts, as recorded in the artifact inventory and source-signal audit, illustrate workflow-level harnessing as a design pattern. The repository metadata and path-level signals describe source ingestion, understanding, retrieval, report candidate generation, review, audit, and publication boundaries. This is not a benchmark harness, but it motivates the same production pattern: each step should expose state, evidence, permissions, and review semantics.
 
 \subsection{OpenClaw and Hermes PRs}
 
@@ -130,7 +130,7 @@ The taxonomy clarifies the common disagreement about whether harnesses become te
 
 The pilot results also warn against a superficial reading of ``thin.'' Thin does not mean weak, informal, or merely short. A thin contract that is only described in natural language can fail at routing or formatting. The durable part of the harness is the enforceable boundary: schemas, parsers, permission checks, state assertions, replay logs, and review gates. This is why the practical target is not fewer controls, but less brittle cognitive choreography and stronger external contracts.
 
-This also explains why model laboratories often produce important agent-harness work. Teams close to model training and failure analysis see the hooks earlier: where the model loses state, confuses instructions with data, overuses tools, ignores uncertainty, or fails to recover. Harnesses then become part of the feedback loop: trajectory traces, state diffs, safety failures, and review labels can inform evaluation, post-training, and product design.
+This suggests a hypothesis for future work: teams with direct access to model training signals, product traces, and failure analysis may identify useful harness hooks earlier. The relevant hooks are places where an agent loses state, confuses instructions with data, overuses tools, ignores uncertainty, or fails to recover. Under this hypothesis, harnesses become part of the feedback loop: trajectory traces, state diffs, safety failures, and review labels can inform evaluation, post-training, and product design.
 
 \section{Limitations}
 

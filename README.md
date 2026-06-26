@@ -22,7 +22,6 @@ results/        regenerated tables and summaries
 evidence/       artifact inventory and generated GitHub evidence snapshots
 docs/           protocol, claim boundaries, reproducibility, reviewer guide
 notes/          argument map, outline, related work notes
-state/          Deli-style progress, todos, findings, next-goal prompts
 tests/          deterministic unit tests
 ```
 
@@ -37,7 +36,7 @@ python scripts/run_checks.py --mode regenerate
 
 ```powershell
 python -m pytest
-python scripts/run_codex_reference.py
+python scripts/run_local_reference.py
 python scripts/analyze_results.py
 python scripts/generate_figures.py
 python scripts/collect_github_evidence.py

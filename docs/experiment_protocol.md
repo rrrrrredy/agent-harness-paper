@@ -2,7 +2,7 @@
 
 ## Providers
 
-- `codex_reference`: deterministic local reference policy used to verify benchmark mechanics.
+- `local_reference`: deterministic local reference policy used to verify benchmark mechanics.
 - `deepseek`: live API calls through `DEEPSEEK_API_KEY`, model `deepseek-v4-pro`, endpoint `https://api.deepseek.com/chat/completions`.
 - `kimi`: live API calls through `MOONSHOT_API_KEY`, model `kimi-k2.7-code`, endpoint `https://api.moonshot.ai/v1/chat/completions`.
 
@@ -28,7 +28,7 @@ Credentials are read only from environment variables. They must not be written t
 
 ```powershell
 .\.venv\Scripts\python scripts\collect_github_evidence.py
-.\.venv\Scripts\python scripts\run_codex_reference.py
+.\.venv\Scripts\python scripts\run_local_reference.py
 .\.venv\Scripts\python scripts\check_provider_credentials.py --provider deepseek
 .\.venv\Scripts\python scripts\run_model_experiment.py --provider deepseek --limit 24 --output logs\live-reruns\deepseek_live.jsonl
 .\.venv\Scripts\python scripts\check_provider_credentials.py --provider kimi

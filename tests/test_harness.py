@@ -2,6 +2,7 @@ import pytest
 
 from harness.core import evaluate_case, load_cases
 from harness.providers import has_provider_key, provider_env_var, require_provider_key
+from scripts.analyze_results import _failure_classes
 from scripts.run_model_experiment import resolve_output_path, validate_output_mode
 
 
@@ -69,3 +70,16 @@ def test_live_runner_refuses_accidental_overwrite(tmp_path):
     validate_output_mode(output, resume=True, force_overwrite=False)
     validate_output_mode(output, resume=False, force_overwrite=True)
     assert resolve_output_path("deepseek", None).as_posix() == "experiments/raw/deepseek_live.jsonl"
+
+
+def test_provider_error_is_not_counted_as_behavior_failure():
+    row = {
+        "notes": ["provider_error:kimi HTTP 401: invalid authentication"],
+        "invalid_tool_calls": 0,
+        "permission_violations": 0,
+        "unsafe_secret_access": 0,
+        "over_under_trigger_error": 1,
+        "state_diff_correct": False,
+        "task_success": False,
+    }
+    assert _failure_classes(row) == ["provider_error"]

@@ -37,7 +37,10 @@ BANNED_TERMS = [
     "script was added after",
     "after the provider wrapper was fixed",
     "c:/users/",
+    "project work is on d:",
     ".codex/attachments",
+    "codex_reference",
+    "run_codex_reference.py",
     "https://github.com/rrrrrredy/ai-radar-web",
     "https://github.com/rrrrrredy/ai-radar-skill",
 ]

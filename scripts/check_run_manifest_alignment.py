@@ -11,15 +11,15 @@ RUN_MANIFEST = Path("experiments/run_manifest.md")
 
 
 EXPECTED_COUNTS = {
-    "codex_reference.jsonl": 72,
+    "local_reference.jsonl": 72,
     "deepseek_live.jsonl": 72,
     "kimi_live.jsonl": 1,
 }
 
 EXPECTED_VARIANTS = {
-    ("codex_reference", "no_harness"): 24,
-    ("codex_reference", "thick_checklist"): 24,
-    ("codex_reference", "thin_contract"): 24,
+    ("local_reference", "no_harness"): 24,
+    ("local_reference", "thick_checklist"): 24,
+    ("local_reference", "thin_contract"): 24,
     ("deepseek", "no_harness"): 24,
     ("deepseek", "thick_checklist"): 24,
     ("deepseek", "thin_contract"): 24,
@@ -62,6 +62,13 @@ def main() -> None:
     kimi_provider_errors = sum(_has_note(row, "provider_error:") for row in rows_by_file.get("kimi_live.jsonl", []))
     if kimi_provider_errors != 1:
         findings.append(f"kimi_live.jsonl: expected 1 provider-error row, found {kimi_provider_errors}")
+    kimi_behavior_errors = sum(
+        row.get("over_under_trigger_error", 0)
+        for row in rows_by_file.get("kimi_live.jsonl", [])
+        if not _has_note(row, "provider_error:")
+    )
+    if kimi_behavior_errors:
+        findings.append(f"kimi_live.jsonl: provider-error rows must not contribute behavior failures")
 
     manifest = RUN_MANIFEST.read_text(encoding="utf-8")
     required_manifest_phrases = [

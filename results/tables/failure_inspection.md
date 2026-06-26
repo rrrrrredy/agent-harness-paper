@@ -41,4 +41,4 @@
 | deepseek | thin_contract | replay_001 | replay_recovery | behavior | 0 | 0 | 1 |  |
 | deepseek | no_harness | replay_002 | replay_recovery | parse_error | 0 | 0 | 1 | parse_error:Extra data: line 10 column 4 (char 280) |
 | deepseek | no_harness | replay_003 | replay_recovery | behavior | 0 | 0 | 1 |  |
-| kimi | thin_contract | trigger_001 | trigger_routing | provider_error | 0 | 0 | 1 | provider_error:kimi HTTP 401: {"error":{"message":"Invalid Authentication","type":"invalid_authentication_error"}} |
+| kimi | thin_contract | trigger_001 | trigger_routing | provider_error | 0 | 0 | 0 | provider_error:kimi HTTP 401: {"error":{"message":"Invalid Authentication","type":"invalid_authentication_error"}} |
