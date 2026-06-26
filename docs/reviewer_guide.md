@@ -12,10 +12,11 @@ This repository is an artifact package for the paper:
 4. `artifact_manifest.json` for the artifact map.
 5. `experiments/run_manifest.md` for what was run and what was not.
 6. `docs/data_dictionary.md` for benchmark, raw-result, derived-table, and validation-artifact fields.
-7. `docs/live_rerun_promotion.md` for moving reviewed provider smoke outputs into cited raw results.
-8. `docs/claim_boundaries.md` for permitted and excluded claims.
-9. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
-10. `docs/submission_readiness.md` for artifact-ready checks versus venue-specific decisions.
+7. `docs/claim_traceability.md` for mapping manuscript claims to evidence and boundaries.
+8. `docs/live_rerun_promotion.md` for moving reviewed provider smoke outputs into cited raw results.
+9. `docs/claim_boundaries.md` for permitted and excluded claims.
+10. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
+11. `docs/submission_readiness.md` for artifact-ready checks versus venue-specific decisions.
 
 ## Result Sources
 
@@ -53,6 +54,7 @@ Use the local virtual environment if present:
 .\.venv\Scripts\python scripts\check_release_references.py
 .\.venv\Scripts\python scripts\check_status_notes.py
 .\.venv\Scripts\python scripts\check_run_manifest_alignment.py
+.\.venv\Scripts\python scripts\check_claim_traceability.py
 .\.venv\Scripts\python scripts\build_artifact_archive.py --check
 .\.venv\Scripts\python scripts\secret_scan.py
 ```

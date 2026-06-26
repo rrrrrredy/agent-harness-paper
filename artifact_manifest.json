@@ -34,6 +34,7 @@
     "guide": "docs/reproducibility.md",
     "protocol": "docs/experiment_protocol.md",
     "data_dictionary": "docs/data_dictionary.md",
+    "claim_traceability": "docs/claim_traceability.md",
     "live_rerun_promotion": "docs/live_rerun_promotion.md",
     "claim_boundaries": "docs/claim_boundaries.md",
     "reviewer_guide": "docs/reviewer_guide.md",
@@ -64,6 +65,7 @@
     ".\\.venv\\Scripts\\python scripts\\check_release_references.py",
     ".\\.venv\\Scripts\\python scripts\\check_status_notes.py",
     ".\\.venv\\Scripts\\python scripts\\check_run_manifest_alignment.py",
+    ".\\.venv\\Scripts\\python scripts\\check_claim_traceability.py",
     ".\\.venv\\Scripts\\python scripts\\build_artifact_archive.py --check",
     ".\\.venv\\Scripts\\python scripts\\secret_scan.py"
   ]

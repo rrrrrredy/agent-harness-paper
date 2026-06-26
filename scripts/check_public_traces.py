@@ -10,6 +10,7 @@ PUBLIC_FILES = [
     Path("paper/main.tex"),
     Path("paper/metadata.json"),
     Path("docs/artifact_release_index.md"),
+    Path("docs/claim_traceability.md"),
     Path("docs/data_dictionary.md"),
     Path("docs/live_rerun_promotion.md"),
     Path("docs/reproducibility.md"),
