@@ -26,6 +26,7 @@ def test_required_artifacts_exist():
         "docs/claim_traceability.md",
         "docs/data_dictionary.md",
         "docs/external_decision_register.md",
+        "docs/arxiv_endorsement_candidates.md",
         "docs/arxiv_submission.md",
         "docs/arxiv_endorsement_email.md",
         "docs/live_rerun_promotion.md",

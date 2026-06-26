@@ -16,6 +16,7 @@ PUBLIC_FILES = [
     Path("LICENSE-CC-BY-4.0.md"),
     Path("docs/arxiv_submission.md"),
     Path("docs/arxiv_endorsement_email.md"),
+    Path("docs/arxiv_endorsement_candidates.md"),
     Path("docs/artifact_release_index.md"),
     Path("docs/claim_traceability.md"),
     Path("docs/data_dictionary.md"),
