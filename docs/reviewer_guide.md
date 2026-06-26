@@ -12,9 +12,10 @@ This repository is an artifact package for the paper:
 4. `artifact_manifest.json` for the artifact map.
 5. `experiments/run_manifest.md` for what was run and what was not.
 6. `docs/data_dictionary.md` for benchmark, raw-result, derived-table, and validation-artifact fields.
-7. `docs/claim_boundaries.md` for permitted and excluded claims.
-8. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
-9. `docs/submission_readiness.md` for artifact-ready checks versus venue-specific decisions.
+7. `docs/live_rerun_promotion.md` for moving reviewed provider smoke outputs into cited raw results.
+8. `docs/claim_boundaries.md` for permitted and excluded claims.
+9. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
+10. `docs/submission_readiness.md` for artifact-ready checks versus venue-specific decisions.
 
 ## Result Sources
 
@@ -75,3 +76,4 @@ Equivalent individual commands:
 Live provider reruns require valid provider credentials in environment variables. Missing or invalid credentials should remain recorded as provider failures rather than replaced with invented measurements.
 Use `scripts/check_provider_credentials.py` before live reruns; it checks presence only and does not print credential values.
 Use ignored `logs/live-reruns/` outputs for smoke tests; replacing committed raw rows requires an explicit `--force-overwrite` or `--resume`.
+Use `docs/live_rerun_promotion.md` before promoting a smoke output into `experiments/raw/`.

@@ -38,6 +38,7 @@ Validation covers deterministic tests, citation/source checks, public-trace chec
 - Reviewer guide: `docs/reviewer_guide.md`
 - Claim boundaries: `docs/claim_boundaries.md`
 - Data dictionary: `docs/data_dictionary.md`
+- Live rerun promotion: `docs/live_rerun_promotion.md`
 - Experiment protocol: `docs/experiment_protocol.md`
 - Run manifest: `experiments/run_manifest.md`
 - GitHub evidence snapshot: `evidence/github_snapshots.md`

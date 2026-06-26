@@ -34,6 +34,7 @@
     "guide": "docs/reproducibility.md",
     "protocol": "docs/experiment_protocol.md",
     "data_dictionary": "docs/data_dictionary.md",
+    "live_rerun_promotion": "docs/live_rerun_promotion.md",
     "claim_boundaries": "docs/claim_boundaries.md",
     "reviewer_guide": "docs/reviewer_guide.md",
     "release_index": "docs/artifact_release_index.md",
