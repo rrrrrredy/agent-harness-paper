@@ -13,6 +13,7 @@ This checklist separates repository artifact readiness from venue-specific submi
 - Validation workflow exists at `.github/workflows/validate.yml`.
 - PDF artifact retrieval is documented in `docs/artifact_release_index.md` and `docs/reproducibility.md`.
 - Claim boundaries are documented in `docs/claim_boundaries.md`.
+- External release and venue decisions are tracked in `docs/external_decision_register.md`.
 - Experiment protocol and run manifest are documented in `docs/experiment_protocol.md` and `experiments/run_manifest.md`.
 - Evidence artifacts are documented in `evidence/github_snapshots.md` and `evidence/source_audit.md`.
 - Public-trace, release-reference, entrypoint-command, artifact-consistency, and secret-scan checks are included in validation.
@@ -27,6 +28,8 @@ This checklist separates repository artifact readiness from venue-specific submi
 - Artifact review expectations, including whether network-dependent GitHub evidence refreshes are allowed.
 - Whether live-provider reruns are expected or the committed pilot logs are sufficient.
 
+These decisions are summarized in `docs/external_decision_register.md` and should be resolved before creating a venue-specific release package.
+
 ## Pre-Submission Sequence
 
 1. Select the venue and copy or adapt its required template.
@@ -35,5 +38,6 @@ This checklist separates repository artifact readiness from venue-specific submi
 4. Build or download the PDF artifact.
 5. Confirm venue-specific metadata, author information, and acknowledgements.
 6. Confirm no credential, private path, or process-trace terms appear in public-facing files.
-7. Run `python scripts/build_artifact_archive.py --check`.
-8. Build `dist/agent-harness-paper-artifact.zip` with `python scripts/build_artifact_archive.py` if a zip bundle is requested.
+7. Review `docs/external_decision_register.md` and resolve rows required by the target venue or artifact-review process.
+8. Run `python scripts/build_artifact_archive.py --check`.
+9. Build `dist/agent-harness-paper-artifact.zip` with `python scripts/build_artifact_archive.py` if a zip bundle is requested.

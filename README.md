@@ -77,3 +77,4 @@ Artifact validation is handled by `.github/workflows/validate.yml`.
 For review, start with `docs/reviewer_guide.md` and `artifact_manifest.json`.
 
 For release state and final checks, see `docs/artifact_release_index.md`, `docs/submission_readiness.md`, `CHANGELOG.md`, and `docs/final_cleanup.md`.
+External venue, license, anonymization, artifact-sharing, and live-rerun decisions are tracked in `docs/external_decision_register.md`.

@@ -14,6 +14,7 @@ Use this checklist before sharing or submitting the artifact package.
 - `.\.venv\Scripts\python scripts\check_status_notes.py`
 - `.\.venv\Scripts\python scripts\check_run_manifest_alignment.py`
 - `.\.venv\Scripts\python scripts\check_claim_traceability.py`
+- `.\.venv\Scripts\python scripts\check_external_decisions.py`
 - `.\.venv\Scripts\python scripts\build_artifact_archive.py --check`
 - `.\.venv\Scripts\python scripts\secret_scan.py`
 - `.\.venv\Scripts\python scripts\audit_source_evidence.py --offline`
@@ -33,5 +34,6 @@ Use this checklist before sharing or submitting the artifact package.
 - Confirm the latest `Validate artifact package` GitHub Actions run succeeds after artifact or script changes.
 - Confirm `experiments/run_manifest.md` matches raw result files.
 - Confirm manuscript claims remain within `docs/claim_boundaries.md`.
+- Confirm venue, license, anonymization, artifact-sharing, and live-rerun decisions are tracked in `docs/external_decision_register.md`.
 - Confirm live-provider credential preflight passes before any live rerun.
 - Confirm live-provider rows are not rerun unless credentials are present in environment variables.

@@ -5,6 +5,7 @@ This index provides a compact entrypoint for reviewing, rebuilding, and validati
 ## Status And License
 
 This is a working preprint artifact package, not a venue-specific submission bundle. No repository-wide license has been selected yet; reuse terms should be decided before external artifact release.
+Open venue, license, anonymization, artifact-sharing, and live-provider rerun decisions are tracked in `docs/external_decision_register.md`.
 
 ## Manuscript
 
@@ -30,7 +31,7 @@ gh run download 28165652967 -n agent-harness-paper-pdf -D logs\artifact-download
 - Validation workflow: `.github/workflows/validate.yml`
 - Current validation status: `gh run list --workflow "Validate artifact package" --limit 1`
 
-Validation covers deterministic tests, citation/source checks, public-trace checks, artifact consistency, offline source-audit validation, and secret scanning.
+Validation covers deterministic tests, citation/source checks, public-trace checks, artifact consistency, external-decision register checks, offline source-audit validation, and secret scanning.
 
 ## Evidence And Results
 
@@ -38,6 +39,7 @@ Validation covers deterministic tests, citation/source checks, public-trace chec
 - Reviewer guide: `docs/reviewer_guide.md`
 - Claim traceability: `docs/claim_traceability.md`
 - Claim boundaries: `docs/claim_boundaries.md`
+- External decision register: `docs/external_decision_register.md`
 - Data dictionary: `docs/data_dictionary.md`
 - Live rerun promotion: `docs/live_rerun_promotion.md`
 - Experiment protocol: `docs/experiment_protocol.md`

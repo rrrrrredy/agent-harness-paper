@@ -101,10 +101,12 @@ Sources: `results/tables/*.md`, `results/tables/*.csv`, and `results/tables/*.te
 - `scripts/run_checks.py --mode regenerate`: Derived-result regeneration entrypoint.
 - `scripts/check_run_manifest_alignment.py`: Checks raw-result counts, live metadata, parse-error counts, and provider-error status against `experiments/run_manifest.md`.
 - `scripts/check_claim_traceability.py`: Checks that `docs/claim_traceability.md` includes required evidence references and boundaries.
+- `scripts/check_external_decisions.py`: Checks that `docs/external_decision_register.md` covers venue template, license, anonymization policy, artifact sharing mode, and live-provider rerun policy.
 - `scripts/check_release_references.py`: Checks checked PDF artifact references and prevents moving validation run IDs from being committed.
 - `scripts/build_artifact_archive.py --check`: Checks archive file selection without writing a zip.
 - `scripts/check_provider_credentials.py`: Checks provider credential environment-variable presence before live reruns without printing credential values.
 - `scripts/run_model_experiment.py --output`: Writes live rerun rows to a selected JSONL path and refuses accidental overwrite unless `--resume` or `--force-overwrite` is supplied.
 - `docs/live_rerun_promotion.md`: Checklist for promoting reviewed `logs/live-reruns/` outputs into cited `experiments/raw/` rows.
+- `docs/external_decision_register.md`: Register for venue, license, anonymization, artifact-sharing, and live-rerun decisions that remain outside the venue-neutral package.
 - `.github/workflows/validate.yml`: Remote validation workflow.
 - `.github/workflows/latex.yml`: Remote PDF build workflow.
