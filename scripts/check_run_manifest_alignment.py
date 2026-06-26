@@ -13,7 +13,7 @@ RUN_MANIFEST = Path("experiments/run_manifest.md")
 EXPECTED_COUNTS = {
     "local_reference.jsonl": 72,
     "deepseek_live.jsonl": 72,
-    "kimi_live.jsonl": 1,
+    "kimi_live.jsonl": 72,
 }
 
 EXPECTED_VARIANTS = {
@@ -23,7 +23,9 @@ EXPECTED_VARIANTS = {
     ("deepseek", "no_harness"): 24,
     ("deepseek", "thick_checklist"): 24,
     ("deepseek", "thin_contract"): 24,
-    ("kimi", "thin_contract"): 1,
+    ("kimi", "no_harness"): 24,
+    ("kimi", "thick_checklist"): 24,
+    ("kimi", "thin_contract"): 24,
 }
 
 LIVE_USAGE_FIELDS = ["provider", "model", "endpoint", "schema_version", "prompt_sha256"]
@@ -62,13 +64,9 @@ def main() -> None:
     kimi_provider_errors = sum(_has_note(row, "provider_error:") for row in rows_by_file.get("kimi_live.jsonl", []))
     if kimi_provider_errors != 0:
         findings.append(f"kimi_live.jsonl: expected 0 provider-error rows, found {kimi_provider_errors}")
-    kimi_behavior_errors = sum(
-        row.get("over_under_trigger_error", 0)
-        for row in rows_by_file.get("kimi_live.jsonl", [])
-        if not _has_note(row, "provider_error:")
-    )
-    if kimi_behavior_errors:
-        findings.append(f"kimi_live.jsonl: provider-error rows must not contribute behavior failures")
+    kimi_parse_errors = sum(_has_note(row, "parse_error:") for row in rows_by_file.get("kimi_live.jsonl", []))
+    if kimi_parse_errors != 2:
+        findings.append(f"kimi_live.jsonl: expected 2 parse-error rows, found {kimi_parse_errors}")
 
     manifest = RUN_MANIFEST.read_text(encoding="utf-8")
     required_manifest_phrases = [
@@ -76,8 +74,9 @@ def main() -> None:
         "refreshed on 2026-06-26",
         "current aggregate tables count 1 parse-error row",
         "No current DeepSeek rows carry `usage.rerun_reason=parse_error`",
-        "official `.cn` endpoint",
-        "endpoint-validation smoke",
+        "with 72 raw rows, 24 cases x 3 variants",
+        "current aggregate tables count 2 Kimi parse-error rows",
+        "No current Kimi rows are provider-error rows",
     ]
     for phrase in required_manifest_phrases:
         if phrase not in manifest:

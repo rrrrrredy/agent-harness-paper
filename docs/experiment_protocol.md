@@ -38,7 +38,7 @@ Credentials are read only from environment variables. They must not be written t
 .\.venv\Scripts\python scripts\generate_figures.py
 ```
 
-Only rows present in `experiments/raw/*.jsonl` should be cited. The committed Kimi row is a one-case live smoke used to verify the official `.cn` endpoint and runner integration; it is not a full provider benchmark.
+Only rows present in `experiments/raw/*.jsonl` should be cited. The committed Kimi file is a 72-row pilot live run at the official `.cn` endpoint; it is not a general provider benchmark.
 The live runner refuses accidental overwrite of existing raw files unless `--resume` or `--force-overwrite` is supplied. Use ignored `logs/live-reruns/` outputs for provider smoke tests, then intentionally promote reviewed rows into `experiments/raw/`.
 
 ## Evidence Snapshots

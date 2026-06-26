@@ -22,12 +22,15 @@
 - Metadata: rows include provider, model id, endpoint, schema version, and prompt SHA-256 directly from `scripts/run_model_experiment.py`.
 - Parse-error status: current aggregate tables count 1 parse-error row. No current DeepSeek rows carry `usage.rerun_reason=parse_error`.
 
-## Kimi Live Attempt
+## Kimi Live Run
 
-- Runner: `scripts/run_model_experiment.py --provider kimi --variants thin_contract --limit 1`
+- Runner: `scripts/run_model_experiment.py --provider kimi --limit 24`
 - Endpoint: `https://api.moonshot.cn/v1/chat/completions`
 - Model: `kimi-k2.7-code`
 - Credential source: process environment variable `MOONSHOT_API_KEY`
+- Cases: 24
+- Variants: `no_harness`, `thick_checklist`, `thin_contract`
 - Raw output: `experiments/raw/kimi_live.jsonl`
-- Status: refreshed on 2026-06-26 from reviewed `logs/live-reruns/kimi_thin_contract_smoke.jsonl`, then promoted into committed raw results with 1 raw row for the first `thin_contract` case. The row executed successfully at the official `.cn` endpoint and is treated as an endpoint-validation smoke, not a full provider benchmark.
-- Metadata: row includes provider, model id, endpoint, schema version, prompt SHA-256, token counts, and elapsed seconds directly from `scripts/run_model_experiment.py`.
+- Status: refreshed on 2026-06-26 from reviewed `logs/live-reruns/kimi_full_smoke.jsonl`, then promoted into committed raw results with 72 raw rows, 24 cases x 3 variants. Aggregate tables were regenerated after promotion.
+- Metadata: rows include provider, model id, endpoint, schema version, prompt SHA-256, token counts, and elapsed seconds directly from `scripts/run_model_experiment.py`.
+- Parse-error status: current aggregate tables count 2 Kimi parse-error rows. No current Kimi rows are provider-error rows.

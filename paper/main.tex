@@ -114,13 +114,13 @@ Three prompt variants are supported. The \texttt{no\_harness} variant gives the 
 \begin{table}[h]
 \centering
 \input{../results/tables/experiment_summary.tex}
-\caption{Pilot results regenerated from raw JSONL. The reference policy checks benchmark mechanics. DeepSeek rows are a 72-row live API run. The Kimi row is a one-case live smoke at the official \texttt{.cn} endpoint, not a full provider benchmark.}
+\caption{Pilot results regenerated from raw JSONL. The reference policy checks benchmark mechanics. DeepSeek and Kimi each contribute 72 live API rows. These pilot rows are not a general provider benchmark.}
 \label{tab:pilot}
 \end{table}
 
-The deterministic reference policy is not a model benchmark. It verifies that the case definitions, simulator, metrics, and aggregation logic are internally consistent. The live DeepSeek run contains 72 model-backed rows. One row is classified as a parse error. Parser failures are classified separately from provider availability failures. The Kimi row is a one-case endpoint-validation smoke at \texttt{https://api.moonshot.cn/v1/chat/completions}; it executed successfully but is not used for provider-level conclusions.
+The deterministic reference policy is not a model benchmark. It verifies that the case definitions, simulator, metrics, and aggregation logic are internally consistent. The live DeepSeek and Kimi runs each contain 72 model-backed rows. DeepSeek has one parse-error row; Kimi has two parse-error rows. Parser failures are classified separately from provider availability failures.
 
-In this pilot, the unstructured no-harness prompt failed all cases under the action-plan scoring because it usually did not emit executable tool actions. The text-only thin-contract prompt achieved a higher success rate than the thick checklist variant, but both still failed many stateful cases. Appendix Tables~\ref{tab:category-summary} and~\ref{tab:failure-taxonomy} show that the remaining failures are dominated by routing and state-diff errors, not permission violations. This supports the strong-contract argument in a narrow sense, while also sharpening it. A contract written only as natural language is still a prompt. A production harness needs enforceable schemas, tool APIs, parsers, retries, and state checks around that contract.
+In this pilot, the unstructured no-harness prompt usually failed under action-plan scoring because it did not emit executable tool actions or violated tool boundaries. Thin-contract prompting outperformed the thick checklist in both live runs: DeepSeek improved from 0.458 to 0.542 task success, and Kimi improved from 0.750 to 0.875. Both models still failed some stateful and replay cases. Appendix Tables~\ref{tab:category-summary} and~\ref{tab:failure-taxonomy} show that the remaining failures are dominated by routing, state-diff, and parser errors rather than provider availability. This supports the strong-contract argument in a narrow sense, while also sharpening it. A contract written only as natural language is still a prompt. A production harness needs enforceable schemas, tool APIs, parsers, retries, and state checks around that contract.
 
 All live provider runners read credentials only from process environment variables~\cite{deepseekapi,kimiapi}. The Kimi runner uses the \texttt{max\_completion\_tokens} request field and the \texttt{api.moonshot.cn} service address documented by the Kimi Open Platform.
 
@@ -188,7 +188,7 @@ The raw rows are the source of reported pilot metrics. GitHub metadata snapshots
 \begin{table}[h]
 \centering
 \input{../results/tables/category_summary.tex}
-\caption{DeepSeek pilot results by prompt variant and case category.}
+\caption{Pilot results by provider, prompt variant, and case category.}
 \label{tab:category-summary}
 \end{table}
 
