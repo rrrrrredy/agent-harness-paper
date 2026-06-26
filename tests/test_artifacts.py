@@ -31,6 +31,7 @@ def test_required_artifacts_exist():
         "scripts/check_artifact_consistency.py",
         "scripts/check_entrypoint_commands.py",
         "scripts/check_release_references.py",
+        "scripts/check_validate_workflow_paths.py",
         "scripts/check_status_notes.py",
         "scripts/check_run_manifest_alignment.py",
         "scripts/check_claim_traceability.py",

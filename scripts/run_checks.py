@@ -34,6 +34,7 @@ VALIDATE = [
     [sys.executable, "scripts/check_artifact_consistency.py"],
     [sys.executable, "scripts/check_entrypoint_commands.py"],
     [sys.executable, "scripts/check_release_references.py"],
+    [sys.executable, "scripts/check_validate_workflow_paths.py"],
     [sys.executable, "scripts/check_status_notes.py"],
     [sys.executable, "scripts/check_run_manifest_alignment.py"],
     [sys.executable, "scripts/check_claim_traceability.py"],
