@@ -36,6 +36,7 @@ Validation covers deterministic tests, citation/source checks, public-trace chec
 
 - Artifact map: `artifact_manifest.json`
 - Reviewer guide: `docs/reviewer_guide.md`
+- Claim traceability: `docs/claim_traceability.md`
 - Claim boundaries: `docs/claim_boundaries.md`
 - Data dictionary: `docs/data_dictionary.md`
 - Live rerun promotion: `docs/live_rerun_promotion.md`
