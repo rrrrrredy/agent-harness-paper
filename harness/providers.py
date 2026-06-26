@@ -16,8 +16,10 @@ PROVIDERS = {
     },
     "kimi": {
         "env": "MOONSHOT_API_KEY",
-        "base_url": "https://api.moonshot.ai/v1/chat/completions",
+        "base_url": "https://api.moonshot.cn/v1/chat/completions",
         "model": "kimi-k2.7-code",
+        "token_field": "max_completion_tokens",
+        "token_limit": 1200,
     },
 }
 
@@ -26,6 +28,7 @@ def call_provider(provider: str, prompt: str, *, timeout: int = 90) -> dict[str,
     config = PROVIDERS[provider]
     key = require_provider_key(provider)
 
+    token_field = str(config.get("token_field", "max_tokens"))
     body = {
         "model": config["model"],
         "messages": [
@@ -33,7 +36,7 @@ def call_provider(provider: str, prompt: str, *, timeout: int = 90) -> dict[str,
             {"role": "user", "content": prompt},
         ],
         "stream": False,
-        "max_tokens": 700,
+        token_field: int(config.get("token_limit", 700)),
     }
     data = json.dumps(body).encode("utf-8")
     req = request.Request(

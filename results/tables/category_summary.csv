@@ -14,7 +14,7 @@ deepseek,thin_contract,permission_security,4,4,0.75,0.75,1
 deepseek,thin_contract,replay_recovery,3,3,0.0,0.333,2
 deepseek,thin_contract,stateful_tool_use,6,6,0.333,0.333,2
 deepseek,thin_contract,trigger_routing,8,8,0.625,0.875,3
-kimi,thin_contract,trigger_routing,1,0,0.0,0.0,0
+kimi,thin_contract,trigger_routing,1,1,1.0,1.0,0
 local_reference,no_harness,memory_scoping,3,3,1.0,1.0,0
 local_reference,no_harness,permission_security,4,4,1.0,1.0,0
 local_reference,no_harness,replay_recovery,3,3,1.0,1.0,0

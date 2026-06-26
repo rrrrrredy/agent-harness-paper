@@ -4,7 +4,7 @@
 
 - `local_reference`: deterministic local reference policy used to verify benchmark mechanics.
 - `deepseek`: live API calls through `DEEPSEEK_API_KEY`, model `deepseek-v4-pro`, endpoint `https://api.deepseek.com/chat/completions`.
-- `kimi`: live API calls through `MOONSHOT_API_KEY`, model `kimi-k2.7-code`, endpoint `https://api.moonshot.ai/v1/chat/completions`.
+- `kimi`: live API calls through `MOONSHOT_API_KEY`, model `kimi-k2.7-code`, endpoint `https://api.moonshot.cn/v1/chat/completions`.
 
 Credentials are read only from environment variables. They must not be written to files, command outputs, figures, tables, or logs.
 
@@ -38,7 +38,7 @@ Credentials are read only from environment variables. They must not be written t
 .\.venv\Scripts\python scripts\generate_figures.py
 ```
 
-Only rows present in `experiments/raw/*.jsonl` should be cited.
+Only rows present in `experiments/raw/*.jsonl` should be cited. The committed Kimi row is a one-case live smoke used to verify the official `.cn` endpoint and runner integration; it is not a full provider benchmark.
 The live runner refuses accidental overwrite of existing raw files unless `--resume` or `--force-overwrite` is supplied. Use ignored `logs/live-reruns/` outputs for provider smoke tests, then intentionally promote reviewed rows into `experiments/raw/`.
 
 ## Evidence Snapshots

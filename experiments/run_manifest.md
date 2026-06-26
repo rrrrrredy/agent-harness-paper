@@ -25,9 +25,9 @@
 ## Kimi Live Attempt
 
 - Runner: `scripts/run_model_experiment.py --provider kimi --variants thin_contract --limit 1`
-- Endpoint: `https://api.moonshot.ai/v1/chat/completions`
+- Endpoint: `https://api.moonshot.cn/v1/chat/completions`
 - Model: `kimi-k2.7-code`
 - Credential source: process environment variable `MOONSHOT_API_KEY`
 - Raw output: `experiments/raw/kimi_live.jsonl`
-- Status: provider returned HTTP 401 invalid authentication for the supplied credential. Treat as provider availability/authentication failure, not model behavior.
-- Metadata: row includes provider, model id, endpoint, schema version, and prompt SHA-256 after `scripts/backfill_run_metadata.py`.
+- Status: refreshed on 2026-06-26 from reviewed `logs/live-reruns/kimi_thin_contract_smoke.jsonl`, then promoted into committed raw results with 1 raw row for the first `thin_contract` case. The row executed successfully at the official `.cn` endpoint and is treated as an endpoint-validation smoke, not a full provider benchmark.
+- Metadata: row includes provider, model id, endpoint, schema version, prompt SHA-256, token counts, and elapsed seconds directly from `scripts/run_model_experiment.py`.

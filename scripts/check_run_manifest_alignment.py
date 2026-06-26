@@ -60,8 +60,8 @@ def main() -> None:
         findings.append(f"deepseek_live.jsonl: expected 0 usage.rerun_reason=parse_error rows, found {deepseek_rerun_rows}")
 
     kimi_provider_errors = sum(_has_note(row, "provider_error:") for row in rows_by_file.get("kimi_live.jsonl", []))
-    if kimi_provider_errors != 1:
-        findings.append(f"kimi_live.jsonl: expected 1 provider-error row, found {kimi_provider_errors}")
+    if kimi_provider_errors != 0:
+        findings.append(f"kimi_live.jsonl: expected 0 provider-error rows, found {kimi_provider_errors}")
     kimi_behavior_errors = sum(
         row.get("over_under_trigger_error", 0)
         for row in rows_by_file.get("kimi_live.jsonl", [])
@@ -76,7 +76,8 @@ def main() -> None:
         "refreshed on 2026-06-26",
         "current aggregate tables count 1 parse-error row",
         "No current DeepSeek rows carry `usage.rerun_reason=parse_error`",
-        "provider returned HTTP 401 invalid authentication",
+        "official `.cn` endpoint",
+        "endpoint-validation smoke",
     ]
     for phrase in required_manifest_phrases:
         if phrase not in manifest:
