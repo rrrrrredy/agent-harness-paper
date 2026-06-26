@@ -1,6 +1,6 @@
 # arXiv Endorsement Candidate Notes
 
-Status: draft candidate list. Do not send mail until the arXiv submission flow provides a six-character endorsement code and Song Luo approves the final recipient list.
+Status: supporting notes for selecting an arXiv endorsement first-contact group. Active endorsement links and codes should remain outside public artifact packages.
 
 ## Recommended First Contact
 
@@ -19,6 +19,7 @@ Why they fit:
 Source:
 
 - https://github.com/swe-agent/swe-agent
+
 
 ## Other Strong Candidates
 
