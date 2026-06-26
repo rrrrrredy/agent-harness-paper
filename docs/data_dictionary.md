@@ -104,6 +104,7 @@ Sources: `results/tables/*.md`, `results/tables/*.csv`, and `results/tables/*.te
 - `scripts/check_external_decisions.py`: Checks that `docs/external_decision_register.md` covers venue template, license, anonymization policy, artifact sharing mode, and live-provider rerun policy.
 - `scripts/check_archive_manifest_alignment.py`: Checks that file and directory paths advertised in `artifact_manifest.json` are represented in the archive file selection.
 - `scripts/check_release_references.py`: Checks checked PDF artifact references and prevents moving validation run IDs from being committed.
+- `scripts/check_validate_workflow_paths.py`: Checks that reviewer-facing top-level docs and artifact paths trigger validation workflow runs.
 - `scripts/build_artifact_archive.py --check`: Checks archive file selection without writing a zip.
 - `scripts/check_provider_credentials.py`: Checks provider credential environment-variable presence before live reruns without printing credential values.
 - `scripts/run_model_experiment.py --output`: Writes live rerun rows to a selected JSONL path and refuses accidental overwrite unless `--resume` or `--force-overwrite` is supplied.
