@@ -4,7 +4,7 @@ This index provides a compact entrypoint for reviewing, rebuilding, and validati
 
 ## Status And License
 
-This is a submission-ready, non-anonymous arXiv-style preprint artifact package for Song Luo. It uses the standard LaTeX `article` class rather than a conference proceedings template. The intended release posture is a public Zenodo artifact archive while the working GitHub repository remains private unless separately opened.
+This is a submission-ready, non-anonymous arXiv-style preprint artifact package for Song Luo. It uses the standard LaTeX `article` class rather than a conference proceedings template. The public artifact archive is published on Zenodo at https://doi.org/10.5281/zenodo.20907471 while the working GitHub repository remains private unless separately opened.
 
 The repository is dual-licensed. Code is under the MIT License; the manuscript source, documentation, benchmark cases, evidence snapshots, derived tables, figures, and release metadata are under Creative Commons Attribution 4.0 International (CC BY 4.0). See `LICENSE`, `LICENSE-MIT`, and `LICENSE-CC-BY-4.0.md`.
 Submission, license, anonymization, artifact-sharing, and live-provider rerun decisions are tracked in `docs/external_decision_register.md`.
@@ -18,6 +18,9 @@ Submission, license, anonymization, artifact-sharing, and live-provider rerun de
 - Latest checked PDF run: `28217508824`
 - PDF artifact name: `agent-harness-paper-pdf`
 - GitHub release tag: `v0.1.0-preprint`
+- Zenodo record: https://zenodo.org/records/20907471
+- Zenodo version DOI: https://doi.org/10.5281/zenodo.20907471
+- Zenodo all-versions DOI: https://doi.org/10.5281/zenodo.20907470
 
 To retrieve the checked PDF artifact with GitHub CLI:
 

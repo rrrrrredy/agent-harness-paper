@@ -12,7 +12,10 @@
     "anonymization": "none",
     "primary_category": "cs.SE",
     "cross_list": "cs.AI",
-    "artifact_sharing": "public Zenodo archive DOI pending"
+    "artifact_sharing": "public Zenodo archive",
+    "zenodo_record": "https://zenodo.org/records/20907471",
+    "zenodo_doi": "10.5281/zenodo.20907471",
+    "zenodo_concept_doi": "10.5281/zenodo.20907470"
   },
   "license": {
     "code": "MIT",

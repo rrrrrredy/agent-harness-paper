@@ -61,14 +61,20 @@
     "author": "Song Luo",
     "primary_category": "cs.SE",
     "cross_list": "cs.AI",
-    "artifact_sharing": "public Zenodo archive DOI pending"
+    "artifact_sharing": "public Zenodo archive",
+    "zenodo_record": "https://zenodo.org/records/20907471",
+    "zenodo_doi": "10.5281/zenodo.20907471",
+    "zenodo_concept_doi": "10.5281/zenodo.20907470"
   },
   "release_status": {
     "pdf_workflow": ".github/workflows/latex.yml",
     "latest_checked_pdf_run": "28217508824",
     "pdf_artifact_name": "agent-harness-paper-pdf",
     "validation_workflow": ".github/workflows/validate.yml",
-    "github_release_tag": "v0.1.0-preprint"
+    "github_release_tag": "v0.1.0-preprint",
+    "zenodo_record": "https://zenodo.org/records/20907471",
+    "zenodo_doi": "10.5281/zenodo.20907471",
+    "zenodo_concept_doi": "10.5281/zenodo.20907470"
   },
   "live_preflight_commands": [
     ".\\.venv\\Scripts\\python scripts\\check_provider_credentials.py --provider deepseek",

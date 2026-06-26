@@ -1,6 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this artifact, please cite the paper and archived artifact."
 title: "Thin Harness, Strong Contracts: Production-Oriented Agent Harnesses for Stateful AI Agents"
+doi: "10.5281/zenodo.20907471"
+url: "https://zenodo.org/records/20907471"
 authors:
   - family-names: "Luo"
     given-names: "Song"
