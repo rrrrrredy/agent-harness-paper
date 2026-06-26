@@ -3,6 +3,8 @@ name: Validate artifact package
 on:
   push:
     paths:
+      - "README.md"
+      - "CHANGELOG.md"
       - "artifact_manifest.json"
       - "benchmark/**"
       - "docs/**"
