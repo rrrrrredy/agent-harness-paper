@@ -54,12 +54,14 @@ Live model runs require environment variables and do not store credentials:
 ```powershell
 $env:DEEPSEEK_API_KEY="..."
 python scripts/check_provider_credentials.py --provider deepseek
-python scripts/run_model_experiment.py --provider deepseek --variants thin_contract
+python scripts/run_model_experiment.py --provider deepseek --variants thin_contract --output logs/live-reruns/deepseek_live.jsonl
 
 $env:MOONSHOT_API_KEY="..."
 python scripts/check_provider_credentials.py --provider kimi
-python scripts/run_model_experiment.py --provider kimi --variants thin_contract
+python scripts/run_model_experiment.py --provider kimi --variants thin_contract --output logs/live-reruns/kimi_live.jsonl
 ```
+
+The live runner refuses to overwrite an existing output unless `--resume` or `--force-overwrite` is supplied. Use ignored `logs/live-reruns/` paths for smoke tests before promoting any new raw file into `experiments/raw/`.
 
 Parser-instrumentation repair for already recorded live rows also requires the relevant provider credential:
 

@@ -74,3 +74,4 @@ Equivalent individual commands:
 
 Live provider reruns require valid provider credentials in environment variables. Missing or invalid credentials should remain recorded as provider failures rather than replaced with invented measurements.
 Use `scripts/check_provider_credentials.py` before live reruns; it checks presence only and does not print credential values.
+Use ignored `logs/live-reruns/` outputs for smoke tests; replacing committed raw rows requires an explicit `--force-overwrite` or `--resume`.

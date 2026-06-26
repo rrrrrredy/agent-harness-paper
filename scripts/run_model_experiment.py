@@ -18,7 +18,9 @@ def main() -> None:
     parser.add_argument("--provider", choices=["deepseek", "kimi"], required=True)
     parser.add_argument("--variants", nargs="+", choices=VARIANTS, default=list(VARIANTS))
     parser.add_argument("--limit", type=int, default=24)
+    parser.add_argument("--output", help="Output JSONL path. Defaults to experiments/raw/{provider}_live.jsonl.")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--force-overwrite", action="store_true")
     args = parser.parse_args()
     try:
         require_provider_key(args.provider)
@@ -26,7 +28,8 @@ def main() -> None:
         raise SystemExit(str(exc)) from exc
 
     cases = load_cases()[: args.limit]
-    out = Path(f"experiments/raw/{args.provider}_live.jsonl")
+    out = resolve_output_path(args.provider, args.output)
+    validate_output_mode(out, resume=args.resume, force_overwrite=args.force_overwrite)
     out.parent.mkdir(parents=True, exist_ok=True)
     completed = set()
     if args.resume and out.exists():
@@ -71,6 +74,19 @@ def main() -> None:
                 handle.flush()
                 print(f"{args.provider} {variant} {case.id}: success={result.task_success}", flush=True)
     print(f"wrote {out}")
+
+
+def resolve_output_path(provider: str, output: str | None) -> Path:
+    if output:
+        return Path(output)
+    return Path(f"experiments/raw/{provider}_live.jsonl")
+
+
+def validate_output_mode(path: Path, *, resume: bool, force_overwrite: bool) -> None:
+    if path.exists() and not resume and not force_overwrite:
+        raise SystemExit(
+            f"output exists: {path}. Use --resume, --force-overwrite, or --output logs/live-reruns/<file>.jsonl"
+        )
 
 
 if __name__ == "__main__":
