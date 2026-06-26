@@ -13,13 +13,13 @@ Open venue, license, anonymization, artifact-sharing, and live-provider rerun de
 - Bibliography: `paper/references.bib`
 - Metadata: `paper/metadata.json`
 - PDF build workflow: `.github/workflows/latex.yml`
-- Latest checked PDF run: `28165652967`
+- Latest checked PDF run: `28212313090`
 - PDF artifact name: `agent-harness-paper-pdf`
 
 To retrieve the checked PDF artifact with GitHub CLI:
 
 ```powershell
-gh run download 28165652967 -n agent-harness-paper-pdf -D logs\artifact-download
+gh run download 28212313090 -n agent-harness-paper-pdf -D logs\artifact-download
 ```
 
 `logs/` is ignored by git and can be removed after local inspection.
