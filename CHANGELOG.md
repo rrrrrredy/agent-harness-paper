@@ -13,7 +13,7 @@
 - Added archive packaging, archive-manifest alignment checks, and clean-room archive smoke audits.
 - Added validation workflow path checks so reviewer-facing top-level docs remain covered by CI validation triggers.
 - Renamed the deterministic reference run to `local_reference` to keep reviewer-facing artifacts provider-neutral.
-- Fixed provider-error classification and later replaced the Kimi authentication-failure row with a successful `.cn` endpoint run.
+- Fixed provider-error classification and later resolved the Kimi endpoint mismatch with a successful `.cn` endpoint run.
 - Added an independent verification pass and regression coverage for provider-error classification.
 - Added GitHub Actions PDF build workflow and verified successful PDF artifact generation.
 - Refreshed the checked PDF artifact reference to run `28212313090`.

@@ -30,9 +30,9 @@ Credentials are read only from environment variables. They must not be written t
 .\.venv\Scripts\python scripts\collect_github_evidence.py
 .\.venv\Scripts\python scripts\run_local_reference.py
 .\.venv\Scripts\python scripts\check_provider_credentials.py --provider deepseek
-.\.venv\Scripts\python scripts\run_model_experiment.py --provider deepseek --limit 24 --output logs\live-reruns\deepseek_live.jsonl
+.\.venv\Scripts\python scripts\run_model_experiment.py --provider deepseek --limit 24 --output logs\live-reruns\deepseek_full_smoke.jsonl
 .\.venv\Scripts\python scripts\check_provider_credentials.py --provider kimi
-.\.venv\Scripts\python scripts\run_model_experiment.py --provider kimi --variants thin_contract --limit 1 --output logs\live-reruns\kimi_live.jsonl
+.\.venv\Scripts\python scripts\run_model_experiment.py --provider kimi --limit 24 --output logs\live-reruns\kimi_full_smoke.jsonl
 .\.venv\Scripts\python scripts\backfill_run_metadata.py
 .\.venv\Scripts\python scripts\analyze_results.py
 .\.venv\Scripts\python scripts\generate_figures.py
