@@ -14,8 +14,8 @@ This checklist governs how a new provider smoke run under `logs/live-reruns/` ca
 2. Write smoke output to ignored local storage:
 
    ```powershell
-   python scripts\run_model_experiment.py --provider deepseek --variants thin_contract --output logs\live-reruns\deepseek_live.jsonl
-   python scripts\run_model_experiment.py --provider kimi --variants thin_contract --output logs\live-reruns\kimi_live.jsonl
+   python scripts\run_model_experiment.py --provider deepseek --limit 24 --output logs\live-reruns\deepseek_full_smoke.jsonl
+   python scripts\run_model_experiment.py --provider kimi --limit 24 --output logs\live-reruns\kimi_full_smoke.jsonl
    ```
 
 3. Inspect row count, provider labels, variants, notes, usage metadata, and raw response preservation before promotion.

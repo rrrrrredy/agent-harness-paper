@@ -53,8 +53,8 @@
     ".\\.venv\\Scripts\\python scripts\\check_provider_credentials.py --provider kimi"
   ],
   "live_smoke_commands": [
-    ".\\.venv\\Scripts\\python scripts\\run_model_experiment.py --provider deepseek --variants thin_contract --output logs\\live-reruns\\deepseek_live.jsonl",
-    ".\\.venv\\Scripts\\python scripts\\run_model_experiment.py --provider kimi --variants thin_contract --output logs\\live-reruns\\kimi_live.jsonl"
+    ".\\.venv\\Scripts\\python scripts\\run_model_experiment.py --provider deepseek --limit 24 --output logs\\live-reruns\\deepseek_full_smoke.jsonl",
+    ".\\.venv\\Scripts\\python scripts\\run_model_experiment.py --provider kimi --limit 24 --output logs\\live-reruns\\kimi_full_smoke.jsonl"
   ],
   "validation_commands": [
     "python scripts/run_checks.py --mode validate",

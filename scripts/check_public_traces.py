@@ -43,6 +43,12 @@ BANNED_TERMS = [
     "run_codex_reference.py",
     "https://github.com/rrrrrredy/ai-radar-web",
     "https://github.com/rrrrrredy/ai-radar-skill",
+    "--provider kimi --variants thin_contract",
+    "--provider kimi --limit 1",
+    "one-case kimi",
+    "one case kimi",
+    "endpoint-validation smoke",
+    "authentication-failure row",
 ]
 
 
