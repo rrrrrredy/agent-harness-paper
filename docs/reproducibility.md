@@ -95,6 +95,7 @@ The archive helper packages tracked source artifacts and excludes local state, l
 
 ```powershell
 python scripts\build_artifact_archive.py --check
+python scripts\check_archive_manifest_alignment.py
 python scripts\build_artifact_archive.py
 ```
 

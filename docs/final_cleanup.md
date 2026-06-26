@@ -15,6 +15,7 @@ Use this checklist before sharing or submitting the artifact package.
 - `.\.venv\Scripts\python scripts\check_run_manifest_alignment.py`
 - `.\.venv\Scripts\python scripts\check_claim_traceability.py`
 - `.\.venv\Scripts\python scripts\check_external_decisions.py`
+- `.\.venv\Scripts\python scripts\check_archive_manifest_alignment.py`
 - `.\.venv\Scripts\python scripts\build_artifact_archive.py --check`
 - `.\.venv\Scripts\python scripts\secret_scan.py`
 - `.\.venv\Scripts\python scripts\audit_source_evidence.py --offline`

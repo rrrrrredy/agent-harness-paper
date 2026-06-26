@@ -35,6 +35,7 @@ def test_required_artifacts_exist():
         "scripts/check_run_manifest_alignment.py",
         "scripts/check_claim_traceability.py",
         "scripts/check_external_decisions.py",
+        "scripts/check_archive_manifest_alignment.py",
         "scripts/build_artifact_archive.py",
         "scripts/check_provider_credentials.py",
         "scripts/audit_source_evidence.py",

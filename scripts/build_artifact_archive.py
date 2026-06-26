@@ -63,6 +63,7 @@ REQUIRED_ARCHIVE_FILES = [
     "scripts/check_provider_credentials.py",
     "scripts/check_claim_traceability.py",
     "scripts/check_external_decisions.py",
+    "scripts/check_archive_manifest_alignment.py",
 ]
 
 
