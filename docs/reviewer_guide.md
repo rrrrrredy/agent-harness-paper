@@ -7,17 +7,19 @@ This repository is an artifact package for the paper:
 ## What To Read First
 
 1. `paper/main.tex` for the manuscript.
-2. `paper/metadata.json` for venue-neutral title, keywords, and short abstract.
+2. `paper/metadata.json` for title, keywords, submission defaults, and short abstract.
 3. `docs/artifact_release_index.md` for release-state entrypoints.
 4. `artifact_manifest.json` for the artifact map.
 5. `experiments/run_manifest.md` for what was run and what was not.
 6. `docs/data_dictionary.md` for benchmark, raw-result, derived-table, and validation-artifact fields.
 7. `docs/claim_traceability.md` for mapping manuscript claims to evidence and boundaries.
 8. `docs/live_rerun_promotion.md` for moving reviewed provider smoke outputs into cited raw results.
-9. `docs/external_decision_register.md` for venue, license, anonymization, artifact-sharing, and live-rerun decisions that remain outside the venue-neutral package.
-10. `docs/claim_boundaries.md` for permitted and excluded claims.
-11. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
-12. `docs/submission_readiness.md` for artifact-ready checks versus venue-specific decisions.
+9. `docs/external_decision_register.md` for submission, license, anonymization, artifact-sharing, and live-rerun decisions.
+10. `docs/arxiv_submission.md` for the selected preprint route.
+11. `docs/zenodo_release_plan.md` for archival artifact release.
+12. `docs/claim_boundaries.md` for permitted and excluded claims.
+13. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
+14. `docs/submission_readiness.md` for submission-ready checks.
 
 ## Result Sources
 
@@ -29,6 +31,8 @@ Primary result tables:
 - `results/tables/category_summary.md`
 - `results/tables/failure_taxonomy.md`
 - `results/tables/failure_inspection.md`
+- `results/tables/live_success_uncertainty.md`
+- `results/tables/live_pairwise_delta.md`
 
 The PDF workflow uses the TeX tables in the same directory.
 
@@ -74,6 +78,7 @@ Equivalent individual commands:
 ```powershell
 .\.venv\Scripts\python scripts\backfill_run_metadata.py
 .\.venv\Scripts\python scripts\analyze_results.py
+.\.venv\Scripts\python scripts\analyze_uncertainty.py
 .\.venv\Scripts\python scripts\inspect_failures.py
 .\.venv\Scripts\python scripts\generate_figures.py
 .\.venv\Scripts\python scripts\audit_source_evidence.py --offline

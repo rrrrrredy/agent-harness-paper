@@ -6,6 +6,18 @@
   },
   "date": "2026-06",
   "type": "systems preprint",
+  "submission": {
+    "target": "arXiv-style preprint",
+    "template": "standard LaTeX article class",
+    "anonymization": "none",
+    "primary_category": "cs.SE",
+    "cross_list": "cs.AI",
+    "artifact_sharing": "public Zenodo archive DOI pending"
+  },
+  "license": {
+    "code": "MIT",
+    "manuscript_docs_benchmark_results": "CC-BY-4.0"
+  },
   "keywords": [
     "agent harness",
     "stateful agents",

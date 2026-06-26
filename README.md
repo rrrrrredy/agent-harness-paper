@@ -8,13 +8,15 @@ The project studies agent harnesses as production infrastructure: runtime contro
 
 ## Status And License
 
-This is a working preprint artifact package, not a venue-specific submission bundle. No repository-wide license has been selected yet; reuse terms should be decided before external artifact release.
+This is a submission-ready, non-anonymous arXiv-style preprint artifact package for Song Luo. It uses the standard LaTeX `article` class rather than a conference proceedings template. The intended release posture is a public Zenodo artifact archive while the working GitHub repository remains private unless separately opened.
+
+The repository is dual-licensed. Code is under the MIT License; the manuscript source, documentation, benchmark cases, evidence snapshots, derived tables, figures, and release metadata are under Creative Commons Attribution 4.0 International (CC BY 4.0). See `LICENSE`, `LICENSE-MIT`, and `LICENSE-CC-BY-4.0.md`.
 
 ## Repository Layout
 
 ```text
 paper/          LaTeX manuscript and bibliography
-paper/metadata.json  venue-neutral paper metadata
+paper/metadata.json  submission metadata
 benchmark/      24 benchmark cases for routing, state, security, memory, replay
 harness/        small replayable harness and provider-independent evaluation logic
 scripts/        experiment, analysis, checks, and utility entrypoints
@@ -38,6 +40,7 @@ python scripts/run_checks.py --mode regenerate
 python -m pytest
 python scripts/run_local_reference.py
 python scripts/analyze_results.py
+python scripts/analyze_uncertainty.py
 python scripts/generate_figures.py
 python scripts/collect_github_evidence.py
 python scripts/audit_source_evidence.py --offline
@@ -75,5 +78,5 @@ Artifact validation is handled by `.github/workflows/validate.yml`.
 
 For review, start with `docs/reviewer_guide.md` and `artifact_manifest.json`.
 
-For release state and final checks, see `docs/artifact_release_index.md`, `docs/submission_readiness.md`, `CHANGELOG.md`, and `docs/final_cleanup.md`.
-External venue, license, anonymization, artifact-sharing, and live-rerun decisions are tracked in `docs/external_decision_register.md`.
+For release state and final checks, see `docs/artifact_release_index.md`, `docs/submission_readiness.md`, `docs/arxiv_submission.md`, `docs/zenodo_release_plan.md`, `CHANGELOG.md`, and `docs/final_cleanup.md`.
+Submission, license, anonymization, artifact-sharing, and live-rerun decisions are tracked in `docs/external_decision_register.md`.

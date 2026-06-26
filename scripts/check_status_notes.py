@@ -4,9 +4,9 @@ from pathlib import Path
 
 
 REQUIRED_NOTES = {
-    Path("README.md"): ["Status And License", "No repository-wide license"],
-    Path("docs/artifact_release_index.md"): ["Status And License", "No repository-wide license"],
-    Path("docs/submission_readiness.md"): ["No repository-wide license"],
+    Path("README.md"): ["Status And License", "dual-licensed", "MIT License", "CC BY 4.0"],
+    Path("docs/artifact_release_index.md"): ["Status And License", "dual-licensed", "MIT License", "CC BY 4.0"],
+    Path("docs/submission_readiness.md"): ["MIT", "CC BY 4.0", "Zenodo", "Song Luo"],
 }
 
 

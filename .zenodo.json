@@ -1,0 +1,26 @@
+{
+  "title": "Thin Harness, Strong Contracts: Production-Oriented Agent Harnesses for Stateful AI Agents",
+  "creators": [
+    {
+      "name": "Luo, Song"
+    }
+  ],
+  "description": "Preprint artifact package for a production-oriented agent harness framework, including a 24-case replayable pilot benchmark, live DeepSeek and Kimi run logs, derived tables, figures, evidence snapshots, and reproducibility checks.",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "keywords": [
+    "agent harness",
+    "stateful agents",
+    "tool-use evaluation",
+    "replay",
+    "permission policy",
+    "agent observability",
+    "skill operations"
+  ],
+  "access_right": "open",
+  "version": "0.1.0-preprint",
+  "language": "eng"
+}

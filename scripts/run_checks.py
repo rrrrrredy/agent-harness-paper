@@ -48,6 +48,7 @@ VALIDATE = [
 REGENERATE = [
     [sys.executable, "scripts/backfill_run_metadata.py"],
     [sys.executable, "scripts/analyze_results.py"],
+    [sys.executable, "scripts/analyze_uncertainty.py"],
     [sys.executable, "scripts/inspect_failures.py"],
     [sys.executable, "scripts/generate_figures.py"],
 ]

@@ -1,0 +1,7 @@
+provider,variant,n_executed,task_successes,task_success_rate,task_success_ci95,state_diff_successes,state_diff_rate,state_diff_ci95
+deepseek,no_harness,24,0,0.000,"[0.000, 0.138]",14,0.583,"[0.388, 0.755]"
+deepseek,thick_checklist,24,11,0.458,"[0.279, 0.649]",17,0.708,"[0.508, 0.851]"
+deepseek,thin_contract,24,13,0.542,"[0.351, 0.721]",16,0.667,"[0.467, 0.820]"
+kimi,no_harness,24,1,0.042,"[0.007, 0.202]",14,0.583,"[0.388, 0.755]"
+kimi,thick_checklist,24,18,0.750,"[0.551, 0.880]",18,0.750,"[0.551, 0.880]"
+kimi,thin_contract,24,21,0.875,"[0.690, 0.957]",21,0.875,"[0.690, 0.957]"

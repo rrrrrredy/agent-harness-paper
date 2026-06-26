@@ -95,11 +95,36 @@ Sources: `results/tables/*.md`, `results/tables/*.csv`, and `results/tables/*.te
 - `failure_class`: One of `provider_error`, `parse_error`, `invalid_tool_call`, `permission_violation`, `unsafe_secret_access`, `routing_error`, `state_diff_error`, or `other_behavior_failure`.
 - `count`: Number of rows assigned to the class.
 
+### Live Success Uncertainty
+
+- `provider`: Live provider label. Current values are `deepseek` and `kimi`.
+- `variant`: Prompt variant.
+- `n_executed`: Rows excluding provider availability/authentication failures.
+- `task_successes`: Count of executed rows with `task_success=true`.
+- `task_success_rate`: `task_successes / n_executed`.
+- `task_success_ci95`: Wilson 95% interval over committed pilot rows.
+- `state_diff_successes`: Count of executed rows with `state_diff_correct=true`.
+- `state_diff_rate`: `state_diff_successes / n_executed`.
+- `state_diff_ci95`: Wilson 95% interval over committed pilot rows.
+
+### Live Pairwise Delta
+
+- `provider`: Live provider label.
+- `comparison`: Prompt-variant contrast. Current value is `thin_contract - thick_checklist`.
+- `n_paired_cases`: Number of cases present for both variants after excluding provider availability/authentication failures.
+- `paired_delta`: Mean paired task-success difference, computed as thin-contract success minus thick-checklist success.
+- `bootstrap_ci95`: Deterministic paired bootstrap interval over cases.
+- `thin_only_wins`: Cases where thin-contract succeeds and thick-checklist fails.
+- `thick_only_wins`: Cases where thick-checklist succeeds and thin-contract fails.
+- `both_success`: Cases where both variants succeed.
+- `both_fail`: Cases where both variants fail.
+
 ## Validation Artifacts
 
 - `scripts/run_checks.py --mode validate`: Deterministic validation entrypoint.
 - `scripts/run_checks.py --mode regenerate`: Derived-result regeneration entrypoint.
 - `scripts/check_run_manifest_alignment.py`: Checks raw-result counts, live metadata, parse-error counts, and provider-error status against `experiments/run_manifest.md`.
+- `scripts/analyze_uncertainty.py`: Regenerates descriptive uncertainty and paired-delta tables from committed live rows.
 - `scripts/check_claim_traceability.py`: Checks that `docs/claim_traceability.md` includes required evidence references and boundaries.
 - `scripts/check_external_decisions.py`: Checks that `docs/external_decision_register.md` covers venue template, license, anonymization policy, artifact sharing mode, and live-provider rerun policy.
 - `scripts/check_archive_manifest_alignment.py`: Checks that file and directory paths advertised in `artifact_manifest.json` are represented in the archive file selection.
@@ -109,6 +134,6 @@ Sources: `results/tables/*.md`, `results/tables/*.csv`, and `results/tables/*.te
 - `scripts/check_provider_credentials.py`: Checks provider credential environment-variable presence before live reruns without printing credential values.
 - `scripts/run_model_experiment.py --output`: Writes live rerun rows to a selected JSONL path and refuses accidental overwrite unless `--resume` or `--force-overwrite` is supplied.
 - `docs/live_rerun_promotion.md`: Checklist for promoting reviewed `logs/live-reruns/` outputs into cited `experiments/raw/` rows.
-- `docs/external_decision_register.md`: Register for venue, license, anonymization, artifact-sharing, and live-rerun decisions that remain outside the venue-neutral package.
+- `docs/external_decision_register.md`: Register for submission, license, anonymization, artifact-sharing, and live-rerun decisions.
 - `.github/workflows/validate.yml`: Remote validation workflow.
 - `.github/workflows/latex.yml`: Remote PDF build workflow.

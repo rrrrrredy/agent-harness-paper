@@ -14,10 +14,12 @@ REQUIRED_DECISIONS = [
 ]
 
 REQUIRED_TERMS = [
-    "external decision required",
-    "safe default",
+    "resolved default",
+    "selected default",
     "unblock action",
     "submission gate",
+    "arxiv",
+    "zenodo",
 ]
 
 

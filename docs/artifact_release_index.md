@@ -4,8 +4,10 @@ This index provides a compact entrypoint for reviewing, rebuilding, and validati
 
 ## Status And License
 
-This is a working preprint artifact package, not a venue-specific submission bundle. No repository-wide license has been selected yet; reuse terms should be decided before external artifact release.
-Open venue, license, anonymization, artifact-sharing, and live-provider rerun decisions are tracked in `docs/external_decision_register.md`.
+This is a submission-ready, non-anonymous arXiv-style preprint artifact package for Song Luo. It uses the standard LaTeX `article` class rather than a conference proceedings template. The intended release posture is a public Zenodo artifact archive while the working GitHub repository remains private unless separately opened.
+
+The repository is dual-licensed. Code is under the MIT License; the manuscript source, documentation, benchmark cases, evidence snapshots, derived tables, figures, and release metadata are under Creative Commons Attribution 4.0 International (CC BY 4.0). See `LICENSE`, `LICENSE-MIT`, and `LICENSE-CC-BY-4.0.md`.
+Submission, license, anonymization, artifact-sharing, and live-provider rerun decisions are tracked in `docs/external_decision_register.md`.
 
 ## Manuscript
 
@@ -40,6 +42,8 @@ Validation covers deterministic tests, citation/source checks, public-trace chec
 - Claim traceability: `docs/claim_traceability.md`
 - Claim boundaries: `docs/claim_boundaries.md`
 - External decision register: `docs/external_decision_register.md`
+- arXiv submission notes: `docs/arxiv_submission.md`
+- Zenodo release plan: `docs/zenodo_release_plan.md`
 - Data dictionary: `docs/data_dictionary.md`
 - Live rerun promotion: `docs/live_rerun_promotion.md`
 - Experiment protocol: `docs/experiment_protocol.md`
@@ -49,6 +53,8 @@ Validation covers deterministic tests, citation/source checks, public-trace chec
 - Result summary: `results/tables/experiment_summary.md`
 - Category summary: `results/tables/category_summary.md`
 - Failure taxonomy: `results/tables/failure_taxonomy.md`
+- Live uncertainty: `results/tables/live_success_uncertainty.md`
+- Live paired delta: `results/tables/live_pairwise_delta.md`
 - Figure: `figures/success_by_variant.svg`
 
 ## Rebuild Order

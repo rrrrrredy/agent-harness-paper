@@ -6,9 +6,12 @@
 - Added a 24-case replayable benchmark for routing, stateful tool use, permission/security, memory scoping, and replay/recovery.
 - Added deterministic reference results, live DeepSeek results, and live Kimi results.
 - Added regenerated aggregate tables, category summaries, failure taxonomy, failure inspection, and SVG figure.
+- Added live-run Wilson interval and paired-delta tables for descriptive pilot uncertainty.
 - Added GitHub metadata snapshots, path-level source evidence audit, and explicit claim-boundary documentation.
 - Added claim-to-evidence traceability and validation for manuscript claim boundaries.
-- Added an external decision register for venue, license, anonymization, artifact-sharing, and live-rerun decisions.
+- Added an external decision register for submission, license, anonymization, artifact-sharing, and live-rerun decisions.
+- Selected the non-anonymous arXiv-style preprint route for Song Luo, with `cs.SE` as the suggested primary category and `cs.AI` as suggested cross-list.
+- Added MIT and CC BY 4.0 licensing files, `CITATION.cff`, `.zenodo.json`, an arXiv submission note, a Zenodo release plan, and an endorsement email draft.
 - Added live-rerun promotion guidance and overwrite protection for provider smoke outputs.
 - Added archive packaging, archive-manifest alignment checks, and clean-room archive smoke audits.
 - Added validation workflow path checks so reviewer-facing top-level docs remain covered by CI validation triggers.
@@ -24,4 +27,4 @@
 
 - Rerun live provider rows only when valid provider keys are present in environment variables.
 - Perform deeper source-code audits before making stronger implementation-behavior claims.
-- Adapt the manuscript to a target venue format if a venue is selected.
+- Adapt the manuscript to a different venue format only if a venue beyond arXiv is later selected.

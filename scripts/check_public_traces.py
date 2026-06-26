@@ -9,6 +9,13 @@ PUBLIC_FILES = [
     Path("artifact_manifest.json"),
     Path("paper/main.tex"),
     Path("paper/metadata.json"),
+    Path("CITATION.cff"),
+    Path(".zenodo.json"),
+    Path("LICENSE"),
+    Path("LICENSE-MIT"),
+    Path("LICENSE-CC-BY-4.0.md"),
+    Path("docs/arxiv_submission.md"),
+    Path("docs/arxiv_endorsement_email.md"),
     Path("docs/artifact_release_index.md"),
     Path("docs/claim_traceability.md"),
     Path("docs/data_dictionary.md"),
@@ -17,6 +24,7 @@ PUBLIC_FILES = [
     Path("docs/reproducibility.md"),
     Path("docs/reviewer_guide.md"),
     Path("docs/submission_readiness.md"),
+    Path("docs/zenodo_release_plan.md"),
     Path("docs/final_cleanup.md"),
     Path("evidence/inventory.md"),
     Path("evidence/github_evidence.json"),
@@ -49,6 +57,7 @@ BANNED_TERMS = [
     "one case kimi",
     "endpoint-validation smoke",
     "authentication-failure row",
+    "https://github.com/rrrrrredy/agent-harness-paper",
 ]
 
 
