@@ -38,6 +38,8 @@ Credential preflight checks only whether the required environment variable is pr
 .\.venv\Scripts\python scripts\check_provider_credentials.py --provider kimi
 ```
 
+Use ignored `logs\live-reruns\` outputs for new provider smoke tests. The live runner refuses to overwrite an existing output unless `--resume` or `--force-overwrite` is supplied.
+
 Parser-instrumentation repair for already recorded live rows also requires the relevant provider credential:
 
 ```powershell

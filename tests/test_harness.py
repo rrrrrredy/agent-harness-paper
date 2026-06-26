@@ -2,6 +2,7 @@ import pytest
 
 from harness.core import evaluate_case, load_cases
 from harness.providers import has_provider_key, provider_env_var, require_provider_key
+from scripts.run_model_experiment import resolve_output_path, validate_output_mode
 
 
 def test_cases_load_and_have_expected_count():
@@ -58,3 +59,13 @@ def test_provider_credential_preflight_missing_env(monkeypatch):
     assert not has_provider_key("deepseek")
     with pytest.raises(RuntimeError, match="DEEPSEEK_API_KEY"):
         require_provider_key("deepseek")
+
+
+def test_live_runner_refuses_accidental_overwrite(tmp_path):
+    output = tmp_path / "deepseek_live.jsonl"
+    output.write_text("{}\n", encoding="utf-8")
+    with pytest.raises(SystemExit, match="output exists"):
+        validate_output_mode(output, resume=False, force_overwrite=False)
+    validate_output_mode(output, resume=True, force_overwrite=False)
+    validate_output_mode(output, resume=False, force_overwrite=True)
+    assert resolve_output_path("deepseek", None).as_posix() == "experiments/raw/deepseek_live.jsonl"
