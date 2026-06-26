@@ -50,6 +50,7 @@ REQUIRED_ARCHIVE_FILES = [
     "docs/artifact_release_index.md",
     "docs/claim_traceability.md",
     "docs/data_dictionary.md",
+    "docs/external_decision_register.md",
     "docs/live_rerun_promotion.md",
     "docs/reproducibility.md",
     "docs/submission_readiness.md",
@@ -61,6 +62,7 @@ REQUIRED_ARCHIVE_FILES = [
     ".github/workflows/validate.yml",
     "scripts/check_provider_credentials.py",
     "scripts/check_claim_traceability.py",
+    "scripts/check_external_decisions.py",
 ]
 
 

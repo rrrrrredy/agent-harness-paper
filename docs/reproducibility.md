@@ -99,3 +99,5 @@ python scripts\build_artifact_archive.py
 ```
 
 The default zip output is `dist/agent-harness-paper-artifact.zip`; `dist/` is ignored by git.
+
+Before sharing the archive externally, review `docs/external_decision_register.md` for venue template, license, anonymization, artifact-sharing, and live-provider rerun decisions that are intentionally outside deterministic regeneration.

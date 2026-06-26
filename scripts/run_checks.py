@@ -37,6 +37,7 @@ VALIDATE = [
     [sys.executable, "scripts/check_status_notes.py"],
     [sys.executable, "scripts/check_run_manifest_alignment.py"],
     [sys.executable, "scripts/check_claim_traceability.py"],
+    [sys.executable, "scripts/check_external_decisions.py"],
     [sys.executable, "scripts/build_artifact_archive.py", "--check"],
     [sys.executable, "scripts/audit_source_evidence.py", "--offline"],
     [sys.executable, "scripts/secret_scan.py"],

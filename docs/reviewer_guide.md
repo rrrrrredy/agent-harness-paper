@@ -14,9 +14,10 @@ This repository is an artifact package for the paper:
 6. `docs/data_dictionary.md` for benchmark, raw-result, derived-table, and validation-artifact fields.
 7. `docs/claim_traceability.md` for mapping manuscript claims to evidence and boundaries.
 8. `docs/live_rerun_promotion.md` for moving reviewed provider smoke outputs into cited raw results.
-9. `docs/claim_boundaries.md` for permitted and excluded claims.
-10. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
-11. `docs/submission_readiness.md` for artifact-ready checks versus venue-specific decisions.
+9. `docs/external_decision_register.md` for venue, license, anonymization, artifact-sharing, and live-rerun decisions that remain outside the venue-neutral package.
+10. `docs/claim_boundaries.md` for permitted and excluded claims.
+11. `docs/experiment_protocol.md` for metrics, providers, variants, and regeneration commands.
+12. `docs/submission_readiness.md` for artifact-ready checks versus venue-specific decisions.
 
 ## Result Sources
 
@@ -55,6 +56,7 @@ Use the local virtual environment if present:
 .\.venv\Scripts\python scripts\check_status_notes.py
 .\.venv\Scripts\python scripts\check_run_manifest_alignment.py
 .\.venv\Scripts\python scripts\check_claim_traceability.py
+.\.venv\Scripts\python scripts\check_external_decisions.py
 .\.venv\Scripts\python scripts\build_artifact_archive.py --check
 .\.venv\Scripts\python scripts\secret_scan.py
 ```
