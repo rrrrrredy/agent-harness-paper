@@ -4,7 +4,7 @@
 
 - Created the LaTeX manuscript and supporting bibliography.
 - Added a 24-case replayable benchmark for routing, stateful tool use, permission/security, memory scoping, and replay/recovery.
-- Added deterministic reference results, live DeepSeek results, and a one-case Kimi live endpoint-validation smoke.
+- Added deterministic reference results, live DeepSeek results, and live Kimi results.
 - Added regenerated aggregate tables, category summaries, failure taxonomy, failure inspection, and SVG figure.
 - Added GitHub metadata snapshots, path-level source evidence audit, and explicit claim-boundary documentation.
 - Added claim-to-evidence traceability and validation for manuscript claim boundaries.
@@ -13,7 +13,7 @@
 - Added archive packaging, archive-manifest alignment checks, and clean-room archive smoke audits.
 - Added validation workflow path checks so reviewer-facing top-level docs remain covered by CI validation triggers.
 - Renamed the deterministic reference run to `local_reference` to keep reviewer-facing artifacts provider-neutral.
-- Fixed provider-error classification and later replaced the Kimi authentication-failure row with a successful `.cn` endpoint smoke.
+- Fixed provider-error classification and later replaced the Kimi authentication-failure row with a successful `.cn` endpoint run.
 - Added an independent verification pass and regression coverage for provider-error classification.
 - Added GitHub Actions PDF build workflow and verified successful PDF artifact generation.
 - Refreshed the checked PDF artifact reference to run `28212313090`.

@@ -7,3 +7,13 @@
 | deepseek | thick_checklist | state_diff_error | 7 |
 | deepseek | thin_contract | routing_error | 8 |
 | deepseek | thin_contract | state_diff_error | 8 |
+| kimi | no_harness | invalid_tool_call | 5 |
+| kimi | no_harness | parse_error | 1 |
+| kimi | no_harness | permission_violation | 5 |
+| kimi | no_harness | routing_error | 21 |
+| kimi | no_harness | state_diff_error | 9 |
+| kimi | thick_checklist | routing_error | 3 |
+| kimi | thick_checklist | state_diff_error | 6 |
+| kimi | thin_contract | parse_error | 1 |
+| kimi | thin_contract | routing_error | 1 |
+| kimi | thin_contract | state_diff_error | 2 |

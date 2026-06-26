@@ -2,7 +2,9 @@ provider,variant,n_total,n_executed,provider_errors,parse_errors,task_success_ra
 deepseek,no_harness,24,24,0,1,0.0,0.583,0,0,0,24,0.917
 deepseek,thick_checklist,24,24,0,0,0.458,0.708,0,0,0,12,0.917
 deepseek,thin_contract,24,24,0,0,0.542,0.667,0,0,0,8,0.958
-kimi,thin_contract,1,1,0,0,1.0,1.0,0,0,0,0,1.0
+kimi,no_harness,24,24,0,1,0.042,0.583,9,9,0,22,0.917
+kimi,thick_checklist,24,24,0,0,0.75,0.75,0,0,0,3,0.958
+kimi,thin_contract,24,24,0,1,0.875,0.875,0,0,0,2,0.958
 local_reference,no_harness,24,24,0,0,1.0,1.0,0,0,0,0,1.0
 local_reference,thick_checklist,24,24,0,0,1.0,1.0,0,0,0,0,1.0
 local_reference,thin_contract,24,24,0,0,1.0,1.0,0,0,0,0,1.0
