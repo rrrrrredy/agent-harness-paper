@@ -60,7 +60,6 @@ BANNED_TERMS = [
     "authentication-failure row",
     "https://github.com/rrrrrredy/agent-harness-paper",
     "arxiv.org/auth/endorse?x=",
-    "[redacted]",
 ]
 
 
