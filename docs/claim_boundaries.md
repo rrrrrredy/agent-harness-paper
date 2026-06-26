@@ -9,6 +9,7 @@ The manuscript may claim:
 - The 24-case benchmark is a pilot harness shape and reproducibility artifact.
 - Live API results, when present, are bounded to the exact date, endpoint, model id, prompt variant, and raw result file.
 - The committed Kimi result may be described as a 72-row pilot live run, not as a general model or provider evaluation.
+- Kimi's stronger pilot success rates may be described only as artifact-specific observations from the committed run, not as provider superiority.
 - Model-lab proximity may be discussed only as a hypothesis or design implication, not as a demonstrated causal result.
 
 The manuscript must not claim:
