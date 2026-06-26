@@ -18,9 +18,9 @@
 - Cases: 24
 - Variants: `no_harness`, `thick_checklist`, `thin_contract`
 - Raw output: `experiments/raw/deepseek_live.jsonl`
-- Status: completed with 72 raw rows, 24 cases x 3 variants. Aggregate tables were regenerated after completion.
-- Metadata: rows include provider, model id, endpoint, schema version, and prompt SHA-256 after `scripts/backfill_run_metadata.py`.
-- Parse-error rerun: 3 DeepSeek rows carry `usage.rerun_reason=parse_error` from parser-instrumentation repair. Current aggregate tables count 2 parse-error rows: one repaired row that still returned malformed JSON and one non-rerun parser failure in the current raw file.
+- Status: refreshed on 2026-06-26 from reviewed `logs/live-reruns/deepseek_full_smoke.jsonl`, then promoted into committed raw results with 72 raw rows, 24 cases x 3 variants. Aggregate tables were regenerated after promotion.
+- Metadata: rows include provider, model id, endpoint, schema version, and prompt SHA-256 directly from `scripts/run_model_experiment.py`.
+- Parse-error status: current aggregate tables count 1 parse-error row. No current DeepSeek rows carry `usage.rerun_reason=parse_error`.
 
 ## Kimi Live Attempt
 
