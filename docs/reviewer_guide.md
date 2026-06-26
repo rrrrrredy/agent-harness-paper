@@ -57,6 +57,7 @@ Use the local virtual environment if present:
 .\.venv\Scripts\python scripts\check_run_manifest_alignment.py
 .\.venv\Scripts\python scripts\check_claim_traceability.py
 .\.venv\Scripts\python scripts\check_external_decisions.py
+.\.venv\Scripts\python scripts\check_archive_manifest_alignment.py
 .\.venv\Scripts\python scripts\build_artifact_archive.py --check
 .\.venv\Scripts\python scripts\secret_scan.py
 ```

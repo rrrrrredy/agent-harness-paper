@@ -31,7 +31,7 @@ gh run download 28165652967 -n agent-harness-paper-pdf -D logs\artifact-download
 - Validation workflow: `.github/workflows/validate.yml`
 - Current validation status: `gh run list --workflow "Validate artifact package" --limit 1`
 
-Validation covers deterministic tests, citation/source checks, public-trace checks, artifact consistency, external-decision register checks, offline source-audit validation, and secret scanning.
+Validation covers deterministic tests, citation/source checks, public-trace checks, artifact consistency, external-decision register checks, archive-manifest alignment, offline source-audit validation, and secret scanning.
 
 ## Evidence And Results
 
