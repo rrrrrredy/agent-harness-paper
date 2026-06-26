@@ -59,6 +59,8 @@ BANNED_TERMS = [
     "endpoint-validation smoke",
     "authentication-failure row",
     "https://github.com/rrrrrredy/agent-harness-paper",
+    "arxiv.org/auth/endorse?x=",
+    "[redacted]",
 ]
 
 

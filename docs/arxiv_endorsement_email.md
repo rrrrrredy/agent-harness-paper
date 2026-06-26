@@ -10,9 +10,9 @@ The paper argues that production agent harnesses should be thin around model cog
 
 Your SWE-agent / ACI work is cited in the paper because it helped ground the discussion of how agent-computer interfaces shape software-engineering agent behavior. Thank you for making that work and its artifact available.
 
-arXiv has asked me to obtain endorsement. If you are comfortable endorsing the submission, the endorsement link is:
+arXiv has asked me to obtain endorsement. If you are comfortable endorsing the submission, the formal endorsement link is:
 
-[redacted arXiv endorsement link]
+[paste the current arXiv endorsement link from the arXiv request email]
 
 The arXiv endorsement help page is:
 https://info.arxiv.org/help/endorsement.html
@@ -31,4 +31,4 @@ Song Luo
 - AgentDojo authors, because the paper cites prompt-injection and unsafe tool-use evaluation in dynamic tool environments.
 - SWE-agent / ACI authors, because the paper cites agent-computer interface design for software engineering agents.
 
-Use this draft for the current arXiv endorsement request `[redacted]`.
+Do not commit active endorsement links or codes to public artifact packages. Use the formal arXiv request email as the source of the current link/code at send time.

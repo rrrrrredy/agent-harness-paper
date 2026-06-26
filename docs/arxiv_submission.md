@@ -19,7 +19,7 @@
 1. Build or download the checked PDF from the GitHub Actions artifact.
 2. Build `dist/agent-harness-paper-artifact.zip` and upload it to Zenodo.
 3. Use the Zenodo artifact DOI `10.5281/zenodo.20907471` in the arXiv submission comments if appropriate.
-4. If arXiv requests endorsement, use the endorsement link `[redacted arXiv endorsement link]` and `docs/arxiv_endorsement_email.md` as the email draft.
+4. If arXiv requests endorsement, use the formal arXiv request email and `docs/arxiv_endorsement_email.md` as the email draft; do not commit active endorsement links or codes to public artifacts.
 5. Submit as non-anonymous author Song Luo.
 
 ## Pending External Inputs
