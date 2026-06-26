@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 logs/
 dist/
+state/
 *.pyc
 *.log
 *.aux

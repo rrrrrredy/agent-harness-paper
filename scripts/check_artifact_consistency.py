@@ -24,10 +24,12 @@ def main() -> None:
     for path in FORBIDDEN_RUN_LOGS:
         if path.exists():
             findings.append(f"ignored run log should not remain in workspace: {path}")
-    todo = Path("state/todo.md").read_text(encoding="utf-8").lower()
-    for term in STALE_TODO_TERMS:
-        if term in todo:
-            findings.append(f"stale todo term found: {term}")
+    todo_path = Path("state/todo.md")
+    if todo_path.exists():
+        todo = todo_path.read_text(encoding="utf-8").lower()
+        for term in STALE_TODO_TERMS:
+            if term in todo:
+                findings.append(f"stale todo term found: {term}")
     if findings:
         raise SystemExit("artifact consistency check failed:\n" + "\n".join(findings))
     print("artifact consistency check passed")
