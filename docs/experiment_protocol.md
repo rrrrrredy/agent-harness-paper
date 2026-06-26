@@ -47,7 +47,7 @@ The live runner refuses accidental overwrite of existing raw files unless `--res
 
 ## Live Row Metadata
 
-`scripts/backfill_run_metadata.py` adds stable metadata to live raw rows without changing model outputs or scores: provider, model id, endpoint, schema version, and prompt SHA-256. It also normalizes legacy parser-error note labels so aggregation does not confuse JSON parsing failures with provider availability failures. This makes old raw rows comparable to future reruns when result tables are regenerated.
+`scripts/run_model_experiment.py` writes stable metadata to live rows without changing model outputs or scores: provider, model id, endpoint, schema version, and prompt SHA-256. `scripts/backfill_run_metadata.py` preserves compatibility for older committed rows and normalizes legacy parser-error note labels so aggregation does not confuse JSON parsing failures with provider availability failures. This makes old raw rows comparable to future reruns when result tables are regenerated.
 
 ## Reporting Tables
 

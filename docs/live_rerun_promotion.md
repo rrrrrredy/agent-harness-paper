@@ -24,7 +24,7 @@ This checklist governs how a new provider smoke run under `logs/live-reruns/` ca
 
 - Credential values were never committed, printed into docs, or stored in raw rows.
 - Smoke rows have expected `provider`, `variant`, `case_id`, and `category` fields.
-- Live rows include `usage.model`, `usage.endpoint`, `usage.provider`, `usage.schema_version`, and `usage.prompt_sha256` after metadata backfill.
+- Live rows include `usage.model`, `usage.endpoint`, `usage.provider`, `usage.schema_version`, and `usage.prompt_sha256` before promotion. Current runner outputs should include these directly; older rows may be repaired with metadata backfill.
 - Provider availability failures remain labeled as `provider_error`.
 - Parser failures remain labeled as `parse_error`.
 - The run is intentionally chosen to replace or extend the committed raw-result base.
