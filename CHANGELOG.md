@@ -12,6 +12,7 @@
 - Added an external decision register for submission, license, anonymization, artifact-sharing, and live-rerun decisions.
 - Selected the non-anonymous arXiv-style preprint route for Song Luo, with `cs.SE` as the suggested primary category and `cs.AI` as suggested cross-list.
 - Added MIT and CC BY 4.0 licensing files, `CITATION.cff`, `.zenodo.json`, an arXiv submission note, a Zenodo release plan, and an endorsement email draft.
+- Created non-draft latest GitHub release `v0.1.0-preprint` with the checked PDF and artifact zip.
 - Added live-rerun promotion guidance and overwrite protection for provider smoke outputs.
 - Added archive packaging, archive-manifest alignment checks, and clean-room archive smoke audits.
 - Added validation workflow path checks so reviewer-facing top-level docs remain covered by CI validation triggers.
