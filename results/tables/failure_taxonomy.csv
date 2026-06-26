@@ -1,9 +1,9 @@
 provider,variant,failure_class,count
-deepseek,no_harness,parse_error,2
-deepseek,no_harness,routing_error,22
+deepseek,no_harness,parse_error,1
+deepseek,no_harness,routing_error,23
 deepseek,no_harness,state_diff_error,9
-deepseek,thick_checklist,routing_error,7
-deepseek,thick_checklist,state_diff_error,6
-deepseek,thin_contract,routing_error,9
-deepseek,thin_contract,state_diff_error,5
+deepseek,thick_checklist,routing_error,12
+deepseek,thick_checklist,state_diff_error,7
+deepseek,thin_contract,routing_error,8
+deepseek,thin_contract,state_diff_error,8
 kimi,thin_contract,provider_error,1

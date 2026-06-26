@@ -54,10 +54,10 @@ def main() -> None:
     deepseek_rows = rows_by_file.get("deepseek_live.jsonl", [])
     deepseek_parse_errors = sum(_has_note(row, "parse_error:") for row in deepseek_rows)
     deepseek_rerun_rows = sum((row.get("usage") or {}).get("rerun_reason") == "parse_error" for row in deepseek_rows)
-    if deepseek_parse_errors != 2:
-        findings.append(f"deepseek_live.jsonl: expected 2 parse-error rows, found {deepseek_parse_errors}")
-    if deepseek_rerun_rows != 3:
-        findings.append(f"deepseek_live.jsonl: expected 3 usage.rerun_reason=parse_error rows, found {deepseek_rerun_rows}")
+    if deepseek_parse_errors != 1:
+        findings.append(f"deepseek_live.jsonl: expected 1 parse-error row, found {deepseek_parse_errors}")
+    if deepseek_rerun_rows != 0:
+        findings.append(f"deepseek_live.jsonl: expected 0 usage.rerun_reason=parse_error rows, found {deepseek_rerun_rows}")
 
     kimi_provider_errors = sum(_has_note(row, "provider_error:") for row in rows_by_file.get("kimi_live.jsonl", []))
     if kimi_provider_errors != 1:
@@ -72,9 +72,10 @@ def main() -> None:
 
     manifest = RUN_MANIFEST.read_text(encoding="utf-8")
     required_manifest_phrases = [
-        "completed with 72 raw rows",
-        "usage.rerun_reason=parse_error",
-        "Current aggregate tables count 2 parse-error rows",
+        "with 72 raw rows",
+        "refreshed on 2026-06-26",
+        "current aggregate tables count 1 parse-error row",
+        "No current DeepSeek rows carry `usage.rerun_reason=parse_error`",
         "provider returned HTTP 401 invalid authentication",
     ]
     for phrase in required_manifest_phrases:
