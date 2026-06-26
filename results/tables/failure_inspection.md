@@ -48,4 +48,3 @@
 | deepseek | no_harness | replay_003 | replay_recovery | behavior | 0 | 0 | 1 |  |
 | deepseek | thick_checklist | replay_003 | replay_recovery | behavior | 0 | 0 | 1 |  |
 | deepseek | thin_contract | replay_003 | replay_recovery | behavior | 0 | 0 | 1 |  |
-| kimi | thin_contract | trigger_001 | trigger_routing | provider_error | 0 | 0 | 0 | provider_error:kimi HTTP 401: {"error":{"message":"Invalid Authentication","type":"invalid_authentication_error"}} |

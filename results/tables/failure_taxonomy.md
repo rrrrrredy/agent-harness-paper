@@ -7,4 +7,3 @@
 | deepseek | thick_checklist | state_diff_error | 7 |
 | deepseek | thin_contract | routing_error | 8 |
 | deepseek | thin_contract | state_diff_error | 8 |
-| kimi | thin_contract | provider_error | 1 |
