@@ -182,11 +182,11 @@ def write_failure_taxonomy_tex(path: Path, rows: list[dict]) -> None:
 
 def _failure_classes(row: dict) -> list[str]:
     notes = [str(note) for note in row.get("notes", [])]
-    classes = []
     if any(_is_provider_error(note) for note in notes):
-        classes.append("provider_error")
+        return ["provider_error"]
     if any(_is_parse_error(note) for note in notes):
-        classes.append("parse_error")
+        return ["parse_error"]
+    classes = []
     if row.get("invalid_tool_calls", 0):
         classes.append("invalid_tool_call")
     if row.get("permission_violations", 0):

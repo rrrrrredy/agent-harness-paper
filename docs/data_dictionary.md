@@ -28,7 +28,7 @@ Each row is one provider, prompt variant, and case result.
 
 - `case_id`: Case identifier from `benchmark/cases.jsonl`.
 - `category`: Copied case category.
-- `provider`: Runner/provider label, such as `codex_reference`, `deepseek`, or `kimi`.
+- `provider`: Runner/provider label, such as `local_reference`, `deepseek`, or `kimi`.
 - `variant`: Prompt variant. Values are `no_harness`, `thick_checklist`, and `thin_contract`.
 - `task_success`: Boolean task-level success under harness scoring.
 - `state_diff_correct`: Boolean final-state assertion result.

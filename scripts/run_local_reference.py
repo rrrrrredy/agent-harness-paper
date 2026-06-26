@@ -10,7 +10,7 @@ from harness.core import Case, evaluate_case, load_cases
 from harness.prompts import VARIANTS
 
 
-OUT = Path("experiments/raw/codex_reference.jsonl")
+OUT = Path("experiments/raw/local_reference.jsonl")
 
 
 def reference_actions(case: Case, variant: str) -> dict:
@@ -40,7 +40,7 @@ def main() -> None:
         for case in cases:
             for variant in VARIANTS:
                 payload = reference_actions(case, variant)
-                result = evaluate_case(case, payload, provider="codex_reference", variant=variant)
+                result = evaluate_case(case, payload, provider="local_reference", variant=variant)
                 handle.write(json.dumps(result.to_dict(), ensure_ascii=False) + "\n")
     print(f"wrote {OUT}")
 

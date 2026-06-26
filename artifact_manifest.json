@@ -13,7 +13,7 @@
     "metrics": "harness/core.py"
   },
   "raw_results": {
-    "codex_reference": "experiments/raw/codex_reference.jsonl",
+    "local_reference": "experiments/raw/local_reference.jsonl",
     "deepseek_live": "experiments/raw/deepseek_live.jsonl",
     "kimi_live_attempt": "experiments/raw/kimi_live.jsonl",
     "run_manifest": "experiments/run_manifest.md"

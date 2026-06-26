@@ -18,7 +18,7 @@ python scripts\run_checks.py --mode regenerate
 ## Deterministic Artifacts
 
 ```powershell
-.\.venv\Scripts\python scripts\run_codex_reference.py
+.\.venv\Scripts\python scripts\run_local_reference.py
 .\.venv\Scripts\python scripts\backfill_run_metadata.py
 .\.venv\Scripts\python scripts\analyze_results.py
 .\.venv\Scripts\python scripts\generate_figures.py

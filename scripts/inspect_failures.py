@@ -11,6 +11,7 @@ def main() -> None:
             if line.strip():
                 row = json.loads(line)
                 if not row.get("task_success") or row.get("permission_violations"):
+                    is_provider_error = any(_is_provider_error(str(note)) for note in row.get("notes", []))
                     rows.append(
                         {
                             "provider": row["provider"],
@@ -20,7 +21,7 @@ def main() -> None:
                             "error_class": _error_class(row.get("notes", [])),
                             "invalid_tool_calls": row["invalid_tool_calls"],
                             "permission_violations": row["permission_violations"],
-                            "routing_errors": row["over_under_trigger_error"],
+                            "routing_errors": 0 if is_provider_error else row["over_under_trigger_error"],
                             "notes": "; ".join(_display_notes(row.get("notes", []))[:3]),
                         }
                     )
