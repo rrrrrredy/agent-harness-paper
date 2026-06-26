@@ -55,6 +55,7 @@ REQUIRED_ARCHIVE_FILES = [
     "docs/artifact_release_index.md",
     "docs/arxiv_submission.md",
     "docs/arxiv_endorsement_email.md",
+    "docs/arxiv_endorsement_candidates.md",
     "docs/claim_traceability.md",
     "docs/data_dictionary.md",
     "docs/external_decision_register.md",

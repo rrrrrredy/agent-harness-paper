@@ -42,6 +42,7 @@
     "arxiv_submission": "docs/arxiv_submission.md",
     "zenodo_release_plan": "docs/zenodo_release_plan.md",
     "arxiv_endorsement_email": "docs/arxiv_endorsement_email.md",
+    "arxiv_endorsement_candidates": "docs/arxiv_endorsement_candidates.md",
     "claim_boundaries": "docs/claim_boundaries.md",
     "reviewer_guide": "docs/reviewer_guide.md",
     "release_index": "docs/artifact_release_index.md",
