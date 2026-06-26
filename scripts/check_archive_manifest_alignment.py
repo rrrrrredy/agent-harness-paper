@@ -41,9 +41,20 @@ def _manifest_paths(value: Any) -> set[str]:
     elif isinstance(value, list):
         return paths
     elif isinstance(value, str):
+        if _is_external_reference(value):
+            return paths
         if "/" in value or "\\" in value:
             paths.add(value)
     return paths
+
+
+def _is_external_reference(value: str) -> bool:
+    return (
+        value.startswith("http://")
+        or value.startswith("https://")
+        or value.startswith("doi:")
+        or value.startswith("10.")
+    )
 
 
 if __name__ == "__main__":

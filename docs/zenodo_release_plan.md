@@ -1,12 +1,15 @@
 # Zenodo Release Plan
 
-## Current Decision
+## Published Record
 
 - Archive mode: public Zenodo record.
 - Access right: open.
 - License: CC BY 4.0 for the archived artifact package.
 - Working repository: remains private unless separately opened.
-- Upload files: checked PDF plus `dist/agent-harness-paper-artifact.zip`.
+- Published record: https://zenodo.org/records/20907471
+- Version DOI: https://doi.org/10.5281/zenodo.20907471
+- All-versions DOI: https://doi.org/10.5281/zenodo.20907470
+- Uploaded files: checked PDF plus `dist/agent-harness-paper-artifact.zip`.
 
 ## Official Basis
 
@@ -26,10 +29,10 @@
 
 ## Release Steps
 
-1. Run `python scripts/run_checks.py --mode all`.
-2. Build `dist/agent-harness-paper-artifact.zip` with `python scripts/build_artifact_archive.py`.
-3. Download the checked PDF artifact from GitHub Actions.
-4. Upload the PDF and zip to Zenodo as a new public record.
-5. Confirm metadata matches `.zenodo.json`.
-6. Publish the Zenodo record.
-7. Record the DOI in `paper/metadata.json`, `artifact_manifest.json`, `docs/artifact_release_index.md`, and `CHANGELOG.md`.
+1. Completed: ran validation before release.
+2. Completed: built `dist/agent-harness-paper-artifact.zip` with `python scripts/build_artifact_archive.py`.
+3. Completed: downloaded the checked PDF artifact from GitHub Actions.
+4. Completed: uploaded the PDF and zip to Zenodo as a new public record.
+5. Completed: confirmed metadata matches `.zenodo.json`.
+6. Completed: published the Zenodo record.
+7. Completed: recorded the DOI in `paper/metadata.json`, `artifact_manifest.json`, `docs/artifact_release_index.md`, and `CHANGELOG.md`.

@@ -23,6 +23,7 @@
 - Refreshed the checked PDF artifact reference to run `28212313090`.
 - Added reviewer handoff files: `artifact_manifest.json` and `docs/reviewer_guide.md`.
 - Added offline validation for the source evidence audit.
+- Published the public Zenodo artifact record at `10.5281/zenodo.20907471`, with all-versions DOI `10.5281/zenodo.20907470`.
 
 ## Remaining Optional Work
 
