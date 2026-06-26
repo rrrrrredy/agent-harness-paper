@@ -3,7 +3,7 @@ import pytest
 from harness.core import evaluate_case, load_cases
 from harness.providers import has_provider_key, provider_env_var, require_provider_key
 from scripts.analyze_results import _failure_classes
-from scripts.run_model_experiment import resolve_output_path, validate_output_mode
+from scripts.run_model_experiment import resolve_output_path, run_usage_metadata, validate_output_mode
 
 
 def test_cases_load_and_have_expected_count():
@@ -83,3 +83,12 @@ def test_provider_error_is_not_counted_as_behavior_failure():
         "task_success": False,
     }
     assert _failure_classes(row) == ["provider_error"]
+
+
+def test_live_runner_usage_metadata_includes_audit_fields():
+    metadata = run_usage_metadata("deepseek", "hello")
+    assert metadata["provider"] == "deepseek"
+    assert metadata["model"] == "deepseek-v4-pro"
+    assert metadata["endpoint"] == "https://api.deepseek.com/chat/completions"
+    assert metadata["schema_version"] == "agent-harness-paper/v1"
+    assert len(str(metadata["prompt_sha256"])) == 64

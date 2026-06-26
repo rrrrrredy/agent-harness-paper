@@ -43,14 +43,11 @@ def main() -> None:
             for variant in args.variants:
                 if (case.id, variant) in completed:
                     continue
+                prompt = build_prompt(case, variant)
+                usage_metadata = run_usage_metadata(args.provider, prompt)
                 try:
-                    prompt = build_prompt(case, variant)
                     model_result = call_provider(args.provider, prompt)
-                    model_result["usage"] = model_result["usage"] | {
-                        "model": PROVIDERS[args.provider]["model"],
-                        "endpoint": PROVIDERS[args.provider]["base_url"],
-                        "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
-                    }
+                    model_result["usage"] = model_result["usage"] | usage_metadata
                     result = evaluate_case(
                         case,
                         model_result["payload"],
@@ -67,6 +64,7 @@ def main() -> None:
                         {"actions": []},
                         provider=args.provider,
                         variant=variant,
+                        usage=usage_metadata,
                         raw_response=f"ERROR: {exc}",
                     )
                     result.notes.append(f"provider_error:{exc}")
@@ -87,6 +85,16 @@ def validate_output_mode(path: Path, *, resume: bool, force_overwrite: bool) -> 
         raise SystemExit(
             f"output exists: {path}. Use --resume, --force-overwrite, or --output logs/live-reruns/<file>.jsonl"
         )
+
+
+def run_usage_metadata(provider: str, prompt: str) -> dict[str, object]:
+    return {
+        "model": PROVIDERS[provider]["model"],
+        "endpoint": PROVIDERS[provider]["base_url"],
+        "provider": provider,
+        "schema_version": "agent-harness-paper/v1",
+        "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+    }
 
 
 if __name__ == "__main__":

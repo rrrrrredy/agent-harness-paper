@@ -46,7 +46,7 @@ Each row is one provider, prompt variant, and case result.
 
 ## Live Usage Metadata
 
-Required for `deepseek_live.jsonl` and `kimi_live.jsonl` after metadata backfill.
+Required for `deepseek_live.jsonl`, `kimi_live.jsonl`, and reviewed smoke outputs. The live runner writes these fields directly; `scripts/backfill_run_metadata.py` preserves compatibility for older committed rows.
 
 - `provider`: Provider key used by the runner.
 - `model`: Model identifier configured in `harness/providers.py`.
