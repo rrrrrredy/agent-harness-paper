@@ -49,6 +49,7 @@ REQUIRED_ARCHIVE_FILES = [
     "experiments/run_manifest.md",
     "docs/artifact_release_index.md",
     "docs/data_dictionary.md",
+    "docs/live_rerun_promotion.md",
     "docs/reproducibility.md",
     "docs/submission_readiness.md",
     "evidence/github_snapshots.md",

@@ -11,6 +11,7 @@ PUBLIC_FILES = [
     Path("paper/metadata.json"),
     Path("docs/artifact_release_index.md"),
     Path("docs/data_dictionary.md"),
+    Path("docs/live_rerun_promotion.md"),
     Path("docs/reproducibility.md"),
     Path("docs/reviewer_guide.md"),
     Path("docs/submission_readiness.md"),

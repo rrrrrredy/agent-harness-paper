@@ -39,6 +39,7 @@ Credential preflight checks only whether the required environment variable is pr
 ```
 
 Use ignored `logs\live-reruns\` outputs for new provider smoke tests. The live runner refuses to overwrite an existing output unless `--resume` or `--force-overwrite` is supplied.
+Promote smoke outputs into cited raw results only through `docs/live_rerun_promotion.md`.
 
 Parser-instrumentation repair for already recorded live rows also requires the relevant provider credential:
 
