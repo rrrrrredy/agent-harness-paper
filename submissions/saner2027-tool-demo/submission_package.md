@@ -22,6 +22,7 @@
 ## Reviewer Commands
 
 ```powershell
+python scripts/build_saner_tool_demo_package.py
 python scripts/run_checks.py --mode validate
 python scripts/run_demo_walkthrough.py
 python scripts/run_repo_fixture_demo.py
@@ -33,6 +34,14 @@ Expected inspection points:
 - `results/fixtures/saner_repo_fixture_suite.md`
 - `results/tables/failure_taxonomy.md`
 - `results/tables/experiment_summary.md`
+
+The package builder writes a local submission index under
+`dist/submissions/saner2027-tool-demo/`:
+
+- `paper.pdf`
+- `submission_manifest.json`
+- `submission_manifest.md`
+- `sha256sums.txt`
 
 ## Current CI Evidence
 
@@ -46,5 +55,7 @@ Expected inspection points:
 - Confirm the PDF still includes repository, archive, and screencast URLs.
 - Confirm the GitHub repository is public.
 - Confirm the release asset video opens without authentication.
+- Run `python scripts/build_saner_tool_demo_package.py` and retain the generated
+  manifest with the submitted PDF record.
 - Confirm `python scripts/run_checks.py --mode validate` passes.
 - Confirm no API keys or private endorsement links are present.

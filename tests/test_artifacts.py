@@ -55,6 +55,7 @@ def test_required_artifacts_exist():
         "scripts/run_checks.py",
         "scripts/smoke_test.py",
         "scripts/build_anonymous_submission_artifact.py",
+        "scripts/build_saner_tool_demo_package.py",
         "scripts/run_repo_fixture_demo.py",
         "fixtures/repo_state_contract/contract.json",
         "fixtures/repo_state_contract/before/src/app.py",
