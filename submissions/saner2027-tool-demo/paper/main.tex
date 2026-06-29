@@ -149,6 +149,90 @@ This path exercises the tool without requiring provider credentials. Reviewers
 who want to reproduce live API runs can supply provider keys, but the
 submission does not depend on those keys.
 
+\section{Demonstration Storyboard}
+
+The screencast is organized around the questions a maintainer would ask before
+trusting an agent-generated change.
+
+\textbf{Step 1: inspect the contract.} The demo opens a case definition and
+shows the task, allowed tools, forbidden tools, required actions, and final
+state assertions. This makes the expected behavior explicit before any model
+output is considered.
+
+\textbf{Step 2: run the no-key reviewer path.} The demo runs the validation and
+walkthrough scripts. The walkthrough loads all 24 cases, evaluates a security
+case, regenerates local reference rows, and rebuilds aggregate tables. This
+demonstrates that the artifact is reviewable without live provider access.
+
+\textbf{Step 3: inspect repository-state evidence.} The demo runs the
+repository fixture suite and opens the generated diff, trace, and fixture-suite
+table. The passing scenario shows the expected patch and validation evidence.
+The negative scenarios show missing tests, a wrong-file mutation, and a secret
+read. These cases demonstrate why the tool evaluates state and policy rather
+than final answers alone.
+
+\textbf{Step 4: inspect aggregate failures.} The demo opens the regenerated
+failure taxonomy and summary tables. The goal is not to rank providers, but to
+show how operational failures become categories that a maintainer can act on:
+state-diff errors, permission violations, invalid tool calls, unsafe secret
+access, routing errors, parse failures, and recovery failures.
+
+\begin{table}[t]
+\caption{Reviewer Questions Supported by the Tool}
+\centering
+\begin{tabular}{p{0.34\linewidth}p{0.50\linewidth}}
+\toprule
+Reviewer question & Artifact evidence \\
+\midrule
+Did the agent change the intended file? & Unified diff and state assertions \\
+Did it run validation before claiming success? & Test-status trace and fixture result \\
+Did it cross a forbidden boundary? & Permission and secret-access metrics \\
+Can the failure be diagnosed later? & Action trace, observations, replay metadata \\
+Can results be regenerated? & No-key scripts and raw JSONL rows \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Artifact Evaluation}
+
+The tool-demo artifact is evaluated along four practical criteria.
+
+\textbf{Reproducibility.} The reviewer path runs without provider keys. The
+validation script checks tests, public-trace hygiene, release references,
+archive manifests, source evidence, and secret scanning. The analysis scripts
+rebuild tables from raw rows rather than relying on manually edited numbers.
+
+\textbf{Inspectability.} Each run preserves the action list, final mock state,
+notes, metric values, and raw response metadata where available. For repository
+fixtures, the tool also emits a diff and file hashes. This makes the execution
+auditable by a software maintainer, not only by an LLM evaluator.
+
+\textbf{Boundary coverage.} The current case set covers trigger/routing,
+stateful tools, permission and injection behavior, memory scoping, and
+replay/recovery. The fixture suite adds concrete repository evidence for one
+success case and three negative cases.
+
+\textbf{Extensibility.} New cases can be added as JSONL records with initial
+state, expected tools, forbidden tools, and assertions. New provider rows can
+be recorded without changing the analysis scripts. New repository fixtures can
+be added by materializing case state into before/after trees.
+
+\begin{table}[t]
+\caption{Artifact Evaluation Summary}
+\centering
+\begin{tabular}{p{0.28\linewidth}p{0.18\linewidth}p{0.38\linewidth}}
+\toprule
+Criterion & Status & Evidence \\
+\midrule
+No-key execution & Supported & Validation, walkthrough, local reference runner \\
+State-diff evidence & Supported & Fixture diff, hashes, final-state assertions \\
+Failure taxonomy & Supported & Regenerated tables from raw rows \\
+Provider reruns & Optional & Live runner requires user-supplied API keys \\
+Large repo scale & Future work & Current fixtures are intentionally small \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Relevance to SANER}
 
 The harness treats agent trajectories as analyzable software artifacts. It can
@@ -172,6 +256,22 @@ the expected validation ran.
 long checklists. The harness helps migrate those scripts toward explicit
 contracts: allowed tools, forbidden effects, state assertions, and review
 gates.
+
+\section{Adoption Scenario}
+
+A team maintaining a coding-agent workflow can use the tool as a regression
+suite. Before upgrading a model or changing a tool schema, the team records a
+small set of contracts that represent its repository policies: which files may
+be changed, which validation commands must run, which side effects require
+review, and which paths are forbidden. After the upgrade, the same cases are
+rerun. A changed final answer is not enough to fail or pass the upgrade; the
+team inspects the state-diff and policy outcomes.
+
+This adoption scenario is deliberately lightweight. The harness does not
+replace the agent runtime. It provides a boundary-oriented evaluation layer
+around the runtime. That is the central design choice: keep the harness thin
+around model cognition, but strong around external effects that software
+engineers must review and maintain.
 
 \section{Limitations}
 
