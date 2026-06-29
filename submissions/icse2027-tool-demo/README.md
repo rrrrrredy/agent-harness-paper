@@ -44,11 +44,15 @@ Use `paper/main.tex` as the source of claims, but rewrite as a tool paper:
    no leaderboard framing.
 6. Availability: GitHub, Zenodo DOI, release tag, YouTube demo.
 
+Temporary backup video URL before YouTube upload:
+https://github.com/rrrrrredy/agent-harness-paper/releases/download/v0.1.0-preprint/agent-harness-icse-tool-demo-video.mp4
+
 ## Blocking Risks
 
 - The current repository is useful but not packaged as an easy-to-run tool for
   reviewers who will not build from scratch.
-- The video must be polished and 3-5 minutes.
+- The video is generated and published as a GitHub Release backup asset, but
+  ICSE still requires a YouTube URL before submission.
 - The four-page limit forces aggressive compression.
 - The term "harness" must be operationalized through commands and output, not
   only described as a concept.

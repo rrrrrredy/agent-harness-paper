@@ -9,6 +9,9 @@ Core reframing: the harness is a software analysis tool for inspecting whether
 coding or workflow agents changed repository/workflow state correctly under an
 explicit contract.
 
+Current backup video URL:
+https://github.com/rrrrrredy/agent-harness-paper/releases/download/v0.1.0-preprint/agent-harness-saner-tool-demo-video.mp4
+
 ## Official Constraints
 
 - Format: IEEE conference proceedings format.
