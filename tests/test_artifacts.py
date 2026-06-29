@@ -54,20 +54,6 @@ def test_required_artifacts_exist():
         "scripts/audit_source_evidence.py",
         "scripts/run_checks.py",
         "scripts/smoke_test.py",
-        "scripts/build_anonymous_submission_artifact.py",
-        "scripts/check_anonymous_submission_package.py",
-        "scripts/build_saner_tool_demo_package.py",
-        "scripts/run_repo_fixture_demo.py",
-        "submissions/icse2027-nier/submission_package.md",
-        "submissions/saner2027-short-paper/submission_package.md",
-        "fixtures/repo_state_contract/contract.json",
-        "fixtures/repo_state_contract/before/src/app.py",
-        "results/fixtures/saner_repo_fixture_summary.md",
-        "results/fixtures/saner_repo_fixture_trace.json",
-        "results/fixtures/saner_repo_fixture.diff",
-        "results/fixtures/saner_repo_fixture_suite.md",
-        "results/fixtures/saner_repo_fixture_suite.csv",
-        "results/fixtures/saner_repo_fixture_suite.json",
     ]:
         assert Path(path).exists(), path
 

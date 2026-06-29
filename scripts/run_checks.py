@@ -41,8 +41,6 @@ VALIDATE = [
     [sys.executable, "scripts/check_external_decisions.py"],
     [sys.executable, "scripts/check_archive_manifest_alignment.py"],
     [sys.executable, "scripts/build_artifact_archive.py", "--check"],
-    [sys.executable, "scripts/check_anonymous_submission_package.py", "--track", "icse2027-nier", "--build"],
-    [sys.executable, "scripts/check_anonymous_submission_package.py", "--track", "saner2027-short-paper", "--build"],
     [sys.executable, "scripts/audit_source_evidence.py", "--offline"],
     [sys.executable, "scripts/secret_scan.py"],
 ]
@@ -51,7 +49,6 @@ REGENERATE = [
     [sys.executable, "scripts/backfill_run_metadata.py"],
     [sys.executable, "scripts/analyze_results.py"],
     [sys.executable, "scripts/analyze_uncertainty.py"],
-    [sys.executable, "scripts/run_repo_fixture_demo.py"],
     [sys.executable, "scripts/inspect_failures.py"],
     [sys.executable, "scripts/generate_figures.py"],
 ]

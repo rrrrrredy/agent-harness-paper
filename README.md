@@ -23,7 +23,6 @@ scripts/        experiment, analysis, checks, and utility entrypoints
 results/        regenerated tables and summaries
 evidence/       artifact inventory and generated GitHub evidence snapshots
 docs/           protocol, claim boundaries, reproducibility, reviewer guide
-submissions/    conference-specific submission plans, drafts, and video materials
 notes/          argument map, outline, related work notes
 tests/          deterministic unit tests
 ```

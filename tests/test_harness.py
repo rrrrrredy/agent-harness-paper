@@ -1,11 +1,8 @@
-from pathlib import Path
-
 import pytest
 
 from harness.core import evaluate_case, load_cases
 from harness.providers import has_provider_key, provider_env_var, require_provider_key
 from scripts.analyze_results import _failure_classes
-from scripts.run_repo_fixture_demo import safe_fixture_path
 from scripts.run_model_experiment import resolve_output_path, run_usage_metadata, validate_output_mode
 
 
@@ -95,11 +92,3 @@ def test_live_runner_usage_metadata_includes_audit_fields():
     assert metadata["endpoint"] == "https://api.deepseek.com/chat/completions"
     assert metadata["schema_version"] == "agent-harness-paper/v1"
     assert len(str(metadata["prompt_sha256"])) == 64
-
-
-def test_repo_fixture_rejects_path_escape(tmp_path):
-    assert safe_fixture_path(tmp_path, "src/app.py") == (tmp_path / "src" / "app.py").resolve()
-    with pytest.raises(ValueError, match="unsafe fixture path"):
-        safe_fixture_path(tmp_path, "../outside.py")
-    with pytest.raises(ValueError, match="unsafe fixture path"):
-        safe_fixture_path(tmp_path, Path(tmp_path.anchor) / "outside.py")

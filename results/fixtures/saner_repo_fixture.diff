@@ -1,5 +1,0 @@
---- before/src/app.py
-+++ after/src/app.py
-@@ -1 +1 @@
--VALUE = 1
-+VALUE = 2
