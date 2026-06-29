@@ -45,3 +45,27 @@ The NIER version should not look like a weak full paper. It should:
   memory-recall PR example.
 - Convert first-person ownership claims to artifact-based descriptions.
 - Remove email, profile, arXiv, Zenodo, and YouTube references.
+
+## Anonymous Supplemental Package
+
+Build a local anonymous package with:
+
+```powershell
+python scripts/build_anonymous_submission_artifact.py --track icse2027-nier
+```
+
+Output:
+
+- `dist/anonymous/icse2027-nier-anonymous-artifact.zip`
+
+The script copies only the harness, benchmark cases, selected recorded rows,
+regenerated result tables, tests, and anonymous NIER source. It refuses to
+package author-identifying strings such as public profile, repository, Zenodo,
+or active arXiv endorsement references.
+
+Reviewer no-dependency check inside the extracted package:
+
+```powershell
+python scripts/run_demo_walkthrough.py
+python scripts/smoke_test.py
+```
