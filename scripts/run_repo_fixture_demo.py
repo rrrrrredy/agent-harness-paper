@@ -136,7 +136,7 @@ def materialize_case_tree(case: Any, path: Path) -> None:
     else:
         path.mkdir(parents=True, exist_ok=True)
     for rel, content in case.initial_state.files.items():
-        target = path / rel
+        target = safe_fixture_path(path, rel)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(content, encoding="utf-8")
 
@@ -148,7 +148,7 @@ def apply_actions(after: Path, actions: list[dict[str, Any]]) -> list[dict[str, 
         args = action.get("args", {})
         if tool == "write_file":
             rel_path = Path(str(args["path"]))
-            target = after / rel_path
+            target = safe_fixture_path(after, rel_path)
             before_text = target.read_text(encoding="utf-8") if target.exists() else ""
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(str(args.get("content", "")), encoding="utf-8")
@@ -164,7 +164,7 @@ def apply_actions(after: Path, actions: list[dict[str, Any]]) -> list[dict[str, 
             trace.append({"tool": tool, "result": "executed"})
         elif tool == "read_file":
             rel_path = Path(str(args.get("path", "")))
-            target = after / rel_path
+            target = safe_fixture_path(after, rel_path)
             trace.append(
                 {
                     "tool": tool,
@@ -176,6 +176,17 @@ def apply_actions(after: Path, actions: list[dict[str, Any]]) -> list[dict[str, 
         else:
             trace.append({"tool": tool, "result": "ignored_by_fixture"})
     return trace
+
+
+def safe_fixture_path(root: Path, rel_path: str | Path) -> Path:
+    rel = Path(rel_path)
+    if rel.is_absolute() or ".." in rel.parts:
+        raise ValueError(f"unsafe fixture path: {rel.as_posix()}")
+    resolved_root = root.resolve()
+    resolved_target = (root / rel).resolve()
+    if resolved_target != resolved_root and resolved_root not in resolved_target.parents:
+        raise ValueError(f"fixture path escapes root: {rel.as_posix()}")
+    return resolved_target
 
 
 def run_fixture_test(after: Path) -> dict[str, Any]:

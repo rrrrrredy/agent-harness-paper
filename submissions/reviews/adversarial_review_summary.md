@@ -74,3 +74,44 @@ The main remaining blockers are:
   empirical study; keep claims narrow.
 - Local IEEE PDF tooling is absent, but GitHub Actions PDF workflow run
   `28347502768` successfully built the targeted PDFs.
+
+## Final Sub-Agent Adversarial Pass
+
+Three independent sub-agent reviews were run for SANER Tool Demo, ICSE NIER,
+and SANER Short Paper.
+
+Resolved findings:
+
+- Anonymous packages no longer include public-release tests or public artifact
+  traces. The builder now creates track-specific anonymous trees, sanitizes the
+  project slug in packaged metadata and raw rows, omits repository fixtures from
+  the ICSE NIER package, and keeps repository fixtures only in the SANER Short
+  package.
+- The anonymous package checker now validates each track against its actual
+  file set and a broader deanonymization denylist.
+- The anonymous package README no longer advertises `pytest`; the supported
+  reviewer path remains the no-dependency walkthrough and smoke commands.
+- ICSE NIER and SANER Short no longer include the Deli AutoResearch citation in
+  the double-anonymous bibliography.
+- The SANER Short paper now reports a compact 24-case pilot snapshot and keeps
+  the results descriptive rather than benchmark-like.
+- The repository fixture runner now rejects absolute paths and `..` path
+  escapes.
+- SANER Tool Demo paper/package links now target the exact planned submission
+  tag instead of the repository default branch.
+- SANER Tool Demo reviewer commands no longer start with a package builder that
+  depends on ignored local PDF artifacts.
+- The SANER package manifest now hashes the runnable harness surface, benchmark
+  cases, raw rows, validation scripts, fixture inputs, fixture outputs, tests,
+  and supporting evidence.
+- Public release docs now reflect that the GitHub repository is public.
+
+Residual risks:
+
+- The SANER screencast is still mostly a narrated walkthrough asset rather than
+  a live terminal recording. It is acceptable as a backup video, but a live
+  screencast would be stronger if video production time is available.
+- The exact SANER submission tag must be created after the final commit so the
+  paper URL resolves to the intended snapshot.
+- ICSE NIER and SANER Short should be rebuilt by CI after the final text edits
+  before any upload.

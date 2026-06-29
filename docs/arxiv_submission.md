@@ -7,7 +7,7 @@
 - Author metadata: non-anonymous, Song Luo.
 - Suggested primary category: `cs.SE` because the paper is about agent harness infrastructure, testing, debugging, tool interfaces, and programming-environment behavior.
 - Suggested cross-list: `cs.AI` because the work concerns AI agents and tool use.
-- Artifact pointer: https://doi.org/10.5281/zenodo.20907471; do not expose the private GitHub working repository as the public artifact link.
+- Artifact pointer: https://doi.org/10.5281/zenodo.20907471; the public GitHub repository is available at https://github.com/rrrrrredy/agent-harness-paper.
 
 ## Official Basis
 

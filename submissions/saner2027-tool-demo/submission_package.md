@@ -4,7 +4,8 @@
 
 - Paper source: `submissions/saner2027-tool-demo/paper/main.tex`
 - Latest CI PDF: `logs/submission-pdfs/saner2027-tool-demo/paper/main.pdf`
-- Public tool repository: https://github.com/rrrrrredy/agent-harness-paper
+- Public tool snapshot:
+  https://github.com/rrrrrredy/agent-harness-paper/tree/v0.4.0-saner2027-tool-demo-submission
 - Public archive: https://doi.org/10.5281/zenodo.20907471
 - Screencast: https://github.com/rrrrrredy/agent-harness-paper/releases/download/v0.1.0-preprint/agent-harness-saner-tool-demo-video.mp4
 - Release page: https://github.com/rrrrrredy/agent-harness-paper/releases/tag/v0.1.0-preprint
@@ -15,14 +16,14 @@
 - Review model: single-anonymous; author identity is allowed.
 - Author: Song Luo.
 - Title: `Replayable State-Diff Harnesses for Repository-Changing Agents`.
-- Tool URL: `https://github.com/rrrrrredy/agent-harness-paper`.
+- Tool URL:
+  `https://github.com/rrrrrredy/agent-harness-paper/tree/v0.4.0-saner2027-tool-demo-submission`.
 - Optional video URL: GitHub Release screencast above.
 - Artifact DOI: `10.5281/zenodo.20907471`.
 
 ## Reviewer Commands
 
 ```powershell
-python scripts/build_saner_tool_demo_package.py
 python scripts/run_checks.py --mode validate
 python scripts/run_demo_walkthrough.py
 python scripts/run_repo_fixture_demo.py
@@ -42,6 +43,16 @@ The package builder writes a local submission index under
 - `submission_manifest.json`
 - `submission_manifest.md`
 - `sha256sums.txt`
+
+Author-side package index generation:
+
+```powershell
+python scripts/build_saner_tool_demo_package.py --pdf <path-to-submitted-paper.pdf>
+```
+
+The builder records hashes for the submitted PDF and the runnable tool surface.
+It is not the first reviewer command because the submitted PDF is not expected
+to live inside a fresh clone.
 
 ## Current CI Evidence
 

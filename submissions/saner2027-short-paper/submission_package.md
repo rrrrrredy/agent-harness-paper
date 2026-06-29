@@ -12,7 +12,7 @@
 - Track: Short Papers and Posters.
 - Review model: double-anonymous.
 - Author field in submitted PDF: `Anonymous Author(s)`.
-- Title: `State-Diff Contracts for Repository-Changing Agents`.
+- Title: `Evaluating Repository-Changing Agents Through State-Diff Contracts`.
 - Artifact mode: anonymous supplemental zip.
 
 ## Package Commands

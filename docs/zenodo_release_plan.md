@@ -5,7 +5,7 @@
 - Archive mode: public Zenodo record.
 - Access right: open.
 - License: CC BY 4.0 for the archived artifact package.
-- Working repository: remains private unless separately opened.
+- Working repository: public at https://github.com/rrrrrredy/agent-harness-paper.
 - Published record: https://zenodo.org/records/20907471
 - Version DOI: https://doi.org/10.5281/zenodo.20907471
 - All-versions DOI: https://doi.org/10.5281/zenodo.20907470

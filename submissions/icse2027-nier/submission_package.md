@@ -12,7 +12,7 @@
 - Track: New Ideas and Emerging Results.
 - Review model: double-anonymous.
 - Author field in submitted PDF: `Anonymous Author(s)`.
-- Title: `Thin Harnesses as System-Boundary Contracts for Stateful AI Agents`.
+- Title: `Thin Harness, Strong Contracts: A Research Agenda for Stateful AI Agents`.
 - Artifact mode: anonymous supplemental zip, not public GitHub/Zenodo links.
 
 ## Package Commands

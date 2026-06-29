@@ -18,7 +18,7 @@ or validation commands ran, whether permissions were respected, and whether a
 failure can be replayed. This short paper proposes \emph{state-diff contracts}
 for evaluating such agents. A contract specifies task intent, allowed and
 forbidden tools, permission policy, initial and final state assertions, and
-replay evidence. A 24-case pilot artifact shows how invalid tool calls,
+replay evidence. A 24-case pilot artifact illustrates how invalid tool calls,
 permission violations, missing state diffs, unsafe secret access, and recovery
 failures can be surfaced as analyzable software artifacts. The contribution is
 a software-analysis framing for maintaining agent workflows as prompts, models,
@@ -132,6 +132,22 @@ Recovery behavior & The run reacted to failure with checks or escalation \\
 \end{tabular}
 \end{table}
 
+\begin{table}[t]
+\caption{Pilot Snapshot: 24 Cases per Provider/Variant}
+\centering
+\footnotesize
+\begin{tabular}{llrrrr}
+\toprule
+Provider & Variant & Succ. & State & Routing & Tool/policy \\
+\midrule
+DeepSeek & No & 0.00 & 0.58 & 24 & 0/0 \\
+DeepSeek & Thin & 0.54 & 0.67 & 8 & 0/0 \\
+Kimi & No & 0.04 & 0.58 & 22 & 9/9 \\
+Kimi & Thin & 0.88 & 0.88 & 2 & 0/0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 The pilot is intentionally small and synthetic. It is not a provider benchmark.
 Its purpose is to test whether the harness surfaces maintenance-relevant
 failures. It does: several failures that would be ambiguous in final answers
@@ -139,6 +155,12 @@ become concrete artifacts. A secret-read attempt is a forbidden access event. A
 repository update without the expected diff is a state assertion failure. A
 dry-run bypass is a permission violation. A recovery claim without a replayable
 trace is a replay failure.
+
+The snapshot reports a compact subset of the recorded rows. It is descriptive,
+not statistical: each provider/variant row contains 24 cases. The fixture suite
+adds four concrete repository scenarios: one success and three inspectable
+failures covering missing tests, wrong-file mutation, and secret-boundary
+access.
 
 To make the repository-state claim concrete, the artifact also includes a small
 repository fixture suite. The passing case starts with \texttt{src/app.py}
@@ -230,8 +252,6 @@ to Evaluate Prompt Injection Attacks and Defenses for LLM Agents,'' NeurIPS
 Datasets and Benchmarks, 2024.
 \bibitem{sweagent} J. Yang et al., ``SWE-agent: Agent-Computer Interfaces
 Enable Automated Software Engineering,'' arXiv:2405.15793, 2024.
-\bibitem{deli} D. Chen, ``Deli AutoResearch: Autonomous Research Framework,''
-2026.
 \end{thebibliography}
 
 \end{document}

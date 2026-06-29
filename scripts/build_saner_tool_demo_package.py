@@ -14,7 +14,7 @@ TRACK = "saner2027-tool-demo"
 DEFAULT_OUT_DIR = ROOT / "dist" / "submissions" / TRACK
 DEFAULT_PDF = ROOT / "logs" / "submission-pdfs" / TRACK / "paper" / "main.pdf"
 
-REPOSITORY_URL = "https://github.com/rrrrrredy/agent-harness-paper"
+REPOSITORY_URL = "https://github.com/rrrrrredy/agent-harness-paper/tree/v0.4.0-saner2027-tool-demo-submission"
 RELEASE_URL = "https://github.com/rrrrrredy/agent-harness-paper/releases/tag/v0.1.0-preprint"
 VIDEO_URL = (
     "https://github.com/rrrrrredy/agent-harness-paper/releases/download/"
@@ -31,18 +31,64 @@ LOCAL_MEDIA = [
 ]
 
 TRACKED_EVIDENCE = [
+    "artifact_manifest.json",
+    "benchmark/cases.jsonl",
+    "harness/__init__.py",
+    "harness/core.py",
+    "harness/prompts.py",
+    "harness/providers.py",
     "submissions/saner2027-tool-demo/paper/main.tex",
     "submissions/saner2027-tool-demo/README.md",
     "submissions/saner2027-tool-demo/submission_package.md",
+    "scripts/analyze_results.py",
+    "scripts/audit_source_evidence.py",
+    "scripts/build_anonymous_submission_artifact.py",
+    "scripts/build_artifact_archive.py",
+    "scripts/check_anonymous_submission_package.py",
+    "scripts/check_archive_manifest_alignment.py",
+    "scripts/check_artifact_consistency.py",
+    "scripts/check_claim_traceability.py",
+    "scripts/check_entrypoint_commands.py",
+    "scripts/check_external_decisions.py",
+    "scripts/check_public_traces.py",
+    "scripts/check_release_references.py",
+    "scripts/check_run_manifest_alignment.py",
+    "scripts/check_status_notes.py",
+    "scripts/check_tex_sources.py",
+    "scripts/check_validate_workflow_paths.py",
+    "scripts/generate_figures.py",
+    "scripts/inspect_failures.py",
+    "scripts/run_checks.py",
+    "scripts/run_demo_walkthrough.py",
+    "scripts/run_local_reference.py",
     "scripts/run_repo_fixture_demo.py",
+    "scripts/secret_scan.py",
+    "scripts/smoke_test.py",
+    "tests/test_artifacts.py",
+    "tests/test_harness.py",
+    "experiments/raw/deepseek_live.jsonl",
+    "experiments/raw/kimi_live.jsonl",
+    "experiments/raw/local_reference.jsonl",
+    "fixtures/repo_state_contract/contract.json",
+    "fixtures/repo_state_contract/before/src/app.py",
+    "fixtures/repo_state_contract/before/tests/test_app.py",
     "results/fixtures/saner_repo_fixture_summary.md",
     "results/fixtures/saner_repo_fixture_trace.json",
     "results/fixtures/saner_repo_fixture.diff",
     "results/fixtures/saner_repo_fixture_suite.md",
     "results/fixtures/saner_repo_fixture_suite.csv",
     "results/fixtures/saner_repo_fixture_suite.json",
+    "results/tables/category_summary.md",
     "results/tables/experiment_summary.md",
     "results/tables/failure_taxonomy.md",
+    "results/tables/live_pairwise_delta.md",
+    "results/tables/live_success_uncertainty.md",
+    "docs/claim_traceability.md",
+    "docs/external_decision_register.md",
+    "docs/reproducibility.md",
+    "docs/submission_readiness.md",
+    "evidence/source_audit.md",
+    "evidence/source_audit.json",
 ]
 
 REVIEWER_COMMANDS = [

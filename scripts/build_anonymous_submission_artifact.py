@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import os
 from pathlib import Path
 import shutil
 import zipfile
@@ -20,10 +19,7 @@ COMMON_INCLUDE_FILES = [
     "scripts/analyze_results.py",
     "scripts/run_demo_walkthrough.py",
     "scripts/run_local_reference.py",
-    "scripts/run_repo_fixture_demo.py",
     "scripts/smoke_test.py",
-    "tests/test_harness.py",
-    "tests/test_artifacts.py",
     "experiments/raw/local_reference.jsonl",
     "experiments/raw/deepseek_live.jsonl",
     "experiments/raw/kimi_live.jsonl",
@@ -37,16 +33,23 @@ COMMON_INCLUDE_FILES = [
     "results/tables/live_success_uncertainty.md",
     "results/tables/live_pairwise_delta.csv",
     "results/tables/live_pairwise_delta.md",
-    "results/fixtures/saner_repo_fixture_summary.md",
-    "results/fixtures/saner_repo_fixture_trace.json",
-    "results/fixtures/saner_repo_fixture.diff",
-    "results/fixtures/saner_repo_fixture_suite.md",
-    "results/fixtures/saner_repo_fixture_suite.csv",
-    "results/fixtures/saner_repo_fixture_suite.json",
-    "fixtures/repo_state_contract/contract.json",
-    "fixtures/repo_state_contract/before/src/app.py",
-    "fixtures/repo_state_contract/before/tests/test_app.py",
 ]
+
+TRACK_INCLUDE_FILES = {
+    "icse2027-nier": [],
+    "saner2027-short-paper": [
+        "scripts/run_repo_fixture_demo.py",
+        "results/fixtures/saner_repo_fixture_summary.md",
+        "results/fixtures/saner_repo_fixture_trace.json",
+        "results/fixtures/saner_repo_fixture.diff",
+        "results/fixtures/saner_repo_fixture_suite.md",
+        "results/fixtures/saner_repo_fixture_suite.csv",
+        "results/fixtures/saner_repo_fixture_suite.json",
+        "fixtures/repo_state_contract/contract.json",
+        "fixtures/repo_state_contract/before/src/app.py",
+        "fixtures/repo_state_contract/before/tests/test_app.py",
+    ],
+}
 
 TRACK_FILES = {
     "icse2027-nier": ["submissions/icse2027-nier/paper/main.tex"],
@@ -58,11 +61,23 @@ DEANON_PATTERNS = [
     "Luo, Song",
     "luosong",
     "rrrrrredy",
+    "agent-harness-paper",
+    ".zenodo.json",
+    "github_evidence",
+    "github_snapshots",
+    "arxiv_endorsement",
+    "arxiv_submission",
+    "zenodo_release",
     "github.com/rrrrrredy",
     "zenodo.org/records/20907471",
     "10.5281/zenodo",
     "arxiv.org/auth/endorse",
 ]
+
+SANITIZE_REPLACEMENTS = {
+    "agent-harness-paper": "anonymous-state-diff-harness",
+    "agent-harness-paper/v1": "anonymous-state-diff-harness/v1",
+}
 
 README_TEMPLATE = """# Anonymous Supplemental Artifact
 
@@ -77,7 +92,7 @@ The package contains:
   computation;
 - deterministic local-reference rows and recorded live-provider rows;
 - regenerated tables used for the pilot discussion;
-- a small repository fixture suite with success and failure scenarios;
+{fixture_bullet}
 - the anonymous LaTeX source for the selected track.
 
 No live provider credentials are required for the reviewer path.
@@ -93,14 +108,7 @@ The walkthrough loads all cases, evaluates one security case through the
 reference policy, regenerates deterministic reference rows, and rebuilds the
 aggregate tables.
 
-For the repository-fixture suite, run:
-
-```powershell
-python scripts/run_repo_fixture_demo.py
-```
-
-If `pytest` is available, `python -m pytest -q` can also be run, but it is not
-required for the no-dependency reviewer path.
+{fixture_command_block}
 
 ## Scope
 
@@ -125,7 +133,7 @@ def main() -> None:
     zip_path = OUT_ROOT / f"{args.track}-anonymous-artifact.zip"
     prepare_dir(out_dir)
 
-    for rel in [*COMMON_INCLUDE_FILES, *TRACK_FILES[args.track]]:
+    for rel in include_files(args.track):
         copy_file(rel, out_dir)
 
     (out_dir / "README.md").write_text(readme_for(args.track), encoding="utf-8")
@@ -140,7 +148,29 @@ def readme_for(track: str) -> str:
         "icse2027-nier": "ICSE 2027 NIER",
         "saner2027-short-paper": "SANER 2027 Short Paper",
     }
-    return README_TEMPLATE.format(track_label=labels[track])
+    fixture_bullets = {
+        "icse2027-nier": "- no repository-fixture files; the NIER package is limited to the 24-case pilot;",
+        "saner2027-short-paper": "- a small repository fixture suite with success and failure scenarios;",
+    }
+    fixture_command_blocks = {
+        "icse2027-nier": "The repository-fixture suite is intentionally omitted from the NIER package.",
+        "saner2027-short-paper": """For the repository-fixture suite, run:
+
+```powershell
+python scripts/run_repo_fixture_demo.py
+```
+
+The fixture command regenerates the before/after repository diff and trace.""",
+    }
+    return README_TEMPLATE.format(
+        track_label=labels[track],
+        fixture_bullet=fixture_bullets[track],
+        fixture_command_block=fixture_command_blocks[track],
+    )
+
+
+def include_files(track: str) -> list[str]:
+    return [*COMMON_INCLUDE_FILES, *TRACK_INCLUDE_FILES[track], *TRACK_FILES[track]]
 
 
 def prepare_dir(path: Path) -> None:
@@ -159,7 +189,20 @@ def copy_file(rel: str, out_dir: Path) -> None:
         raise FileNotFoundError(rel)
     dst = out_dir / rel
     dst.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(src, dst)
+    if should_sanitize(rel):
+        dst.write_text(sanitize_text(src.read_text(encoding="utf-8")), encoding="utf-8")
+    else:
+        shutil.copy2(src, dst)
+
+
+def should_sanitize(rel: str) -> bool:
+    return Path(rel).suffix.lower() in {".json", ".jsonl", ".md", ".py", ".tex", ".toml", ".txt"}
+
+
+def sanitize_text(text: str) -> str:
+    for old, new in SANITIZE_REPLACEMENTS.items():
+        text = text.replace(old, new)
+    return text
 
 
 def write_manifest(out_dir: Path) -> None:

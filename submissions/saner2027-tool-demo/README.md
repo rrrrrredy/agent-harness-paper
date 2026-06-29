@@ -12,6 +12,9 @@ explicit contract.
 Current backup video URL:
 https://github.com/rrrrrredy/agent-harness-paper/releases/download/v0.1.0-preprint/agent-harness-saner-tool-demo-video.mp4
 
+Current exact tool snapshot target:
+https://github.com/rrrrrredy/agent-harness-paper/tree/v0.4.0-saner2027-tool-demo-submission
+
 ## Official Constraints
 
 - Format: IEEE conference proceedings format.
@@ -50,5 +53,5 @@ For this version, emphasize:
 5. Add GitHub and video URLs to the abstract.
 6. Generate PDF in IEEE proceedings format.
 7. Run validation and secret scan.
-8. Create tag `v0.4.0-saner2027-tool-demo-submission`.
+8. Create or refresh tag `v0.4.0-saner2027-tool-demo-submission`.
 9. Submit via EasyChair and select `Tool Demo Track`.

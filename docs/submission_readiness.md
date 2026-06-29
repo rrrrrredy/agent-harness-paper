@@ -27,7 +27,7 @@ This checklist records the current submission-ready preprint posture and separat
 - Author metadata: non-anonymous, `Song Luo`.
 - Suggested arXiv category: primary `cs.SE`, cross-list `cs.AI` if accepted by arXiv moderation.
 - License: code under MIT; manuscript source, documentation, benchmark cases, evidence snapshots, derived tables, figures, and release metadata under CC BY 4.0.
-- Artifact sharing: public Zenodo archive DOI `10.5281/zenodo.20907471`; private GitHub repository remains private unless separately opened.
+- Artifact sharing: public Zenodo archive DOI `10.5281/zenodo.20907471`; public GitHub repository at `https://github.com/rrrrrredy/agent-harness-paper`.
 - Live-provider reruns: committed pilot logs are sufficient for the current preprint; any fresh rerun must go through `docs/live_rerun_promotion.md`.
 
 These decisions are summarized in `docs/external_decision_register.md`. Later conference submission may still require a separate template, page-limit pass, or anonymized bundle.

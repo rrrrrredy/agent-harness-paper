@@ -58,7 +58,6 @@ BANNED_TERMS = [
     "one case kimi",
     "endpoint-validation smoke",
     "authentication-failure row",
-    "https://github.com/rrrrrredy/agent-harness-paper",
     "arxiv.org/auth/endorse?x=",
 ]
 

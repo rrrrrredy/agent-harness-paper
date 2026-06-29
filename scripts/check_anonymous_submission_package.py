@@ -8,11 +8,11 @@ import tempfile
 import zipfile
 
 from build_anonymous_submission_artifact import (
-    COMMON_INCLUDE_FILES,
     DEANON_PATTERNS,
     OUT_ROOT,
     ROOT,
     TRACK_FILES,
+    include_files,
 )
 
 
@@ -82,7 +82,7 @@ def check_zip(track: str, zip_path: Path) -> list[str]:
     if not zip_path.exists():
         return [f"zip missing: {zip_path}"]
 
-    required = {*COMMON_INCLUDE_FILES, *TRACK_FILES[track], "README.md", "MANIFEST.md"}
+    required = {*include_files(track), "README.md", "MANIFEST.md"}
     with zipfile.ZipFile(zip_path) as archive:
         names = archive.namelist()
         name_set = set(names)
