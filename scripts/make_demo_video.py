@@ -126,14 +126,13 @@ SCENES = [
     {
         "title": "Conference submission paths",
         "bullets": [
-            "ICSE Tool Demo: public GitHub, Zenodo archive, YouTube video.",
             "ICSE NIER and SANER Short Paper: anonymized paper and artifact package.",
             "SANER Tool Demo: repository-state and maintenance-risk framing.",
         ],
         "narration": (
-            "The same artifact supports different submission paths. Public tool-demo tracks can use the GitHub repository, "
-            "Zenodo archive, and YouTube video. Double-anonymous tracks need an anonymized paper and artifact package. "
-            "For SANER, the strongest framing is repository state, diffs, tests, replay, and maintenance risk."
+            "The same artifact supports different submission paths. Double-anonymous tracks need an anonymized paper "
+            "and artifact package. For SANER, the strongest framing is repository state, diffs, tests, replay, "
+            "and maintenance risk."
         ),
     },
     {
@@ -270,7 +269,6 @@ def duration_seconds(wav_path: Path) -> float:
 
 def build_video(track: str) -> Path:
     labels = {
-        "icse-tool-demo": "ICSE 2027 Tool Demo",
         "saner-tool-demo": "SANER 2027 Tool Demo",
     }
     label = labels.get(track, "Conference Demo")
@@ -340,7 +338,7 @@ def build_video(track: str) -> Path:
             "title": "Replayable Harnesses for Stateful Agent Contracts",
             "bullets": [
                 "Tool calls, permissions, state diffs, replay, memory scope, audit, and review.",
-                "Public artifact for ICSE/SANER tool-demo submission.",
+                "Public artifact for SANER tool-demo submission.",
             ],
         },
         1,
@@ -355,8 +353,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Generate a 3-5 minute demo video.")
     parser.add_argument(
         "--track",
-        default="icse-tool-demo",
-        choices=["icse-tool-demo", "saner-tool-demo"],
+        default="saner-tool-demo",
+        choices=["saner-tool-demo"],
         help="Target track label for the generated video.",
     )
     args = parser.parse_args()
@@ -366,7 +364,7 @@ def main() -> None:
         Generated video:
         {output}
 
-        Suggested YouTube title:
+        Suggested video title:
         Replayable Harnesses for Stateful Agent Contracts
         """
     ).strip())

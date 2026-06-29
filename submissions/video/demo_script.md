@@ -2,12 +2,10 @@
 
 Target length: 3-5 minutes.
 
-Primary use: ICSE 2027 Tool Demonstration and Data Showcase.
+Primary use: SANER 2027 Tool Demo.
 
-Secondary use: SANER 2027 Tool Demo.
-
-Recommended visibility: YouTube Unlisted until submission is accepted or until
-the author chooses Public.
+Recommended hosting: GitHub Release or tool website for SANER review. YouTube
+is optional for SANER.
 
 ## Title
 
@@ -37,7 +35,7 @@ Archive: https://doi.org/10.5281/zenodo.20907471
 7. Review packaging: GitHub, Zenodo, licenses, release tag.
 8. Closing: thin around cognition, strong at system boundaries.
 
-## YouTube Upload Metadata
+## Upload Metadata
 
 Title:
 Replayable Harnesses for Stateful Agent Contracts
@@ -53,11 +51,10 @@ Zenodo: https://doi.org/10.5281/zenodo.20907471
 
 Tags:
 software engineering, AI agents, agent harness, evaluation, replay, tool use,
-stateful agents, ICSE, SANER
+stateful agents, SANER
 
 Audience:
 Not made for kids.
 
 Visibility:
-Unlisted for submission review unless explicitly changed to Public.
-
+Public GitHub Release asset or unlisted video link for submission review.

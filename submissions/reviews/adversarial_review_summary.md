@@ -2,34 +2,7 @@
 
 Date: 2026-06-29.
 
-Three independent review passes were run for the submission variants. The
-shared conclusion is that the public preprint is useful as a source artifact but
-is not directly submit-ready for any of the target tracks.
-
-## ICSE Tool Demonstration And Data Showcase
-
-Readiness: fail today, 35/100.
-
-Best route: Tool Demonstration, not primarily Data Showcase.
-
-Main blockers:
-
-- current preprint is not IEEE four-page demo format;
-- video URL and 3-5 minute YouTube demo are missing;
-- reviewer path must be no-credential and easy to run;
-- paper must sell a concrete replayable harness tool, not a broad framework;
-- tool distribution must be easier than asking reviewers to build a research
-  repo from scratch.
-
-Required changes:
-
-- convert to `IEEEtran` 10pt conference format;
-- reduce to four pages including references;
-- add public tool URL, usage instructions, and video URL at the end of the
-  abstract;
-- show one runnable scenario: case definition, local run, state diff,
-  permission failure, regenerated table;
-- keep provider results bounded and non-leaderboard.
+Adversarial review now covers the remaining submission routes.
 
 ## ICSE NIER
 
@@ -88,15 +61,16 @@ Required changes:
 ## Post-Hardening Note
 
 After the first adversarial pass, the submission branch added targeted LaTeX
-drafts for all four routes, generated public backup demo videos, and rewrote
-the ICSE NIER and SANER Short Paper versions into anonymous short-paper
-arguments. The main remaining blockers are:
+drafts for the remaining routes, generated a public SANER backup screencast,
+rewrote the ICSE NIER and SANER Short Paper versions into anonymous short-paper
+arguments, added an anonymous NIER supplemental artifact builder, and added a
+concrete SANER repository fixture.
 
-- ICSE Tool Demonstration still needs the official YouTube URL inserted before
-  submission, even though a GitHub Release backup video is public.
-- ICSE NIER still needs a true anonymous supplemental package rather than
-  pointing reviewers at the public author repository.
-- SANER Short Paper still needs stronger repository-fixture evidence before it
-  should be treated as a competitive empirical short paper.
-- No local IEEE PDF compile check has been run because this machine currently
-  lacks `latexmk`, `pdflatex`, and `tectonic`.
+The main remaining blockers are:
+
+- ICSE NIER needs a final anonymous packaging pass immediately before
+  submission.
+- SANER Short Paper has one concrete repository fixture, but not a large
+  empirical study; keep claims narrow.
+- Local IEEE PDF tooling is absent, but GitHub Actions PDF workflow run
+  `28347502768` successfully built the targeted PDFs.
