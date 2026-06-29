@@ -53,6 +53,14 @@ def test_required_artifacts_exist():
         "scripts/check_provider_credentials.py",
         "scripts/audit_source_evidence.py",
         "scripts/run_checks.py",
+        "scripts/smoke_test.py",
+        "scripts/build_anonymous_submission_artifact.py",
+        "scripts/run_repo_fixture_demo.py",
+        "fixtures/repo_state_contract/contract.json",
+        "fixtures/repo_state_contract/before/src/app.py",
+        "results/fixtures/saner_repo_fixture_summary.md",
+        "results/fixtures/saner_repo_fixture_trace.json",
+        "results/fixtures/saner_repo_fixture.diff",
     ]:
         assert Path(path).exists(), path
 

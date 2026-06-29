@@ -35,6 +35,22 @@ The current preprint must be narrowed:
 5. Anonymize all author-identifying repository, Zenodo, arXiv, and YouTube
    references.
 
+Repository-fixture evidence:
+
+```powershell
+python scripts/run_repo_fixture_demo.py
+```
+
+This regenerates:
+
+- `results/fixtures/saner_repo_fixture_summary.md`
+- `results/fixtures/saner_repo_fixture_trace.json`
+- `results/fixtures/saner_repo_fixture.diff`
+
+The fixture maps benchmark case `state_002` to a concrete before/after
+repository tree, a unified diff, a trace with file hashes, and a no-dependency
+test result.
+
 ## Anonymization Plan
 
 - Replace public links with `Anonymous supplemental artifact`.
@@ -42,4 +58,3 @@ The current preprint must be narrowed:
 - Rename project references that identify ownership.
 - Do not include YouTube or GitHub links in the submitted PDF.
 - Provide a zip through EasyChair additional materials if possible.
-

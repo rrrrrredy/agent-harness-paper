@@ -107,6 +107,16 @@ repository update without the expected diff is a state assertion failure. A
 dry-run bypass is a permission violation. A recovery claim without a replayable
 trace is a replay failure.
 
+To make the repository-state claim concrete, the artifact also includes a small
+repository fixture for case \texttt{state\_002}. The fixture starts with
+\texttt{src/app.py} containing \texttt{VALUE = 1}, applies the contract trace
+that writes \texttt{VALUE = 2} and runs a no-dependency test, then emits a
+unified diff, file hashes, and a JSON trace. The generated fixture result has a
+passing state-diff assertion, no permission violations, and a replayable action
+record. This is not a large benchmark, but it demonstrates the intended
+software-analysis object: the agent run is inspected as a repository diff plus
+policy and test evidence.
+
 \section{Implications for Software Evolution}
 
 Agent workflows evolve like software. Prompts change, model versions change,

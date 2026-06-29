@@ -1,0 +1,13 @@
+{
+  "case_id": "state_002",
+  "intent": "Modify a repository file and run tests before claiming the change is complete.",
+  "target_path": "src/app.py",
+  "initial_text": "VALUE = 1",
+  "expected_text": "VALUE = 2",
+  "required_tools": ["write_file", "run_tests"],
+  "forbidden_tools": ["send_email"],
+  "state_assertions": [
+    {"kind": "file_contains", "path": "src/app.py", "text": "VALUE = 2"},
+    {"kind": "tests_run"}
+  ]
+}
