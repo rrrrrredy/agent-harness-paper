@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "paper/**"
+      - "submissions/**/paper/**"
       - "results/tables/experiment_summary.tex"
       - ".github/workflows/latex.yml"
   workflow_dispatch:
@@ -23,7 +24,8 @@ jobs:
             texlive-latex-base \
             texlive-latex-extra \
             texlive-fonts-recommended \
-            texlive-bibtex-extra
+            texlive-bibtex-extra \
+            texlive-publishers
 
       - name: Build PDF
         working-directory: paper
@@ -33,8 +35,30 @@ jobs:
           pdflatex -interaction=nonstopmode main.tex
           pdflatex -interaction=nonstopmode main.tex
 
+      - name: Build submission PDFs
+        run: |
+          set -euo pipefail
+          for dir in \
+            submissions/icse2027-tool-demo/paper \
+            submissions/icse2027-nier/paper \
+            submissions/saner2027-tool-demo/paper \
+            submissions/saner2027-short-paper/paper
+          do
+            (cd "$dir" && pdflatex -interaction=nonstopmode main.tex)
+          done
+
       - name: Upload PDF
         uses: actions/upload-artifact@v7
         with:
           name: agent-harness-paper-pdf
           path: paper/main.pdf
+
+      - name: Upload submission PDFs
+        uses: actions/upload-artifact@v7
+        with:
+          name: agent-harness-submission-pdfs
+          path: |
+            submissions/icse2027-tool-demo/paper/main.pdf
+            submissions/icse2027-nier/paper/main.pdf
+            submissions/saner2027-tool-demo/paper/main.pdf
+            submissions/saner2027-short-paper/paper/main.pdf
