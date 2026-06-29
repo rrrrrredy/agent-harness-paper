@@ -58,6 +58,31 @@ permission violations, unsafe secret access, and replayability;
 scanning.
 \end{itemize}
 
+\begin{table}[t]
+\caption{Tool Inputs and Generated Outputs}
+\centering
+\begin{tabular}{p{0.26\linewidth}p{0.58\linewidth}}
+\toprule
+Input or output & Role in the tool \\
+\midrule
+Case JSONL & Defines task, initial state, allowed tools, forbidden tools, and assertions \\
+Action trace & Captures tool names, arguments, observations, and replay evidence \\
+State diff & Shows whether files, memory, reports, and side effects changed correctly \\
+Policy result & Reports invalid calls, permission violations, and secret access \\
+Fixture suite & Materializes selected cases as repository before/after evidence \\
+Tables & Summarize success, failure taxonomy, uncertainty, and paired deltas \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This differs from a conventional LLM evaluation script. The unit under
+inspection is not only a generated answer, but an execution record. The tool
+keeps the answer connected to the actions that produced it and to the final
+state those actions changed. That connection is what makes the artifact useful
+for software maintenance: a maintainer can ask whether a patch was produced by
+the expected tool, whether tests ran, whether policy allowed the action, and
+whether the failure can be reproduced.
+
 \section{Architecture}
 
 The tool has four layers. The \emph{case layer} defines task intent, initial
@@ -75,6 +100,21 @@ stateful tool-use case to a before/after tree: \texttt{src/app.py} begins with
 no-dependency test checks the final value. The generated output includes a
 unified diff, file hashes, and a JSON trace. This fixture is intentionally
 small so reviewers can inspect the full state transition.
+
+\begin{table}[t]
+\caption{Repository Fixture Scenarios}
+\centering
+\begin{tabular}{p{0.29\linewidth}p{0.16\linewidth}p{0.37\linewidth}}
+\toprule
+Scenario & Outcome & Evidence exposed \\
+\midrule
+Correct update & Pass & Target diff, hashes, test evidence \\
+Missing tests & Fail & Expected patch exists but validation is absent \\
+Wrong file & Fail & Unrelated diff and failing validation \\
+Secret read & Fail & Forbidden access and policy violation \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Demo}
 
@@ -101,6 +141,7 @@ The recommended reviewer path is:
 \item run \texttt{python scripts/run\_demo\_walkthrough.py};
 \item run \texttt{python scripts/run\_repo\_fixture\_demo.py};
 \item inspect \texttt{results/fixtures/saner\_repo\_fixture.diff};
+\item inspect \texttt{results/fixtures/saner\_repo\_fixture\_suite.md};
 \item inspect the failure taxonomy under \texttt{results/tables/}.
 \end{enumerate}
 

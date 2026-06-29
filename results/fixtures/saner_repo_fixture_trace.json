@@ -1,5 +1,7 @@
 {
+  "scenario_id": "state_002_success",
   "case_id": "state_002",
+  "description": "correct file update plus validation command",
   "task_success": true,
   "state_diff_correct": true,
   "permission_violations": 0,
@@ -27,13 +29,17 @@
     {
       "tool": "write_file",
       "path": "src/app.py",
-      "before_sha256": "e13df8c44af5dea1e412403910b99cc5a48f2ccbf68a66b3374d6ab9cef9fc65",
+      "before_sha256": "bdba785e3cfae2778401107f6823d1a08855cd81b5dc22be0b13ccf10aa87798",
       "after_sha256": "e1e39f077f538a950f14f24ea9c60c4be574fdbdb213ea8af4611c62f93b80a6"
     },
     {
       "tool": "run_tests",
       "result": "executed"
     }
+  ],
+  "notes": [
+    "write:src/app.py",
+    "tests:run"
   ],
   "diff_sha256": "8744dab1bd6eab8cd1370924937b9ecae819bebd1e1d579c7eda709d1237f3a9"
 }

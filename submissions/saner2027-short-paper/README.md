@@ -46,10 +46,14 @@ This regenerates:
 - `results/fixtures/saner_repo_fixture_summary.md`
 - `results/fixtures/saner_repo_fixture_trace.json`
 - `results/fixtures/saner_repo_fixture.diff`
+- `results/fixtures/saner_repo_fixture_suite.md`
+- `results/fixtures/saner_repo_fixture_suite.csv`
+- `results/fixtures/saner_repo_fixture_suite.json`
 
 The fixture maps benchmark case `state_002` to a concrete before/after
 repository tree, a unified diff, a trace with file hashes, and a no-dependency
-test result.
+test result. The suite also includes negative scenarios for missing tests,
+wrong-file mutation, and secret-boundary access.
 
 ## Anonymization Plan
 
@@ -58,3 +62,19 @@ test result.
 - Rename project references that identify ownership.
 - Do not include YouTube or GitHub links in the submitted PDF.
 - Provide a zip through EasyChair additional materials if possible.
+
+## Anonymous Supplemental Package
+
+Build a local anonymous package with:
+
+```powershell
+python scripts/build_anonymous_submission_artifact.py --track saner2027-short-paper
+```
+
+Output:
+
+- `dist/anonymous/saner2027-short-paper-anonymous-artifact.zip`
+
+The package includes the harness, benchmark cases, selected recorded rows,
+regenerated result tables, the repository fixture suite, and the anonymous
+SANER Short Paper source.

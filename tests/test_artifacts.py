@@ -61,6 +61,9 @@ def test_required_artifacts_exist():
         "results/fixtures/saner_repo_fixture_summary.md",
         "results/fixtures/saner_repo_fixture_trace.json",
         "results/fixtures/saner_repo_fixture.diff",
+        "results/fixtures/saner_repo_fixture_suite.md",
+        "results/fixtures/saner_repo_fixture_suite.csv",
+        "results/fixtures/saner_repo_fixture_suite.json",
     ]:
         assert Path(path).exists(), path
 

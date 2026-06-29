@@ -141,14 +141,15 @@ dry-run bypass is a permission violation. A recovery claim without a replayable
 trace is a replay failure.
 
 To make the repository-state claim concrete, the artifact also includes a small
-repository fixture for case \texttt{state\_002}. The fixture starts with
-\texttt{src/app.py} containing \texttt{VALUE = 1}, applies the contract trace
-that writes \texttt{VALUE = 2} and runs a no-dependency test, then emits a
-unified diff, file hashes, and a JSON trace. The generated fixture result has a
-passing state-diff assertion, no permission violations, and a replayable action
-record. This is not a large benchmark, but it demonstrates the intended
-software-analysis object: the agent run is inspected as a repository diff plus
-policy and test evidence.
+repository fixture suite. The passing case starts with \texttt{src/app.py}
+containing \texttt{VALUE = 1}, applies the contract trace that writes
+\texttt{VALUE = 2}, runs a no-dependency test, and emits a unified diff, file
+hashes, and a JSON trace. Three negative scenarios then expose different
+maintenance failures: the expected patch without a test run, an unrelated file
+change while the target file remains stale, and a secret-read action that
+crosses the policy boundary. This is not a large benchmark, but it demonstrates
+the intended software-analysis object: the agent run is inspected as a
+repository diff plus policy and test evidence.
 
 \section{Findings}
 
@@ -166,9 +167,9 @@ errors, parse failures, and missing recovery. Each category points to a
 different maintenance response.
 
 \textbf{F3: Repository fixtures make the abstraction inspectable.} The small
-fixture is not meant to represent real repository complexity, but it shows what
-the contract should eventually scale toward: before/after state, a patch,
-validation evidence, and replay metadata.
+fixture suite is not meant to represent real repository complexity, but it
+shows what the contract should eventually scale toward: before/after state,
+patches, validation evidence, policy failures, and replay metadata.
 
 \section{Implications for Software Evolution}
 

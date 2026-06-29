@@ -8,7 +8,7 @@ Last updated: 2026-06-29.
 |---|---:|---|---|---|
 | ICSE 2027 NIER | 3 | 4 pages main text plus 1 references-only page | Anonymous supplemental zip | Draft expanded and CI-compiled |
 | SANER 2027 Tool Demo | 2 | 5 pages including references | Public GitHub, Zenodo, GitHub Release screencast | Draft expanded and CI-compiled |
-| SANER 2027 Short Paper | 3 | 6 pages including references | Anonymous package preferred | Draft expanded with repository fixture evidence |
+| SANER 2027 Short Paper | 3 | 6 pages including references | Anonymous supplemental zip | Draft expanded with repository fixture suite evidence |
 
 ## Latest Checks
 
@@ -16,8 +16,11 @@ Last updated: 2026-06-29.
   active-route expansion.
 - GitHub Actions PDF run: `28348467190` passed.
 - Latest PDFs downloaded under `logs/submission-pdfs/`.
+- Repository fixture suite regenerated under `results/fixtures/`.
 - ICSE NIER anonymous artifact rebuilt at
   `dist/anonymous/icse2027-nier-anonymous-artifact.zip`.
+- SANER Short Paper anonymous artifact can be rebuilt at
+  `dist/anonymous/saner2027-short-paper-anonymous-artifact.zip`.
 - Anonymous package smoke test passed with `python scripts/smoke_test.py`.
 - Anonymous package walkthrough passed with `python scripts/run_demo_walkthrough.py`.
 

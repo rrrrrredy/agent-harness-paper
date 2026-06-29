@@ -38,6 +38,8 @@ For this version, emphasize:
 - permission policy for irreversible actions;
 - prompt-injection and secret-access checks as software security regressions;
 - how the harness helps maintain agent workflows as models and prompts evolve.
+- the repository fixture suite in `results/fixtures/`, especially missing-test,
+  wrong-file, and secret-read negative scenarios.
 
 ## Concrete Submission Steps
 

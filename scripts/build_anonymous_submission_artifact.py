@@ -10,7 +10,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 OUT_ROOT = ROOT / "dist" / "anonymous"
 
-INCLUDE_FILES = [
+COMMON_INCLUDE_FILES = [
     "pyproject.toml",
     "benchmark/cases.jsonl",
     "harness/__init__.py",
@@ -20,6 +20,7 @@ INCLUDE_FILES = [
     "scripts/analyze_results.py",
     "scripts/run_demo_walkthrough.py",
     "scripts/run_local_reference.py",
+    "scripts/run_repo_fixture_demo.py",
     "scripts/smoke_test.py",
     "tests/test_harness.py",
     "tests/test_artifacts.py",
@@ -36,8 +37,21 @@ INCLUDE_FILES = [
     "results/tables/live_success_uncertainty.md",
     "results/tables/live_pairwise_delta.csv",
     "results/tables/live_pairwise_delta.md",
-    "submissions/icse2027-nier/paper/main.tex",
+    "results/fixtures/saner_repo_fixture_summary.md",
+    "results/fixtures/saner_repo_fixture_trace.json",
+    "results/fixtures/saner_repo_fixture.diff",
+    "results/fixtures/saner_repo_fixture_suite.md",
+    "results/fixtures/saner_repo_fixture_suite.csv",
+    "results/fixtures/saner_repo_fixture_suite.json",
+    "fixtures/repo_state_contract/contract.json",
+    "fixtures/repo_state_contract/before/src/app.py",
+    "fixtures/repo_state_contract/before/tests/test_app.py",
 ]
+
+TRACK_FILES = {
+    "icse2027-nier": ["submissions/icse2027-nier/paper/main.tex"],
+    "saner2027-short-paper": ["submissions/saner2027-short-paper/paper/main.tex"],
+}
 
 DEANON_PATTERNS = [
     "Song Luo",
@@ -50,10 +64,10 @@ DEANON_PATTERNS = [
     "arxiv.org/auth/endorse",
 ]
 
-README = """# Anonymous Supplemental Artifact
+README_TEMPLATE = """# Anonymous Supplemental Artifact
 
-This anonymous package accompanies the ICSE NIER submission on thin harnesses
-and strong contracts for stateful AI agents.
+This anonymous package accompanies the {track_label} submission on stateful
+AI-agent harnesses.
 
 The package contains:
 
@@ -63,7 +77,8 @@ The package contains:
   computation;
 - deterministic local-reference rows and recorded live-provider rows;
 - regenerated tables used for the pilot discussion;
-- the anonymous NIER LaTeX source.
+- a small repository fixture suite with success and failure scenarios;
+- the anonymous LaTeX source for the selected track.
 
 No live provider credentials are required for the reviewer path.
 
@@ -77,6 +92,12 @@ python scripts/smoke_test.py
 The walkthrough loads all cases, evaluates one security case through the
 reference policy, regenerates deterministic reference rows, and rebuilds the
 aggregate tables.
+
+For the repository-fixture suite, run:
+
+```powershell
+python scripts/run_repo_fixture_demo.py
+```
 
 If `pytest` is available, `python -m pytest -q` can also be run, but it is not
 required for the no-dependency reviewer path.
@@ -95,7 +116,7 @@ def main() -> None:
     parser.add_argument(
         "--track",
         default="icse2027-nier",
-        choices=["icse2027-nier"],
+        choices=sorted(TRACK_FILES),
         help="Anonymous submission package to build.",
     )
     args = parser.parse_args()
@@ -104,14 +125,22 @@ def main() -> None:
     zip_path = OUT_ROOT / f"{args.track}-anonymous-artifact.zip"
     prepare_dir(out_dir)
 
-    for rel in INCLUDE_FILES:
+    for rel in [*COMMON_INCLUDE_FILES, *TRACK_FILES[args.track]]:
         copy_file(rel, out_dir)
 
-    (out_dir / "README.md").write_text(README, encoding="utf-8")
+    (out_dir / "README.md").write_text(readme_for(args.track), encoding="utf-8")
     write_manifest(out_dir)
     assert_anonymous(out_dir)
     build_zip(out_dir, zip_path)
     print(f"wrote {zip_path}")
+
+
+def readme_for(track: str) -> str:
+    labels = {
+        "icse2027-nier": "ICSE 2027 NIER",
+        "saner2027-short-paper": "SANER 2027 Short Paper",
+    }
+    return README_TEMPLATE.format(track_label=labels[track])
 
 
 def prepare_dir(path: Path) -> None:

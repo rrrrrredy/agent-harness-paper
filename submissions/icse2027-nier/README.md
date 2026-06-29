@@ -59,7 +59,7 @@ Output:
 - `dist/anonymous/icse2027-nier-anonymous-artifact.zip`
 
 The script copies only the harness, benchmark cases, selected recorded rows,
-regenerated result tables, tests, and anonymous NIER source. It refuses to
+regenerated result tables, fixture evidence, tests, and anonymous NIER source. It refuses to
 package author-identifying strings such as public profile, repository, Zenodo,
 or active arXiv endorsement references.
 
