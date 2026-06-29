@@ -69,6 +69,7 @@ Build a local anonymous package with:
 
 ```powershell
 python scripts/build_anonymous_submission_artifact.py --track saner2027-short-paper
+python scripts/check_anonymous_submission_package.py --track saner2027-short-paper --build --run-smoke
 ```
 
 Output:
@@ -77,4 +78,6 @@ Output:
 
 The package includes the harness, benchmark cases, selected recorded rows,
 regenerated result tables, the repository fixture suite, and the anonymous
-SANER Short Paper source.
+SANER Short Paper source. The independent checker verifies required files,
+forbidden path classes, unsafe zip paths, author-identifying strings, the
+reviewer smoke path, and repository-fixture regeneration.

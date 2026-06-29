@@ -52,6 +52,7 @@ Build a local anonymous package with:
 
 ```powershell
 python scripts/build_anonymous_submission_artifact.py --track icse2027-nier
+python scripts/check_anonymous_submission_package.py --track icse2027-nier --build --run-smoke
 ```
 
 Output:
@@ -62,6 +63,9 @@ The script copies only the harness, benchmark cases, selected recorded rows,
 regenerated result tables, fixture evidence, tests, and anonymous NIER source. It refuses to
 package author-identifying strings such as public profile, repository, Zenodo,
 or active arXiv endorsement references.
+
+The independent checker verifies required files, forbidden path classes, unsafe
+zip paths, author-identifying strings, and the reviewer smoke path.
 
 Reviewer no-dependency check inside the extracted package:
 

@@ -41,6 +41,8 @@ VALIDATE = [
     [sys.executable, "scripts/check_external_decisions.py"],
     [sys.executable, "scripts/check_archive_manifest_alignment.py"],
     [sys.executable, "scripts/build_artifact_archive.py", "--check"],
+    [sys.executable, "scripts/check_anonymous_submission_package.py", "--track", "icse2027-nier", "--build"],
+    [sys.executable, "scripts/check_anonymous_submission_package.py", "--track", "saner2027-short-paper", "--build"],
     [sys.executable, "scripts/audit_source_evidence.py", "--offline"],
     [sys.executable, "scripts/secret_scan.py"],
 ]

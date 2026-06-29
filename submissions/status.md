@@ -20,8 +20,12 @@ Last updated: 2026-06-29.
 - Repository fixture suite regenerated under `results/fixtures/`.
 - ICSE NIER anonymous artifact rebuilt at
   `dist/anonymous/icse2027-nier-anonymous-artifact.zip`.
-- SANER Short Paper anonymous artifact can be rebuilt at
+- ICSE NIER anonymous artifact passed
+  `python scripts/check_anonymous_submission_package.py --track icse2027-nier --build --run-smoke`.
+- SANER Short Paper anonymous artifact rebuilt at
   `dist/anonymous/saner2027-short-paper-anonymous-artifact.zip`.
+- SANER Short Paper anonymous artifact passed
+  `python scripts/check_anonymous_submission_package.py --track saner2027-short-paper --build --run-smoke`.
 - SANER repository fixture suite regenerated under `results/fixtures/` with
   success, missing-test, wrong-file, and secret-read scenarios.
 - Anonymous package smoke test passed with `python scripts/smoke_test.py`.
@@ -35,8 +39,8 @@ asset.
 
 ## Next Work
 
-- Tighten ICSE NIER to exactly match the final double-anonymous submission
-  instructions before uploading.
+- Before uploading ICSE NIER or SANER Short Paper, rerun the matching anonymous
+  package checker with `--build --run-smoke`.
 - Treat SANER Tool Demo as the primary conference target unless a later review
   exposes a stronger route.
 - Keep SANER Short Paper claims narrow unless more repository fixtures or
