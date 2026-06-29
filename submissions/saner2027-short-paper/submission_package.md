@@ -28,8 +28,8 @@ repository-fixture regeneration path.
 
 ## Current CI Evidence
 
-- PDF workflow: `28353360782`
-- Validate workflow: `28353360786`
+- PDF workflow: `28354603363`
+- Validate workflow: `28354603340`
 - Current PDF page count: 3 pages.
 
 ## Final Pre-Submit Checklist
