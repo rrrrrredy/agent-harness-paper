@@ -45,8 +45,8 @@ The package builder writes a local submission index under
 
 ## Current CI Evidence
 
-- Validate workflow: `28352621244`
-- PDF workflow: `28352621207`
+- Validate workflow: `28353360786`
+- PDF workflow: `28353360782`
 - Current PDF page count: 3 pages.
 
 ## Final Pre-Submit Checklist

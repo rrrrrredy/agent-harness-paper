@@ -13,9 +13,9 @@ Last updated: 2026-06-29.
 ## Latest Checks
 
 - Local validation: `python scripts/run_checks.py --mode validate` passed after
-  fixture-suite and anonymous-package expansion.
-- GitHub Actions validate run: `28352621244` passed.
-- GitHub Actions PDF run: `28352621207` passed.
+  SANER package-builder and anonymous-package checker expansion.
+- GitHub Actions validate run: `28353360786` passed.
+- GitHub Actions PDF run: `28353360782` passed.
 - Latest PDFs downloaded under `logs/submission-pdfs/`.
 - Repository fixture suite regenerated under `results/fixtures/`.
 - ICSE NIER anonymous artifact rebuilt at
@@ -30,6 +30,8 @@ Last updated: 2026-06-29.
   success, missing-test, wrong-file, and secret-read scenarios.
 - Anonymous package smoke test passed with `python scripts/smoke_test.py`.
 - Anonymous package walkthrough passed with `python scripts/run_demo_walkthrough.py`.
+- SANER Tool Demo local submission index can be regenerated with
+  `python scripts/build_saner_tool_demo_package.py`.
 
 ## Removed Route
 
