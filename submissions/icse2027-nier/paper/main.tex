@@ -1,0 +1,114 @@
+\documentclass[10pt,conference]{IEEEtran}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+\title{Thin Harness, Strong Contracts: A Research Agenda for Stateful AI Agents}
+\author{\IEEEauthorblockN{Anonymous Author(s)}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Agent harnesses are often described as temporary scaffolding that better models
+will eventually absorb. This paper argues that the claim is only half correct.
+Harnesses that patch model capabilities, such as brittle planning wrappers or
+prompt checklists, can become technical debt. Harnesses that define system
+boundaries, such as tool permissions, state diffs, replay, memory scoping,
+audit, and human review, become infrastructure. We propose the principle of a
+thin harness with strong contracts: avoid duplicating model cognition, but make
+external effects explicit and testable. A 24-case pilot artifact illustrates how
+stateful agent contracts can be evaluated through trajectories and final state
+rather than final answers alone. The contribution is a research agenda for
+software engineering systems that make increasingly capable agents safer to run
+in real workflows.
+\end{abstract}
+
+\section{The Conflict}
+
+Two intuitions about agent harnesses appear to conflict. One says harnesses are
+technical debt: as models improve, thick orchestration layers that compensate
+for weak planning, routing, or formatting become obsolete. The other says
+harnesses are the feedback infrastructure that makes agent systems improve:
+traces, state diffs, safety failures, and review labels can guide evaluation and
+training.
+
+The conflict dissolves if we distinguish what the harness is doing. A
+capability-patch harness tells the model how to think or compensates for a
+temporary weakness. A system-boundary harness defines what the agent may access,
+mutate, publish, remember, forget, or escalate. Better models can absorb parts
+of the first category. They do not remove the need for the second.
+
+\section{Principle}
+
+We propose a design principle for production-oriented agent systems:
+\emph{thin harness, strong contracts}. The harness should stay thin where it
+duplicates model cognition, but remain strong where it defines responsibility
+for external effects.
+
+This principle yields seven contract surfaces:
+
+\begin{enumerate}
+\item trajectory logging, not only final-answer scoring;
+\item tool schema and argument capture;
+\item state snapshots and final state diffs;
+\item permission policy and dry-run gates;
+\item memory scoping and forgetting behavior;
+\item replay artifacts for debugging;
+\item human review and audit records for side effects.
+\end{enumerate}
+
+These contracts are software engineering interfaces. They should be versioned,
+tested, and reviewed like other boundary APIs.
+
+\section{Pilot Artifact}
+
+An anonymous supplemental artifact implements a small replayable harness with 24
+cases across trigger routing, stateful tool use, permission and injection
+behavior, memory scoping, and replay/recovery. Each case defines initial mock
+state, allowed tools, expected tools, forbidden tools, and final state
+assertions. Three prompt variants test whether broad checklists or concise
+contracts produce more inspectable trajectories.
+
+The pilot is not intended as a provider benchmark. It is a feasibility probe for
+contract-centered evaluation. The important observation is qualitative and
+structural: failures become inspectable as invalid tool calls, permission
+violations, missing state diffs, parse errors, and recovery failures.
+
+\section{Future Plans}
+
+The research agenda has four parts.
+
+\textbf{Contract specification.} Agent tools need machine-checkable contracts
+for side effects, state transitions, permissions, and review gates.
+
+\textbf{Stateful oracles.} Agent evaluation should compare world-state changes,
+not only answer strings. Coding agents need repository diffs and test results;
+workflow agents need dry-run and approval evidence; memory agents need scoped
+recall and forgetting checks.
+
+\textbf{Replay and diagnosis.} Failed trajectories should be reproducible
+enough to localize whether the fault came from model behavior, tool schema,
+prompting, retrieval, environment state, or policy.
+
+\textbf{Evolution under model progress.} Harnesses should be studied as evolving
+software. Cognitive scaffolding should shrink when models improve, while system
+boundaries should become more explicit as agents receive more authority.
+
+\section{Expected Impact}
+
+The proposed distinction changes how agent infrastructure should be designed.
+Instead of asking whether the harness should be thick or thin, researchers
+should ask which layer is under design. Planning wrappers and checklists should
+be treated as temporary hypotheses. Permission policy, state diffs, replay,
+audit, and human review should be treated as durable infrastructure for
+trustworthy action.
+
+\begin{thebibliography}{9}
+\bibitem{toolsandbox} ToolSandbox, stateful tool-use evaluation benchmark.
+\bibitem{agentdojo} AgentDojo, dynamic tool-calling and prompt-injection evaluation.
+\bibitem{sweagent} SWE-agent and agent-computer interfaces for software engineering agents.
+\bibitem{deli} Deli AutoResearch framework for long-horizon autonomous tasks.
+\end{thebibliography}
+
+\end{document}

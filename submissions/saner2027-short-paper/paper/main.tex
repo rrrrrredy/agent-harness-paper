@@ -1,0 +1,99 @@
+\documentclass[10pt,conference]{IEEEtran}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+\title{Evaluating Repository-Changing Agents Through State-Diff Contracts}
+\author{\IEEEauthorblockN{Anonymous Author(s)}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Repository-changing agents introduce a software maintenance problem: their
+outputs are not only answers, but state transitions. A useful evaluation must
+therefore ask which files, memory entries, review states, and tool-observable
+facts changed, and whether those changes obeyed policy. This short paper
+proposes state-diff contracts for evaluating such agents. A pilot artifact with
+24 cases models tool calls, observations, permission gates, prompt-injection
+conditions, memory scope, replay, and final-state assertions. The results are
+not a general benchmark, but they show how state-diff and permission failures
+can be surfaced as analyzable software artifacts. The contribution is a
+software-analysis framing for maintaining agent workflows as prompts, models,
+and tool schemas evolve.
+\end{abstract}
+
+\section{Introduction}
+
+Software engineering agents increasingly operate on repositories and workflow
+state. They edit files, inspect project context, run tests, prepare reports, and
+request or bypass review. A final textual answer is insufficient evidence of
+correct behavior. The maintainable unit is the trajectory: tool calls,
+observations, policy checks, state diffs, and replay information.
+
+This paper argues that repository-changing agents should be evaluated through
+state-diff contracts. A state-diff contract specifies the initial state, allowed
+actions, forbidden actions, and expected final state. It turns an agent run into
+an analyzable artifact for software maintenance.
+
+\section{Contract Model}
+
+A contract has five parts:
+
+\begin{enumerate}
+\item task intent and trigger condition;
+\item tool interface and allowed arguments;
+\item permission policy for side effects;
+\item state assertions over files, repository status, memory, and review state;
+\item replay record sufficient to diagnose failure.
+\end{enumerate}
+
+The model is deliberately thinner than a full agent runtime. It does not impose
+a planner. It inspects whether the external effects obey the contract.
+
+\section{Pilot}
+
+The anonymous artifact implements 24 cases across routing, stateful tool use,
+permission and injection behavior, memory scoping, and replay/recovery. Three
+prompt variants are compared: no harness, thick checklist, and thin contract.
+The harness records invalid tool calls, permission violations, unsafe secret
+access, state-diff correctness, parse failures, and replayability.
+
+The pilot's purpose is to test the evaluation shape. The case set is too small
+for general claims about providers. However, the traces demonstrate how failures
+that are invisible in final answers become inspectable maintenance facts.
+
+\section{Implications for Software Evolution}
+
+Agent workflows evolve like software. Prompts change, tool schemas change,
+model behavior changes, permission policies change, and downstream workflows
+gain new side effects. Without replay and state-diff contracts, teams cannot
+distinguish a model regression from a tool-schema bug, stale memory, overbroad
+permission, or parser failure.
+
+State-diff contracts provide a practical regression surface. They can be run
+when a model is updated, a tool schema changes, a repository policy changes, or
+a workflow gains a new side effect.
+
+\section{Limitations}
+
+The pilot is synthetic and small. The artifact uses mock state rather than
+large-scale production repositories. The results are descriptive, not
+inferential. The contribution is a tractable analysis framing and artifact
+shape, not a comprehensive benchmark.
+
+\section{Conclusion}
+
+Repository-changing agents should be evaluated by what they do to software
+state. State-diff contracts make those effects visible, testable, and replayable
+as agent workflows evolve.
+
+\begin{thebibliography}{9}
+\bibitem{toolsandbox} ToolSandbox, stateful tool-use evaluation benchmark.
+\bibitem{agentdojo} AgentDojo, dynamic tool-calling and prompt-injection evaluation.
+\bibitem{sweagent} SWE-agent and agent-computer interfaces for software engineering agents.
+\bibitem{deli} Deli AutoResearch framework for long-horizon autonomous tasks.
+\end{thebibliography}
+
+\end{document}
+

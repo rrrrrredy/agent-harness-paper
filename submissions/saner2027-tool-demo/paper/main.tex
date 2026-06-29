@@ -1,0 +1,94 @@
+\documentclass[10pt,conference]{IEEEtran}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+\title{Replayable State-Diff Harnesses for Repository-Changing Agents}
+\author{\IEEEauthorblockN{Song Luo}
+\IEEEauthorblockA{\texttt{luosongred@gmail.com}}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Software agents now edit files, run tests, inspect repositories, and prepare
+changes that may affect downstream maintenance. This tool demonstration
+presents a replayable harness for evaluating whether such agents operate under
+explicit state and permission contracts. The artifact models tool calls,
+observations, permission gates, memory scope, replay, and final state diffs. It
+contains 24 cases, raw run logs, regenerated tables, and validation scripts. For
+software analysis and evolution, the key contribution is an inspectable way to
+treat an agent trajectory as a maintainable software artifact: what changed,
+which tool produced it, whether policy allowed it, and whether the failure can
+be replayed. Tool: \url{https://github.com/rrrrrredy/agent-harness-paper}.
+Archive: \url{https://doi.org/10.5281/zenodo.20907471}. Video: TBD.
+\end{abstract}
+
+\section{Problem}
+
+Coding and workflow agents create new maintenance questions. A final answer
+does not reveal whether the agent edited the intended file, respected a dry-run
+policy, avoided secrets, scoped memory correctly, or left a replayable trace.
+These questions are central to software analysis, evolution, and
+reengineering because agent behavior becomes part of the evolving development
+process.
+
+\section{Tool}
+
+The demonstrated tool is a small replayable harness for stateful agent
+contracts. It provides:
+
+\begin{itemize}
+\item case definitions with initial state, allowed tools, forbidden tools, and
+state assertions;
+\item mock tools for file, repository, memory, email/browser-like, and review
+state;
+\item prompt variants for no harness, thick checklist, and thin contract;
+\item metrics for task success, state-diff correctness, invalid tool calls,
+permission violations, unsafe secret access, and replayability;
+\item scripts for validation, regeneration, source evidence audit, and secret
+scanning.
+\end{itemize}
+
+\section{Demo}
+
+The demo walks through a repository-changing scenario:
+
+\begin{enumerate}
+\item load a case that requires a safe repository update;
+\item show the expected tool contract and forbidden actions;
+\item run the harness and inspect the resulting action trace;
+\item compare initial and final mock state;
+\item inspect a failure where a broad prompt checklist does not enforce the
+contract;
+\item regenerate aggregate tables from raw runs.
+\end{enumerate}
+
+The artifact is designed for reviewers to execute without live model keys. Live
+provider runs are included as raw rows; deterministic validation checks the
+simulator and metrics.
+
+\section{Relevance to SANER}
+
+The harness treats agent trajectories as analyzable software artifacts. It can
+support regression testing of agent workflows, analysis of repository side
+effects, evolution of prompt and tool schemas, and reengineering of brittle
+agent scripts into explicit contracts. This fits SANER's focus on extracting
+useful information from software and system artifacts and using that information
+for maintenance and renewal.
+
+\section{Availability}
+
+The repository and release archive are public. Code is MIT licensed; manuscript,
+benchmark cases, evidence snapshots, tables, figures, and documentation are CC
+BY 4.0.
+
+\begin{thebibliography}{9}
+\bibitem{toolsandbox} ToolSandbox, stateful tool-use evaluation benchmark.
+\bibitem{agentdojo} AgentDojo, dynamic tool-calling and prompt-injection evaluation.
+\bibitem{sweagent} SWE-agent and agent-computer interfaces for software engineering agents.
+\bibitem{deli} Deli AutoResearch framework for long-horizon autonomous tasks.
+\end{thebibliography}
+
+\end{document}
+

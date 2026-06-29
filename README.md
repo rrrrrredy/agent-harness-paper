@@ -1,6 +1,6 @@
 # Agent Harness Paper
 
-This private repository contains the manuscript and supporting artifacts for:
+This public repository contains the manuscript and supporting artifacts for:
 
 **Thin Harness, Strong Contracts: Production-Oriented Agent Harnesses for Stateful AI Agents**
 
@@ -8,7 +8,7 @@ The project studies agent harnesses as production infrastructure: runtime contro
 
 ## Status And License
 
-This is a submission-ready, non-anonymous arXiv-style preprint artifact package for Song Luo. It uses the standard LaTeX `article` class rather than a conference proceedings template. The public artifact archive is published on Zenodo at https://doi.org/10.5281/zenodo.20907471 while the working GitHub repository remains private unless separately opened.
+This is a submission-ready, non-anonymous arXiv-style preprint artifact package for Song Luo. It uses the standard LaTeX `article` class rather than a conference proceedings template. The public artifact archive is published on Zenodo at https://doi.org/10.5281/zenodo.20907471, and this repository is public for artifact review and reuse.
 
 The repository is dual-licensed. Code is under the MIT License; the manuscript source, documentation, benchmark cases, evidence snapshots, derived tables, figures, and release metadata are under Creative Commons Attribution 4.0 International (CC BY 4.0). See `LICENSE`, `LICENSE-MIT`, and `LICENSE-CC-BY-4.0.md`.
 
@@ -23,6 +23,7 @@ scripts/        experiment, analysis, checks, and utility entrypoints
 results/        regenerated tables and summaries
 evidence/       artifact inventory and generated GitHub evidence snapshots
 docs/           protocol, claim boundaries, reproducibility, reviewer guide
+submissions/    conference-specific submission plans, drafts, and video materials
 notes/          argument map, outline, related work notes
 tests/          deterministic unit tests
 ```
