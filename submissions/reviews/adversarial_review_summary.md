@@ -85,3 +85,18 @@ Required changes:
 - keep live providers optional and use recorded traces for reviewers;
 - for Short Paper, create an anonymous package and cut broad production claims.
 
+## Post-Hardening Note
+
+After the first adversarial pass, the submission branch added targeted LaTeX
+drafts for all four routes, generated public backup demo videos, and rewrote
+the ICSE NIER and SANER Short Paper versions into anonymous short-paper
+arguments. The main remaining blockers are:
+
+- ICSE Tool Demonstration still needs the official YouTube URL inserted before
+  submission, even though a GitHub Release backup video is public.
+- ICSE NIER still needs a true anonymous supplemental package rather than
+  pointing reviewers at the public author repository.
+- SANER Short Paper still needs stronger repository-fixture evidence before it
+  should be treated as a competitive empirical short paper.
+- No local IEEE PDF compile check has been run because this machine currently
+  lacks `latexmk`, `pdflatex`, and `tectonic`.

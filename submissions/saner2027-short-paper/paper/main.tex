@@ -10,83 +10,132 @@
 \maketitle
 
 \begin{abstract}
-Repository-changing agents introduce a software maintenance problem: their
-outputs are not only answers, but state transitions. A useful evaluation must
-therefore ask which files, memory entries, review states, and tool-observable
-facts changed, and whether those changes obeyed policy. This short paper
-proposes state-diff contracts for evaluating such agents. A pilot artifact with
-24 cases models tool calls, observations, permission gates, prompt-injection
-conditions, memory scope, replay, and final-state assertions. The results are
-not a general benchmark, but they show how state-diff and permission failures
-can be surfaced as analyzable software artifacts. The contribution is a
-software-analysis framing for maintaining agent workflows as prompts, models,
-and tool schemas evolve.
+Repository-changing agents create a software maintenance problem: their outputs
+are not only answers, but state transitions. They edit files, inspect project
+state, run commands, write memory, and prepare reviewable changes. Evaluating
+only the final response hides whether the correct files changed, whether tests
+or validation commands ran, whether permissions were respected, and whether a
+failure can be replayed. This short paper proposes \emph{state-diff contracts}
+for evaluating such agents. A contract specifies task intent, allowed and
+forbidden tools, permission policy, initial and final state assertions, and
+replay evidence. A 24-case pilot artifact shows how invalid tool calls,
+permission violations, missing state diffs, unsafe secret access, and recovery
+failures can be surfaced as analyzable software artifacts. The contribution is
+a software-analysis framing for maintaining agent workflows as prompts, models,
+tool schemas, and repository policies evolve.
 \end{abstract}
 
 \section{Introduction}
 
-Software engineering agents increasingly operate on repositories and workflow
-state. They edit files, inspect project context, run tests, prepare reports, and
-request or bypass review. A final textual answer is insufficient evidence of
-correct behavior. The maintainable unit is the trajectory: tool calls,
-observations, policy checks, state diffs, and replay information.
+Software engineering agents increasingly operate inside repositories rather
+than beside them. They inspect files, propose patches, run tests, update
+documentation, manage memory, and prepare pull requests. These actions are
+state transitions. A textual answer such as ``the task is complete'' is not
+enough evidence for maintenance, review, or regression testing.
 
-This paper argues that repository-changing agents should be evaluated through
-state-diff contracts. A state-diff contract specifies the initial state, allowed
-actions, forbidden actions, and expected final state. It turns an agent run into
-an analyzable artifact for software maintenance.
+The maintainable unit is the trajectory: which tool was called, with what
+arguments, after which observation, under which permission policy, and with
+what final state. This paper argues that repository-changing agents should be
+evaluated through \emph{state-diff contracts}. The idea is deliberately modest:
+do not replace the agent with a large scripted runtime; instead, make the
+external effects of the agent explicit enough to analyze.
 
-\section{Contract Model}
+\section{State-Diff Contracts}
 
-A contract has five parts:
+A state-diff contract has five parts.
 
-\begin{enumerate}
-\item task intent and trigger condition;
-\item tool interface and allowed arguments;
-\item permission policy for side effects;
-\item state assertions over files, repository status, memory, and review state;
-\item replay record sufficient to diagnose failure.
-\end{enumerate}
+\textbf{Intent and trigger.} The contract states when the agent should act and
+what task boundary it should respect. This catches over-triggering and
+under-triggering.
 
-The model is deliberately thinner than a full agent runtime. It does not impose
-a planner. It inspects whether the external effects obey the contract.
+\textbf{Tool interface.} The contract states which tools are expected, allowed,
+or forbidden, and records tool arguments and observations. This turns tool use
+into a reviewable software event rather than a narrative claim.
 
-\section{Pilot}
+\textbf{Permission policy.} The contract separates read-only, dry-run,
+review-required, and forbidden side effects. For repository workflows, this
+distinguishes running tests from deleting files, preparing a patch from merging
+it, and reading project files from reading secrets.
 
-The anonymous artifact implements 24 cases across routing, stateful tool use,
-permission and injection behavior, memory scoping, and replay/recovery. Three
-prompt variants are compared: no harness, thick checklist, and thin contract.
-The harness records invalid tool calls, permission violations, unsafe secret
-access, state-diff correctness, parse failures, and replayability.
+\textbf{State assertions.} The contract defines what must change and what must
+not change. For repositories, assertions may include file diffs, command
+results, test status, review state, generated artifacts, and absence of
+unrelated changes.
 
-The pilot's purpose is to test the evaluation shape. The case set is too small
-for general claims about providers. However, the traces demonstrate how failures
-that are invisible in final answers become inspectable maintenance facts.
+\textbf{Replay evidence.} The contract preserves enough input, configuration,
+tool observations, and final state to diagnose the run. Replay is essential
+because failures may come from the model, prompt, tool schema, repository
+state, memory, or policy.
+
+\begin{table}[t]
+\caption{Examples of Agent Failures as Software Artifacts}
+\centering
+\begin{tabular}{p{0.26\linewidth}p{0.31\linewidth}p{0.28\linewidth}}
+\toprule
+Failure & Final-answer view & State-diff contract view \\
+\midrule
+Wrong file edited & May look complete & Diff oracle fails \\
+Secret read & Often invisible & Forbidden tool/state access \\
+Skipped tests & Hidden in summary & Missing command evidence \\
+Stale memory & Plausible rationale & Scope assertion fails \\
+Unsafe publish & Claimed dry-run & Permission violation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Pilot Artifact}
+
+We implemented a small anonymous pilot artifact with 24 cases. The cases cover
+trigger/routing behavior, stateful tool use, permission and prompt-injection
+conditions, memory scoping and forgetting, and replay/failure recovery. Each
+case defines mock initial state, allowed tools, expected tools, forbidden
+tools, final-state assertions, and metrics.
+
+The pilot includes three prompt variants. The \emph{no-harness} variant gives
+the task with minimal operational structure. The \emph{thick-checklist} variant
+adds broad reminders. The \emph{thin-contract} variant provides concise
+boundary contracts: allowed tools, forbidden tools, state assertions, and
+review expectations. Recorded runs are evaluated for task success,
+state-diff correctness, invalid tool calls, permission violations, unsafe
+secret access, replayability, and recovery behavior.
+
+The pilot is intentionally small and synthetic. It is not a provider benchmark.
+Its purpose is to test whether the harness surfaces maintenance-relevant
+failures. It does: several failures that would be ambiguous in final answers
+become concrete artifacts. A secret-read attempt is a forbidden access event. A
+repository update without the expected diff is a state assertion failure. A
+dry-run bypass is a permission violation. A recovery claim without a replayable
+trace is a replay failure.
 
 \section{Implications for Software Evolution}
 
-Agent workflows evolve like software. Prompts change, tool schemas change,
-model behavior changes, permission policies change, and downstream workflows
-gain new side effects. Without replay and state-diff contracts, teams cannot
-distinguish a model regression from a tool-schema bug, stale memory, overbroad
-permission, or parser failure.
+Agent workflows evolve like software. Prompts change, model versions change,
+tool schemas change, repository conventions change, and permission policies
+become stricter as agents receive more authority. Without state-diff contracts,
+teams cannot distinguish a model regression from a tool-schema bug, stale
+memory, overbroad permission, or an underspecified task boundary.
 
-State-diff contracts provide a practical regression surface. They can be run
-when a model is updated, a tool schema changes, a repository policy changes, or
-a workflow gains a new side effect.
+State-diff contracts provide a regression surface for repository-changing
+agents. They can be run when a model is upgraded, when a tool schema changes,
+when a repository adds a new policy, or when a workflow moves from dry-run to
+review-required execution. The result is not just a pass/fail score, but a
+failure taxonomy that can guide maintenance.
 
-\section{Limitations}
+\section{Threats to Validity}
 
-The pilot is synthetic and small. The artifact uses mock state rather than
-large-scale production repositories. The results are descriptive, not
-inferential. The contribution is a tractable analysis framing and artifact
-shape, not a comprehensive benchmark.
+The pilot uses mock state rather than large production repositories. The case
+set is small and hand-designed. The live rows, where used, are descriptive and
+should not be generalized to provider quality. The contract language is also
+minimal: it demonstrates the analysis surface but does not yet cover complex
+multi-repository changes, long-running branches, dependency updates, or
+concurrent human review.
 
 \section{Conclusion}
 
 Repository-changing agents should be evaluated by what they do to software
-state. State-diff contracts make those effects visible, testable, and replayable
-as agent workflows evolve.
+state. State-diff contracts make those effects visible, testable, and
+replayable. This framing treats an agent run as a software artifact that can be
+maintained as models, prompts, tools, and repository policies evolve.
 
 \begin{thebibliography}{9}
 \bibitem{toolsandbox} ToolSandbox, stateful tool-use evaluation benchmark.
@@ -96,4 +145,3 @@ as agent workflows evolve.
 \end{thebibliography}
 
 \end{document}
-
