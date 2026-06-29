@@ -3,6 +3,8 @@
 This directory keeps conference-specific versions separate from the public
 preprint in `paper/`. The repository strategy is:
 
+Current route status is tracked in `submissions/status.md`.
+
 - `main` remains the public, reproducible preprint and artifact baseline.
 - `codex/submission-prep` prepares conference-specific drafts, checklists, and
   the remaining conference-specific artifacts.
