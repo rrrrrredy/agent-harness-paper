@@ -13,14 +13,17 @@ Last updated: 2026-06-29.
 ## Latest Checks
 
 - Local validation: `python scripts/run_checks.py --mode validate` passed after
-  active-route expansion.
-- GitHub Actions PDF run: `28348467190` passed.
+  fixture-suite and anonymous-package expansion.
+- GitHub Actions validate run: `28352268940` passed.
+- GitHub Actions PDF run: `28352268922` passed.
 - Latest PDFs downloaded under `logs/submission-pdfs/`.
 - Repository fixture suite regenerated under `results/fixtures/`.
 - ICSE NIER anonymous artifact rebuilt at
   `dist/anonymous/icse2027-nier-anonymous-artifact.zip`.
 - SANER Short Paper anonymous artifact can be rebuilt at
   `dist/anonymous/saner2027-short-paper-anonymous-artifact.zip`.
+- SANER repository fixture suite regenerated under `results/fixtures/` with
+  success, missing-test, wrong-file, and secret-read scenarios.
 - Anonymous package smoke test passed with `python scripts/smoke_test.py`.
 - Anonymous package walkthrough passed with `python scripts/run_demo_walkthrough.py`.
 
@@ -35,5 +38,5 @@ asset.
 - Tighten ICSE NIER to exactly match the final double-anonymous submission
   instructions before uploading.
 - Decide whether SANER Tool Demo should be the primary conference target.
-- Expand SANER Short Paper only if adding more repository fixtures or failure
-  cases is feasible; keep claims narrow otherwise.
+- Keep SANER Short Paper claims narrow unless more repository fixtures or
+  failure cases are added.
