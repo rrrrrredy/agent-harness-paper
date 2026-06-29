@@ -34,6 +34,13 @@ These questions are central to software analysis, evolution, and
 reengineering because agent behavior becomes part of the evolving development
 process.
 
+The problem is not limited to wrong answers. A repository-changing agent can
+produce a plausible summary while skipping tests, touching an unrelated file,
+using stale memory, accepting an injected instruction from an observation, or
+preparing an irreversible side effect without review. These are software
+analysis problems because the evidence is distributed across files, commands,
+tool calls, policy decisions, and final state.
+
 \section{Tool}
 
 The demonstrated tool is a small replayable harness for stateful agent
@@ -50,6 +57,24 @@ permission violations, unsafe secret access, and replayability;
 \item scripts for validation, regeneration, source evidence audit, and secret
 scanning.
 \end{itemize}
+
+\section{Architecture}
+
+The tool has four layers. The \emph{case layer} defines task intent, initial
+state, allowed tools, forbidden tools, required tools, and final-state
+assertions. The \emph{execution layer} normalizes model outputs into tool
+actions and applies those actions to a mock state containing files, memory,
+reports, email-like side effects, browser state, and test status. The
+\emph{oracle layer} checks state assertions and policy outcomes. The
+\emph{analysis layer} regenerates summary tables, failure taxonomies,
+uncertainty summaries, and fixture traces from raw JSONL rows.
+
+The repository also contains a small concrete repository fixture. It maps one
+stateful tool-use case to a before/after tree: \texttt{src/app.py} begins with
+\texttt{VALUE = 1}, the contract trace writes \texttt{VALUE = 2}, and a
+no-dependency test checks the final value. The generated output includes a
+unified diff, file hashes, and a JSON trace. This fixture is intentionally
+small so reviewers can inspect the full state transition.
 
 \section{Demo}
 
@@ -69,6 +94,20 @@ The artifact is designed for reviewers to execute without live model keys. Live
 provider runs are included as raw rows; deterministic validation checks the
 simulator and metrics.
 
+The recommended reviewer path is:
+
+\begin{enumerate}
+\item run \texttt{python scripts/run\_checks.py --mode validate};
+\item run \texttt{python scripts/run\_demo\_walkthrough.py};
+\item run \texttt{python scripts/run\_repo\_fixture\_demo.py};
+\item inspect \texttt{results/fixtures/saner\_repo\_fixture.diff};
+\item inspect the failure taxonomy under \texttt{results/tables/}.
+\end{enumerate}
+
+This path exercises the tool without requiring provider credentials. Reviewers
+who want to reproduce live API runs can supply provider keys, but the
+submission does not depend on those keys.
+
 \section{Relevance to SANER}
 
 The harness treats agent trajectories as analyzable software artifacts. It can
@@ -78,6 +117,30 @@ agent scripts into explicit contracts. This fits SANER's focus on extracting
 useful information from software and system artifacts and using that information
 for maintenance and renewal.
 
+The tool is particularly useful for three maintenance workflows.
+
+\textbf{Regression testing agent configurations.} When a model, prompt, or tool
+schema changes, teams can rerun the same cases and compare state-diff failures,
+invalid tool calls, permission violations, and replayability.
+
+\textbf{Auditing repository side effects.} A reviewer can inspect which file
+changed, which tool produced the change, which policy allowed it, and whether
+the expected validation ran.
+
+\textbf{Reengineering prompt scripts.} Existing agent workflows often rely on
+long checklists. The harness helps migrate those scripts toward explicit
+contracts: allowed tools, forbidden effects, state assertions, and review
+gates.
+
+\section{Limitations}
+
+The current artifact is a pilot tool, not a large benchmark. Most cases use
+mock state rather than full repositories. The concrete repository fixture is
+small. The provider rows are descriptive and should not be interpreted as a
+general model ranking. The demonstration value is the analysis shape: final
+answers are connected to tool traces, state diffs, policy outcomes, and replay
+records.
+
 \section{Availability}
 
 The repository and release archive are public. Code is MIT licensed; manuscript,
@@ -85,10 +148,16 @@ benchmark cases, evidence snapshots, tables, figures, and documentation are CC
 BY 4.0.
 
 \begin{thebibliography}{9}
-\bibitem{toolsandbox} ToolSandbox, stateful tool-use evaluation benchmark.
-\bibitem{agentdojo} AgentDojo, dynamic tool-calling and prompt-injection evaluation.
-\bibitem{sweagent} SWE-agent and agent-computer interfaces for software engineering agents.
-\bibitem{deli} Deli AutoResearch framework for long-horizon autonomous tasks.
+\bibitem{toolsandbox} J. Lu et al., ``ToolSandbox: A Stateful, Conversational,
+Interactive Evaluation Benchmark for LLM Tool Use Capabilities,'' Findings of
+ACL: NAACL, 2025.
+\bibitem{agentdojo} E. Debenedetti et al., ``AgentDojo: A Dynamic Environment
+to Evaluate Prompt Injection Attacks and Defenses for LLM Agents,'' NeurIPS
+Datasets and Benchmarks, 2024.
+\bibitem{sweagent} J. Yang et al., ``SWE-agent: Agent-Computer Interfaces
+Enable Automated Software Engineering,'' arXiv:2405.15793, 2024.
+\bibitem{deli} D. Chen, ``Deli AutoResearch: Autonomous Research Framework,''
+2026.
 \end{thebibliography}
 
 \end{document}

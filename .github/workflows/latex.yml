@@ -43,7 +43,7 @@ jobs:
             submissions/saner2027-tool-demo/paper \
             submissions/saner2027-short-paper/paper
           do
-            (cd "$dir" && pdflatex -interaction=nonstopmode main.tex)
+            (cd "$dir" && pdflatex -interaction=nonstopmode main.tex && pdflatex -interaction=nonstopmode main.tex)
           done
 
       - name: Upload PDF

@@ -40,6 +40,15 @@ evaluated through \emph{state-diff contracts}. The idea is deliberately modest:
 do not replace the agent with a large scripted runtime; instead, make the
 external effects of the agent explicit enough to analyze.
 
+This framing leads to two research questions.
+
+\textbf{RQ1.} What information must be recorded for a repository-changing
+agent run to be reviewable as a software artifact?
+
+\textbf{RQ2.} Which failure classes become visible when evaluation includes
+tool traces, permission policy, and state diffs rather than final answers
+alone?
+
 \section{State-Diff Contracts}
 
 A state-diff contract has five parts.
@@ -66,6 +75,12 @@ unrelated changes.
 tool observations, and final state to diagnose the run. Replay is essential
 because failures may come from the model, prompt, tool schema, repository
 state, memory, or policy.
+
+The contract is not intended to specify how the agent reasons internally. It
+specifies the boundary between the agent and the software environment. This
+keeps the evaluation stable as models and prompts change. A planner may be
+rewritten or removed, but a forbidden secret read remains forbidden; a required
+test remains required; an expected patch remains observable as a diff.
 
 \begin{table}[t]
 \caption{Examples of Agent Failures as Software Artifacts}
@@ -99,6 +114,24 @@ review expectations. Recorded runs are evaluated for task success,
 state-diff correctness, invalid tool calls, permission violations, unsafe
 secret access, replayability, and recovery behavior.
 
+\begin{table}[t]
+\caption{Metrics Produced by the Pilot Harness}
+\centering
+\begin{tabular}{p{0.30\linewidth}p{0.54\linewidth}}
+\toprule
+Metric & Maintenance interpretation \\
+\midrule
+Task success & Required actions and assertions were satisfied \\
+State-diff correctness & Expected software/workflow state changed correctly \\
+Invalid tool calls & The trajectory used unavailable or inappropriate tools \\
+Permission violations & The run crossed a forbidden side-effect boundary \\
+Unsafe secret access & The run attempted to read protected state \\
+Replayability & The run left enough action evidence to inspect \\
+Recovery behavior & The run reacted to failure with checks or escalation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 The pilot is intentionally small and synthetic. It is not a provider benchmark.
 Its purpose is to test whether the harness surfaces maintenance-relevant
 failures. It does: several failures that would be ambiguous in final answers
@@ -117,6 +150,26 @@ record. This is not a large benchmark, but it demonstrates the intended
 software-analysis object: the agent run is inspected as a repository diff plus
 policy and test evidence.
 
+\section{Findings}
+
+The pilot supports three qualitative findings.
+
+\textbf{F1: Final answers under-report maintenance failures.} Several
+trajectories can produce plausible summaries while failing the contract. The
+failure is visible only through the state assertion, forbidden action, or
+missing validation evidence.
+
+\textbf{F2: The useful failure classes are operational.} The most actionable
+categories are not generic wrong answers. They are invalid tool calls,
+permission violations, unsafe secret access, state-diff errors, routing
+errors, parse failures, and missing recovery. Each category points to a
+different maintenance response.
+
+\textbf{F3: Repository fixtures make the abstraction inspectable.} The small
+fixture is not meant to represent real repository complexity, but it shows what
+the contract should eventually scale toward: before/after state, a patch,
+validation evidence, and replay metadata.
+
 \section{Implications for Software Evolution}
 
 Agent workflows evolve like software. Prompts change, model versions change,
@@ -131,6 +184,20 @@ when a repository adds a new policy, or when a workflow moves from dry-run to
 review-required execution. The result is not just a pass/fail score, but a
 failure taxonomy that can guide maintenance.
 
+For software evolution, the important property is comparability over time. If
+an agent workflow changes from one model to another, a final-answer comparison
+is brittle. A state-diff comparison can ask whether the same expected files
+changed, whether the same tests ran, whether the same permission boundaries
+were respected, and whether the replay record improved or degraded. This gives
+teams a regression surface for agent behavior.
+
+For reengineering, the contract separates durable policy from temporary prompt
+scaffolding. A long prompt checklist may be simplified as models improve. A
+repository policy, review gate, or secret-access rule should remain explicit.
+This distinction helps teams avoid preserving obsolete prompt machinery while
+also avoiding the opposite mistake of removing the operational guardrails that
+make agent actions auditable.
+
 \section{Threats to Validity}
 
 The pilot uses mock state rather than large production repositories. The case
@@ -140,6 +207,12 @@ minimal: it demonstrates the analysis surface but does not yet cover complex
 multi-repository changes, long-running branches, dependency updates, or
 concurrent human review.
 
+An additional threat is that the current fixture encodes a successful
+repository change rather than a large corpus of successful and failing patches.
+Future work should add realistic repositories, failing tests, partial patches,
+merge conflicts, and review comments. The present contribution is therefore a
+framing and artifact shape, not a statistical claim about agent reliability.
+
 \section{Conclusion}
 
 Repository-changing agents should be evaluated by what they do to software
@@ -148,10 +221,16 @@ replayable. This framing treats an agent run as a software artifact that can be
 maintained as models, prompts, tools, and repository policies evolve.
 
 \begin{thebibliography}{9}
-\bibitem{toolsandbox} ToolSandbox, stateful tool-use evaluation benchmark.
-\bibitem{agentdojo} AgentDojo, dynamic tool-calling and prompt-injection evaluation.
-\bibitem{sweagent} SWE-agent and agent-computer interfaces for software engineering agents.
-\bibitem{deli} Deli AutoResearch framework for long-horizon autonomous tasks.
+\bibitem{toolsandbox} J. Lu et al., ``ToolSandbox: A Stateful, Conversational,
+Interactive Evaluation Benchmark for LLM Tool Use Capabilities,'' Findings of
+ACL: NAACL, 2025.
+\bibitem{agentdojo} E. Debenedetti et al., ``AgentDojo: A Dynamic Environment
+to Evaluate Prompt Injection Attacks and Defenses for LLM Agents,'' NeurIPS
+Datasets and Benchmarks, 2024.
+\bibitem{sweagent} J. Yang et al., ``SWE-agent: Agent-Computer Interfaces
+Enable Automated Software Engineering,'' arXiv:2405.15793, 2024.
+\bibitem{deli} D. Chen, ``Deli AutoResearch: Autonomous Research Framework,''
+2026.
 \end{thebibliography}
 
 \end{document}

@@ -104,6 +104,29 @@ the answer is correct. A production-oriented agent evaluation asks whether the
 agent accomplished the task by taking permitted actions that produced the
 expected state transition and left a reproducible trace.
 
+\section{Positioning}
+
+The proposed agenda is adjacent to, but distinct from, existing agent
+evaluation work. Stateful tool-use benchmarks such as ToolSandbox show that an
+agent must be evaluated inside an evolving environment, not only against a
+single input-output pair. Security-focused environments such as AgentDojo show
+that tool observations can carry adversarial instructions and that prompt
+injection should be evaluated as part of the tool-use setting. Software-agent
+work such as SWE-agent emphasizes that interfaces between agents and
+repositories shape behavior. Long-horizon research frameworks emphasize
+traceability, stopping conditions, and review for autonomous workflows. These
+threads motivate the same direction: once a model is embedded in a system,
+evaluation must include the system boundary.
+
+Our claim is narrower than a new benchmark claim. We do not argue that the
+pilot cases are representative of all agent work. We argue that software
+engineering research needs a vocabulary for distinguishing temporary cognitive
+scaffolding from durable operational contracts. Without this distinction,
+agent infrastructure discussions collapse into a single question of whether
+the harness is ``too thick.'' The more useful question is which harness
+surfaces are compensating for current model weakness and which are defining
+responsibility for external effects.
+
 \section{Pilot Artifact}
 
 We built a small anonymous pilot artifact to test the evaluation shape. The
@@ -130,6 +153,48 @@ answer may omit the leak. A memory-scope assertion exposes it. When a case
 requires replay after a failing tool observation, the recorded trajectory shows
 whether recovery happened or only the final answer changed.
 
+\begin{table}[t]
+\caption{Pilot Case Categories}
+\centering
+\begin{tabular}{p{0.24\linewidth}p{0.56\linewidth}}
+\toprule
+Category & Contract pressure tested \\
+\midrule
+Trigger/routing & Whether the agent should act, refuse, or escalate \\
+Stateful tools & Whether required state changes and checks occur \\
+Permission/security & Whether forbidden effects and injected instructions are avoided \\
+Memory scope & Whether recall and forgetting remain bounded \\
+Replay/recovery & Whether failure handling leaves diagnosable evidence \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Design Hypotheses}
+
+The agenda can be tested through falsifiable design hypotheses.
+
+\textbf{H1: Contract compactness.} A compact statement of allowed tools,
+forbidden tools, and state assertions should produce more inspectable
+trajectories than a broad checklist of behavioral reminders. This does not
+mean every task needs a formal language. It means the harness should state
+boundary conditions directly rather than burying them in prose.
+
+\textbf{H2: State-diff observability.} Failures that are ambiguous in final
+answers should become classifiable once final state and tool traces are
+available. Examples include a missing test run, an unintended file edit, an
+unsafe memory write, or an attempted secret read.
+
+\textbf{H3: Harness migration.} As model versions improve, planning-oriented
+scaffolds should shrink or disappear, while permission policy, state oracles,
+and replay evidence should remain stable or become stricter. This can be
+studied longitudinally by rerunning the same contract cases across model and
+tool-schema updates.
+
+\textbf{H4: Review handoff.} Human review should be treated as part of the
+harness contract, not as an afterthought. A reviewer should receive the task
+intent, relevant tool calls, state diff, policy outcome, and replay pointer,
+not only a model-written summary.
+
 \section{Research Questions}
 
 This agenda leads to concrete software engineering questions.
@@ -148,6 +213,24 @@ constraints?
 \textbf{RQ4: Harness evolution.} Which harness components shrink when models
 improve, and which become stricter because better agents receive more
 permission to act?
+
+\section{Evaluation Plan}
+
+The next evaluation should avoid two common traps. First, it should not become
+a provider leaderboard. The relevant unit is the agent configuration: model,
+prompt, tool schema, memory policy, permission policy, and state oracle.
+Second, it should not score only final answers. For each task, the evaluator
+should report task success, state-diff correctness, invalid tool calls,
+permission violations, unsafe secret access, replayability, and recovery
+behavior.
+
+A useful study design would include three axes. The model axis reruns the same
+contracts across model versions. The harness axis compares no contract, thick
+checklist, and thin contract variants. The environment axis moves from mock
+state to repository fixtures, browser fixtures, and workflow fixtures. The
+expected outcome is not a single score, but a failure map showing which
+contract surfaces are most sensitive to model progress and which remain
+system-boundary concerns.
 
 \section{Future Plans}
 
@@ -171,10 +254,16 @@ models improve, the first kind should recede; the second kind should become a
 standard evaluation and operations layer for stateful AI agents.
 
 \begin{thebibliography}{9}
-\bibitem{toolsandbox} ToolSandbox, stateful tool-use evaluation benchmark.
-\bibitem{agentdojo} AgentDojo, dynamic tool-calling and prompt-injection evaluation.
-\bibitem{sweagent} SWE-agent and agent-computer interfaces for software engineering agents.
-\bibitem{deli} Deli AutoResearch framework for long-horizon autonomous tasks.
+\bibitem{toolsandbox} J. Lu et al., ``ToolSandbox: A Stateful, Conversational,
+Interactive Evaluation Benchmark for LLM Tool Use Capabilities,'' Findings of
+ACL: NAACL, 2025.
+\bibitem{agentdojo} E. Debenedetti et al., ``AgentDojo: A Dynamic Environment
+to Evaluate Prompt Injection Attacks and Defenses for LLM Agents,'' NeurIPS
+Datasets and Benchmarks, 2024.
+\bibitem{sweagent} J. Yang et al., ``SWE-agent: Agent-Computer Interfaces
+Enable Automated Software Engineering,'' arXiv:2405.15793, 2024.
+\bibitem{deli} D. Chen, ``Deli AutoResearch: Autonomous Research Framework,''
+2026.
 \end{thebibliography}
 
 \end{document}
