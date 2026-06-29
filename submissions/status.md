@@ -7,15 +7,15 @@ Last updated: 2026-06-29.
 | Route | Current PDF pages | Limit posture | Artifact mode | Current state |
 |---|---:|---|---|---|
 | ICSE 2027 NIER | 3 | 4 pages main text plus 1 references-only page | Anonymous supplemental zip | Draft expanded and CI-compiled |
-| SANER 2027 Tool Demo | 2 | 5 pages including references | Public GitHub, Zenodo, GitHub Release screencast | Draft expanded and CI-compiled |
+| SANER 2027 Tool Demo | 3 | 5 pages including references | Public GitHub, Zenodo, GitHub Release screencast | Primary route draft expanded and CI-compiled |
 | SANER 2027 Short Paper | 3 | 6 pages including references | Anonymous supplemental zip | Draft expanded with repository fixture suite evidence |
 
 ## Latest Checks
 
 - Local validation: `python scripts/run_checks.py --mode validate` passed after
   fixture-suite and anonymous-package expansion.
-- GitHub Actions validate run: `28352268940` passed.
-- GitHub Actions PDF run: `28352268922` passed.
+- GitHub Actions validate run: `28352621244` passed.
+- GitHub Actions PDF run: `28352621207` passed.
 - Latest PDFs downloaded under `logs/submission-pdfs/`.
 - Repository fixture suite regenerated under `results/fixtures/`.
 - ICSE NIER anonymous artifact rebuilt at
@@ -37,6 +37,7 @@ asset.
 
 - Tighten ICSE NIER to exactly match the final double-anonymous submission
   instructions before uploading.
-- Decide whether SANER Tool Demo should be the primary conference target.
+- Treat SANER Tool Demo as the primary conference target unless a later review
+  exposes a stronger route.
 - Keep SANER Short Paper claims narrow unless more repository fixtures or
   failure cases are added.
